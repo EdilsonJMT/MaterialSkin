@@ -151,6 +151,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\IRANSans-Black.ttf" />
+    <None Include="Resources\IRANSans-Bold.ttf" />
+    <None Include="Resources\IRANSans-Light.ttf" />
+    <None Include="Resources\IRANSans-Medium.ttf" />
+    <None Include="Resources\IRANSans-Regular.ttf" />
+    <None Include="Resources\IRANSans-UltraLight.ttf" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -63,6 +63,66 @@ namespace MaterialSkin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        public static byte[] IRANSans_Black {
+            get {
+                object obj = ResourceManager.GetObject("IRANSans_Black", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] IRANSans_Bold {
+            get {
+                object obj = ResourceManager.GetObject("IRANSans_Bold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] IRANSans_Light {
+            get {
+                object obj = ResourceManager.GetObject("IRANSans_Light", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] IRANSans_Medium {
+            get {
+                object obj = ResourceManager.GetObject("IRANSans_Medium", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] IRANSans_Regular {
+            get {
+                object obj = ResourceManager.GetObject("IRANSans_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] IRANSans_UltraLight {
+            get {
+                object obj = ResourceManager.GetObject("IRANSans_UltraLight", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         public static byte[] Roboto_Black {
             get {
                 object obj = ResourceManager.GetObject("Roboto_Black", resourceCulture);

@@ -49,6 +49,14 @@
             addFont(Resources.Roboto_Bold);
             addFont(Resources.Roboto_Black);
 
+            addFont(Resources.IRANSans_Black);
+            addFont(Resources.IRANSans_Bold);
+            addFont(Resources.IRANSans_Light);
+            addFont(Resources.IRANSans_Medium);
+            addFont(Resources.IRANSans_Regular);
+            addFont(Resources.IRANSans_UltraLight);
+            
+
             RobotoFontFamilies = new Dictionary<string, FontFamily>();
             foreach (FontFamily ff in privateFontCollection.Families.ToArray())
             {
@@ -57,25 +65,25 @@
 
             // create and save font handles for GDI
             logicalFonts = new Dictionary<string, IntPtr>(18);
-            logicalFonts.Add("H1", createLogicalFont("Roboto Light", 96, NativeTextRenderer.logFontWeight.FW_LIGHT));
-            logicalFonts.Add("H2", createLogicalFont("Roboto Light", 60, NativeTextRenderer.logFontWeight.FW_LIGHT));
-            logicalFonts.Add("H3", createLogicalFont("Roboto", 48, NativeTextRenderer.logFontWeight.FW_REGULAR));
-            logicalFonts.Add("H4", createLogicalFont("Roboto", 34, NativeTextRenderer.logFontWeight.FW_REGULAR));
-            logicalFonts.Add("H5", createLogicalFont("Roboto", 24, NativeTextRenderer.logFontWeight.FW_REGULAR));
-            logicalFonts.Add("H6", createLogicalFont("Roboto Medium", 20, NativeTextRenderer.logFontWeight.FW_MEDIUM));
-            logicalFonts.Add("Subtitle1", createLogicalFont("Roboto", 16, NativeTextRenderer.logFontWeight.FW_REGULAR));
-            logicalFonts.Add("Subtitle2", createLogicalFont("Roboto Medium", 14, NativeTextRenderer.logFontWeight.FW_MEDIUM));
-            logicalFonts.Add("Body1", createLogicalFont("Roboto", 16, NativeTextRenderer.logFontWeight.FW_REGULAR));
-            logicalFonts.Add("Body2", createLogicalFont("Roboto", 14, NativeTextRenderer.logFontWeight.FW_REGULAR));
-            logicalFonts.Add("Button", createLogicalFont("Roboto Medium", 14, NativeTextRenderer.logFontWeight.FW_MEDIUM));
-            logicalFonts.Add("Caption", createLogicalFont("Roboto", 12, NativeTextRenderer.logFontWeight.FW_REGULAR));
-            logicalFonts.Add("Overline", createLogicalFont("Roboto", 10, NativeTextRenderer.logFontWeight.FW_REGULAR));
+            logicalFonts.Add("H1", createLogicalFont("IRANSansFaNum", 96, NativeTextRenderer.logFontWeight.FW_LIGHT));// Light
+            logicalFonts.Add("H2", createLogicalFont("IRANSansFaNum", 60, NativeTextRenderer.logFontWeight.FW_LIGHT));// Light
+            logicalFonts.Add("H3", createLogicalFont("IRANSansFaNum", 48, NativeTextRenderer.logFontWeight.FW_REGULAR));
+            logicalFonts.Add("H4", createLogicalFont("IRANSansFaNum", 34, NativeTextRenderer.logFontWeight.FW_REGULAR));
+            logicalFonts.Add("H5", createLogicalFont("IRANSansFaNum", 24, NativeTextRenderer.logFontWeight.FW_REGULAR));
+            logicalFonts.Add("H6", createLogicalFont("IRANSansFaNum", 20, NativeTextRenderer.logFontWeight.FW_MEDIUM));// Medium
+            logicalFonts.Add("Subtitle1", createLogicalFont("IRANSansFaNum", 16, NativeTextRenderer.logFontWeight.FW_REGULAR));
+            logicalFonts.Add("Subtitle2", createLogicalFont("IRANSansFaNum", 14, NativeTextRenderer.logFontWeight.FW_MEDIUM));// Medium
+            logicalFonts.Add("Body1", createLogicalFont("IRANSansFaNum", 16, NativeTextRenderer.logFontWeight.FW_REGULAR));
+            logicalFonts.Add("Body2", createLogicalFont("IRANSansFaNum", 14, NativeTextRenderer.logFontWeight.FW_REGULAR));
+            logicalFonts.Add("Button", createLogicalFont("IRANSansFaNum", 14, NativeTextRenderer.logFontWeight.FW_MEDIUM));// Medium
+            logicalFonts.Add("Caption", createLogicalFont("IRANSansFaNum", 12, NativeTextRenderer.logFontWeight.FW_REGULAR));
+            logicalFonts.Add("Overline", createLogicalFont("IRANSansFaNum", 10, NativeTextRenderer.logFontWeight.FW_REGULAR));
             // Logical fonts for textbox animation
-            logicalFonts.Add("textBox16", createLogicalFont("Roboto", 16, NativeTextRenderer.logFontWeight.FW_REGULAR));
-            logicalFonts.Add("textBox15", createLogicalFont("Roboto", 15, NativeTextRenderer.logFontWeight.FW_REGULAR));
-            logicalFonts.Add("textBox14", createLogicalFont("Roboto", 14, NativeTextRenderer.logFontWeight.FW_REGULAR));
-            logicalFonts.Add("textBox13", createLogicalFont("Roboto Medium", 13, NativeTextRenderer.logFontWeight.FW_MEDIUM));
-            logicalFonts.Add("textBox12", createLogicalFont("Roboto Medium", 12, NativeTextRenderer.logFontWeight.FW_MEDIUM));
+            logicalFonts.Add("textBox16", createLogicalFont("IRANSansFaNum", 16, NativeTextRenderer.logFontWeight.FW_REGULAR));
+            logicalFonts.Add("textBox15", createLogicalFont("IRANSansFaNum", 15, NativeTextRenderer.logFontWeight.FW_REGULAR));
+            logicalFonts.Add("textBox14", createLogicalFont("IRANSansFaNum", 14, NativeTextRenderer.logFontWeight.FW_REGULAR));
+            logicalFonts.Add("textBox13", createLogicalFont("IRANSansFaNum", 13, NativeTextRenderer.logFontWeight.FW_MEDIUM));// Medium
+            logicalFonts.Add("textBox12", createLogicalFont("IRANSansFaNum", 12, NativeTextRenderer.logFontWeight.FW_MEDIUM));// Medium
         }
 
         // Destructor
@@ -271,45 +279,45 @@
             switch (type)
             {
                 case fontType.H1:
-                    return new Font(RobotoFontFamilies["Roboto_Light"], 96f, FontStyle.Regular, GraphicsUnit.Pixel);
+                    return new Font(RobotoFontFamilies["IRANSansFaNum"], 96f, FontStyle.Regular, GraphicsUnit.Pixel);//_Light
 
                 case fontType.H2:
-                    return new Font(RobotoFontFamilies["Roboto_Light"], 60f, FontStyle.Regular, GraphicsUnit.Pixel);
+                    return new Font(RobotoFontFamilies["IRANSansFaNum"], 60f, FontStyle.Regular, GraphicsUnit.Pixel);//_Light
 
                 case fontType.H3:
-                    return new Font(RobotoFontFamilies["Roboto"], 48f, FontStyle.Bold, GraphicsUnit.Pixel);
+                    return new Font(RobotoFontFamilies["IRANSansFaNum"], 48f, FontStyle.Bold, GraphicsUnit.Pixel);
 
                 case fontType.H4:
-                    return new Font(RobotoFontFamilies["Roboto"], 34f, FontStyle.Bold, GraphicsUnit.Pixel);
+                    return new Font(RobotoFontFamilies["IRANSansFaNum"], 34f, FontStyle.Bold, GraphicsUnit.Pixel);
 
                 case fontType.H5:
-                    return new Font(RobotoFontFamilies["Roboto"], 24f, FontStyle.Bold, GraphicsUnit.Pixel);
+                    return new Font(RobotoFontFamilies["IRANSansFaNum"], 24f, FontStyle.Bold, GraphicsUnit.Pixel);
 
                 case fontType.H6:
-                    return new Font(RobotoFontFamilies["Roboto_Medium"], 20f, FontStyle.Bold, GraphicsUnit.Pixel);
+                    return new Font(RobotoFontFamilies["IRANSansFaNum"], 20f, FontStyle.Bold, GraphicsUnit.Pixel);//_Medium
 
                 case fontType.Subtitle1:
-                    return new Font(RobotoFontFamilies["Roboto"], 16f, FontStyle.Regular, GraphicsUnit.Pixel);
+                    return new Font(RobotoFontFamilies["IRANSansFaNum"], 16f, FontStyle.Regular, GraphicsUnit.Pixel);
 
                 case fontType.Subtitle2:
-                    return new Font(RobotoFontFamilies["Roboto_Medium"], 14f, FontStyle.Bold, GraphicsUnit.Pixel);
+                    return new Font(RobotoFontFamilies["IRANSansFaNum"], 14f, FontStyle.Bold, GraphicsUnit.Pixel);//_Medium
 
                 case fontType.Body1:
-                    return new Font(RobotoFontFamilies["Roboto"], 14f, FontStyle.Regular, GraphicsUnit.Pixel);
+                    return new Font(RobotoFontFamilies["IRANSansFaNum"], 14f, FontStyle.Regular, GraphicsUnit.Pixel);
 
                 case fontType.Body2:
-                    return new Font(RobotoFontFamilies["Roboto"], 12f, FontStyle.Regular, GraphicsUnit.Pixel);
+                    return new Font(RobotoFontFamilies["IRANSansFaNum"], 12f, FontStyle.Regular, GraphicsUnit.Pixel);
 
                 case fontType.Button:
-                    return new Font(RobotoFontFamilies["Roboto"], 14f, FontStyle.Bold, GraphicsUnit.Pixel);
+                    return new Font(RobotoFontFamilies["IRANSansFaNum"], 14f, FontStyle.Bold, GraphicsUnit.Pixel);
 
                 case fontType.Caption:
-                    return new Font(RobotoFontFamilies["Roboto"], 12f, FontStyle.Regular, GraphicsUnit.Pixel);
+                    return new Font(RobotoFontFamilies["IRANSansFaNum"], 12f, FontStyle.Regular, GraphicsUnit.Pixel);
 
                 case fontType.Overline:
-                    return new Font(RobotoFontFamilies["Roboto"], 10f, FontStyle.Regular, GraphicsUnit.Pixel);
+                    return new Font(RobotoFontFamilies["IRANSansFaNum"], 10f, FontStyle.Regular, GraphicsUnit.Pixel);
             }
-            return new Font(RobotoFontFamilies["Roboto"], 14f, FontStyle.Regular, GraphicsUnit.Pixel);
+            return new Font(RobotoFontFamilies["IRANSansFaNum"], 14f, FontStyle.Regular, GraphicsUnit.Pixel);
         }
 
         /// <summary>

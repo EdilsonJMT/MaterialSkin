@@ -1,6 +1,7 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
+using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 
@@ -142,7 +143,7 @@ namespace MaterialSkinExample
 
         private void MaterialButton3_Click(object sender, EventArgs e)
         {
-            var builder = new StringBuilder("Batch operation report:\n\n");
+            var builder = new StringBuilder("گزارش عملیات گروهی :\n\n");
             var random = new Random();
             var result = 0;
 
@@ -152,17 +153,37 @@ namespace MaterialSkinExample
 
                 if (result < 950)
                 {
-                    builder.AppendFormat(" - Task {0}: Operation completed sucessfully.\n", i);
+                    builder.AppendFormat(" - عملیات {0}: عملیات با موفقیت انجام شد.\n", i);
                 }
                 else
                 {
-                    builder.AppendFormat(" - Task {0}: Operation failed! A very very very very very very very very very very very very serious error has occured during this sub-operation. The errorcode is: {1}).\n", i, result);
+                    builder.AppendFormat(" - عملیات {0}: عملیاتی انجام نشد! یک خطای خیلی خیلی خیلی خیلی خیلی خیلی خیلی خیلی جدی در طول این عملیات رخ داده است. کد خطا: {1}).\n", i, result);
                 }
             }
 
             var batchOperationResults = builder.ToString();
-            var mresult = MaterialMessageBox.Show(batchOperationResults, "Batch Operation");
-            materialComboBox1.Items.Add("this is a very long string");
+            var mresult = MaterialMessageBox.Show(batchOperationResults, "عملیات گروهی");
+            materialComboBox1.Items.Add("این رشته بسیار طولانی است");
+        }
+
+        private void materialLabel9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel46_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            CultureInfo.CurrentUICulture = new CultureInfo("fa-IR", false);
         }
     }
 }

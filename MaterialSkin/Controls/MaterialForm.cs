@@ -171,7 +171,6 @@
         private Size _previousSize;
         private Point _previousLocation;
         private bool _headerMouseDown;
-
         private Padding originalPadding;
 
         public MaterialForm()
@@ -949,15 +948,18 @@
         private void InitializeComponent()
         {
             this.SuspendLayout();
-            //
+            // 
             // MaterialForm
-            //
+            // 
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.MinimumSize = new System.Drawing.Size(300, 200);
             this.Name = "MaterialForm";
             this.Padding = new System.Windows.Forms.Padding(3, 64, 3, 3);
+            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.RightToLeftLayout = true;
             this.Load += new System.EventHandler(this.MaterialForm_Load);
             this.ResumeLayout(false);
+
         }
 
         private void MaterialForm_Load(object sender, EventArgs e)

@@ -84,7 +84,7 @@
             UseTallSize = true;
             MaxDropDownItems = 4;
 
-            Font = SkinManager.getFontByType(MaterialSkinManager.fontType.Subtitle2);
+            Font = SkinManager.getFontByType(MaterialSkinManager.fontType.Body1);
             BackColor = SkinManager.BackgroundColor;
             ForeColor = SkinManager.TextHighEmphasisColor;
             DrawMode = DrawMode.OwnerDrawVariable;
