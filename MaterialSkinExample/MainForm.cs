@@ -185,5 +185,10 @@ namespace MaterialSkinExample
         {
             CultureInfo.CurrentUICulture = new CultureInfo("fa-IR", false);
         }
+
+        private void materialLabel7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

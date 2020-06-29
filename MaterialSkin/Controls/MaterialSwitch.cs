@@ -102,7 +102,7 @@
             _trackOffsetY = Height / 2 - THUMB_SIZE_HALF;
 
             TRACK_CENTER_Y = _trackOffsetY + THUMB_SIZE_HALF - 1;
-            TRACK_CENTER_X_BEGIN = TRACK_CENTER_Y;
+            TRACK_CENTER_X_BEGIN = (RightToLeft == RightToLeft.Yes) ? this.Width- TRACK_SIZE_WIDTH : TRACK_CENTER_Y;
             TRACK_CENTER_X_END = TRACK_CENTER_X_BEGIN + TRACK_SIZE_WIDTH - (TRACK_RADIUS * 2);
             TRACK_CENTER_X_DELTA = TRACK_CENTER_X_END - TRACK_CENTER_X_BEGIN;
         }
@@ -208,7 +208,7 @@
             // draw text
             using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
             {
-                Rectangle textLocation = new Rectangle(TEXT_OFFSET + TRACK_SIZE_WIDTH, 0, Width - (TEXT_OFFSET + TRACK_SIZE_WIDTH), Height);
+                Rectangle textLocation = (RightToLeft == RightToLeft.Yes) ? new Rectangle(0, 0, Width - (TEXT_OFFSET + TRACK_SIZE_WIDTH), Height) : new Rectangle(TEXT_OFFSET + TRACK_SIZE_WIDTH, 0, Width - (TEXT_OFFSET + TRACK_SIZE_WIDTH), Height);
                 NativeText.DrawTransparentText(
                     Text,
                     SkinManager.getLogFontByType(MaterialSkinManager.fontType.Body1),
