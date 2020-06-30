@@ -102,7 +102,7 @@
             _trackOffsetY = Height / 2 - THUMB_SIZE_HALF;
 
             TRACK_CENTER_Y = _trackOffsetY + THUMB_SIZE_HALF - 1;
-            TRACK_CENTER_X_BEGIN = (RightToLeft == RightToLeft.Yes) ? this.Width- TRACK_SIZE_WIDTH : TRACK_CENTER_Y;
+            TRACK_CENTER_X_BEGIN = (RightToLeft == RightToLeft.Yes) ? this.Width -TRACK_SIZE_WIDTH - (TRACK_RADIUS /2): TRACK_CENTER_Y;
             TRACK_CENTER_X_END = TRACK_CENTER_X_BEGIN + TRACK_SIZE_WIDTH - (TRACK_RADIUS * 2);
             TRACK_CENTER_X_DELTA = TRACK_CENTER_X_END - TRACK_CENTER_X_BEGIN;
         }

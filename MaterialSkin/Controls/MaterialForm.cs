@@ -786,8 +786,8 @@
             _minButtonBounds = new Rectangle((Width) - 3 * STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
             _maxButtonBounds = new Rectangle((Width) - 2 * STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
             _xButtonBounds = new Rectangle((Width) - STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
-            _statusBarBounds = new Rectangle(0, 0, Width, STATUS_BAR_HEIGHT);
-            _actionBarBounds = new Rectangle(0, STATUS_BAR_HEIGHT, Width, ACTION_BAR_HEIGHT);
+            _statusBarBounds = new Rectangle(0, 0, Width , STATUS_BAR_HEIGHT);
+            _actionBarBounds = new Rectangle(0, STATUS_BAR_HEIGHT, Width , ACTION_BAR_HEIGHT);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -947,16 +947,14 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MaterialForm));
             this.SuspendLayout();
             // 
             // MaterialForm
             // 
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.MinimumSize = new System.Drawing.Size(300, 200);
+            resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.Name = "MaterialForm";
-            this.Padding = new System.Windows.Forms.Padding(3, 64, 3, 3);
-            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.RightToLeftLayout = true;
             this.Load += new System.EventHandler(this.MaterialForm_Load);
             this.ResumeLayout(false);
 

@@ -124,6 +124,9 @@
     <EmbeddedResource Include="Controls\FlexibleMaterialDialog.resx">
       <DependentUpon>FlexibleMaterialDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MaterialForm.fa-IR.resx">
+      <DependentUpon>MaterialForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\MaterialForm.resx">
       <DependentUpon>MaterialForm.cs</DependentUpon>
     </EmbeddedResource>
