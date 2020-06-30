@@ -174,14 +174,16 @@
             // draw radiobutton circle
             using (Pen pen = new Pen(DrawHelper.BlendColor(Parent.BackColor, Enabled ? SkinManager.CheckboxOffColor : SkinManager.CheckBoxOffDisabledColor, backgroundAlpha), 2))
             {
-                g.DrawEllipse(pen, new Rectangle(_boxOffset, _boxOffset, RADIOBUTTON_SIZE, RADIOBUTTON_SIZE));
+                var x = RightToLeft == RightToLeft.Yes ? Width- _boxOffset : _boxOffset;
+                g.DrawEllipse(pen, new Rectangle(x, _boxOffset, RADIOBUTTON_SIZE, RADIOBUTTON_SIZE));
             }
 
             if (Enabled)
             {
                 using (Pen pen = new Pen(RadioColor, 2))
                 {
-                    g.DrawEllipse(pen, new Rectangle(_boxOffset, _boxOffset, RADIOBUTTON_SIZE, RADIOBUTTON_SIZE));
+                    var x = RightToLeft == RightToLeft.Yes ? Width - _boxOffset : _boxOffset;
+                    g.DrawEllipse(pen, new Rectangle(x, _boxOffset, RADIOBUTTON_SIZE, RADIOBUTTON_SIZE));
                 }
             }
 
@@ -189,6 +191,7 @@
             {
                 using (SolidBrush brush = new SolidBrush(RadioColor))
                 {
+                    var x = RightToLeft == RightToLeft.Yes ? Width - (RADIOBUTTON_CENTER + animationSizeHalf) : _boxOffset;
                     g.FillEllipse(brush, new RectangleF(RADIOBUTTON_CENTER - animationSizeHalf, RADIOBUTTON_CENTER - animationSizeHalf, animationSize, animationSize));
                 }
             }
