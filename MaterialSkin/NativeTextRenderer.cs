@@ -250,7 +250,7 @@ public sealed class NativeTextRenderer : IDisposable
 
     [DllImport("gdi32.dll", EntryPoint = "GetTextExtentExPointW")]
     private static extern bool GetTextExtentExPoint(IntPtr hDc, [MarshalAs(UnmanagedType.LPWStr)]string str, int nLength, int nMaxExtent, int[] lpnFit, int[] alpDx, ref Size size);
-
+            
     [DllImport("gdi32.dll", EntryPoint = "TextOutW")]
     private static extern bool TextOut(IntPtr hdc, int x, int y, [MarshalAs(UnmanagedType.LPWStr)] string str, int len);
 

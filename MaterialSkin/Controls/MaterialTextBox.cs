@@ -104,6 +104,7 @@
             base.OnCreateControl();
             base.Font = new Font(SkinManager.getFontByType(MaterialSkinManager.fontType.Subtitle1).FontFamily, 12f, FontStyle.Regular);
             base.AutoSize = false;
+            var FORM_PADDING = RightToLeft == RightToLeft.Yes ? 0 : SkinManager.FORM_PADDING;
 
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.DoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true);
 
@@ -115,11 +116,11 @@
             LINE_Y = HEIGHT - BOTTOM_PADDING;
 
             // Position the "real" text field
-            var rect = new Rectangle(SkinManager.FORM_PADDING, UseTallSize ? hasHint ?
+            var rect = new Rectangle(FORM_PADDING, UseTallSize ? hasHint ?
                     (HINT_TEXT_SMALL_Y + HINT_TEXT_SMALL_SIZE) : // Has hint and it's tall
                     (int)(LINE_Y / 3.5) : // No hint and tall
                     Height / 5, // not tall
-                    ClientSize.Width - (SkinManager.FORM_PADDING * 2), LINE_Y);
+                    ClientSize.Width - (FORM_PADDING * 2), LINE_Y);
             RECT rc = new RECT(rect);
             SendMessageRefRect(Handle, EM_SETRECT, 0, ref rc);
 
@@ -166,7 +167,10 @@
         protected override void OnPaint(PaintEventArgs pevent)
         {
             base.OnPaint(pevent);
-
+            var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
+            var FORM_PADDING = RightToLeft == RightToLeft.Yes ? 0 : SkinManager.FORM_PADDING;
+            var Width = RightToLeft == RightToLeft.Yes ? this.Width - SkinManager.FORM_PADDING : this.Width;
+            var ClientRectangleWidth = RightToLeft == RightToLeft.Yes ? ClientRectangle.Width - SkinManager.FORM_PADDING : ClientRectangle.Width;
             var g = pevent.Graphics;
 
             g.Clear(Parent.BackColor);
@@ -186,11 +190,11 @@
                             UseAccent ? SkinManager.ColorScheme.AccentColor : SkinManager.ColorScheme.PrimaryColor : // Focused
                             SkinManager.TextHighEmphasisColor : // Inactive
                             SkinManager.TextDisabledOrHintColor; // Disabled
-            Rectangle hintRect = new Rectangle(SkinManager.FORM_PADDING, ClientRectangle.Y, Width, LINE_Y);
+            Rectangle hintRect = new Rectangle(FORM_PADDING, ClientRectangle.Y, Width, LINE_Y);
             int hintTextSize = 16;
 
             // bottom line base
-            g.FillRectangle(SkinManager.DividersAlternativeBrush, 0, LINE_Y, Width, 1);
+            g.FillRectangle(SkinManager.DividersAlternativeBrush, 0, LINE_Y, this.Width, 1);
 
             if (!_animationManager.IsAnimating())
             {
@@ -198,14 +202,14 @@
                 if (hasHint && UseTallSize && (Focused || userTextPresent))
                 {
                     // hint text
-                    hintRect = new Rectangle(SkinManager.FORM_PADDING, HINT_TEXT_SMALL_Y, Width, HINT_TEXT_SMALL_SIZE);
+                    hintRect = new Rectangle(FORM_PADDING, HINT_TEXT_SMALL_Y, this.Width, HINT_TEXT_SMALL_SIZE);
                     hintTextSize = 12;
                 }
 
                 // bottom line
                 if (Focused)
                 {
-                    g.FillRectangle(UseAccent ? SkinManager.ColorScheme.AccentBrush : SkinManager.ColorScheme.PrimaryBrush, 0, LINE_Y, Width, 2);
+                    g.FillRectangle(UseAccent ? SkinManager.ColorScheme.AccentBrush : SkinManager.ColorScheme.PrimaryBrush, 0, LINE_Y, this.Width, 2);
                 }
             }
             else
@@ -217,7 +221,7 @@
                 if (hasHint && UseTallSize)
                 {
                     hintRect = new Rectangle(
-                        SkinManager.FORM_PADDING,
+                        FORM_PADDING,
                         userTextPresent ? (HINT_TEXT_SMALL_Y) : ClientRectangle.Y + (int)((HINT_TEXT_SMALL_Y - ClientRectangle.Y) * animationProgress),
                         Width,
                         userTextPresent ? (HINT_TEXT_SMALL_SIZE) : (int)(LINE_Y + (HINT_TEXT_SMALL_SIZE - LINE_Y) * animationProgress));
@@ -237,9 +241,9 @@
 
             // Calc text Rect
             Rectangle textRect = new Rectangle(
-                SkinManager.FORM_PADDING,
+                FORM_PADDING,
                 hasHint && UseTallSize ? (hintRect.Y + hintRect.Height) - 2 : ClientRectangle.Y,
-                ClientRectangle.Width - SkinManager.FORM_PADDING * 2 + scrollPos.X,
+                ClientRectangleWidth - FORM_PADDING * 2 + scrollPos.X,
                 hasHint && UseTallSize ? LINE_Y - (hintRect.Y + hintRect.Height) : LINE_Y);
 
             g.Clip = new Region(textRect);
@@ -254,8 +258,10 @@
                 int selectX = NativeText.MeasureLogString(textBeforeSelection, SkinManager.getLogFontByType(MaterialSkinManager.fontType.Subtitle1)).Width;
                 int selectWidth = NativeText.MeasureLogString(textSelected, SkinManager.getLogFontByType(MaterialSkinManager.fontType.Subtitle1)).Width;
 
+                var textRect_X = RightToLeft == RightToLeft.Yes ? textRect.X : textRect.X;
+                selectWidth = RightToLeft == RightToLeft.Yes ? selectWidth : selectWidth;
                 textSelectRect = new Rectangle(
-                    textRect.X + selectX, UseTallSize ? hasHint ?
+                    textRect_X, UseTallSize ? hasHint ?
                      textRect.Y + BOTTOM_PADDING : // tall and hint
                      LINE_Y / 3 - BOTTOM_PADDING : // tall and no hint
                      BOTTOM_PADDING, // not tall
@@ -272,7 +278,7 @@
                     Enabled ? SkinManager.TextHighEmphasisColor : SkinManager.TextDisabledOrHintColor,
                     textRect.Location,
                     textRect.Size,
-                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
+                    textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
             }
 
             if (Focused)
@@ -289,7 +295,7 @@
                         SkinManager.ColorScheme.TextColor,
                         textSelectRect.Location,
                         textSelectRect.Size,
-                        NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
+                        textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
                 }
             }
 
@@ -310,7 +316,7 @@
                     SkinManager.TextDisabledOrHintColor, // Disabled
                     hintRect.Location,
                     hintRect.Size,
-                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
+                    textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
                 }
             }
         }

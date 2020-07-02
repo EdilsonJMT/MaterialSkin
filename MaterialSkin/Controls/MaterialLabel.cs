@@ -1,4 +1,7 @@
-﻿namespace MaterialSkin.Controls
+﻿using System.Drawing.Drawing2D;
+using System.Drawing.Text;
+
+namespace MaterialSkin.Controls
 {
     using System.ComponentModel;
     using System.Drawing;
@@ -31,6 +34,10 @@
                 Invalidate();
             }
         }
+
+        [Category("Material Skin"),
+         DefaultValue(false)]
+        public bool Multiline { get; set; }
 
         [Category("Material Skin"),
         DefaultValue(false)]
@@ -133,11 +140,15 @@
         protected override void OnPaint(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
+            g.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+
             g.Clear(Parent.BackColor);
 
             // Draw Text
             using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
             {
+                if (Multiline)
                 NativeText.DrawMultilineTransparentText(
                     Text,
                     SkinManager.getLogFontByType(_fontType),
@@ -149,6 +160,18 @@
                     ClientRectangle.Location,
                     ClientRectangle.Size,
                     Alignment);
+                else
+                    NativeText.DrawTransparentText(
+                        Text,
+                        SkinManager.getLogFontByType(_fontType),
+                        Enabled ? HighEmphasis ? UseAccent ?
+                                SkinManager.ColorScheme.AccentColor : // High emphasis, accent
+                                SkinManager.ColorScheme.PrimaryColor : // High emphasis, primary
+                            SkinManager.TextHighEmphasisColor : // Normal
+                            SkinManager.TextDisabledOrHintColor, // Disabled
+                        ClientRectangle.Location,
+                        ClientRectangle.Size,
+                        Alignment);
             }
         }
 

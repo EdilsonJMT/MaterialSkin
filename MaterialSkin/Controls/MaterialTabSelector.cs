@@ -184,10 +184,12 @@
             {
                 using (var g = Graphics.FromImage(b))
                 {
-                    _tabRects.Add(new Rectangle(SkinManager.FORM_PADDING, 0, TAB_HEADER_PADDING * 2 + (int)g.MeasureString(_baseTabControl.TabPages[0].Text, Font).Width, Height));
+                    var tabRects_X= RightToLeft == RightToLeft.Yes ? this.Width - (TAB_HEADER_PADDING * 2 + (int)g.MeasureString(_baseTabControl.TabPages[0].Text, Font).Width) - SkinManager.FORM_PADDING : SkinManager.FORM_PADDING;
+                        _tabRects.Add(new Rectangle(tabRects_X, 0, TAB_HEADER_PADDING * 2 + (int)g.MeasureString(_baseTabControl.TabPages[0].Text, Font).Width, Height));
                     for (int i = 1; i < _baseTabControl.TabPages.Count; i++)
                     {
-                        _tabRects.Add(new Rectangle(_tabRects[i - 1].Right, 0, TAB_HEADER_PADDING * 2 + (int)g.MeasureString(_baseTabControl.TabPages[i].Text, Font).Width, Height));
+                        var tabRects_add_X = RightToLeft == RightToLeft.Yes ? _tabRects[i - 1].Left- (TAB_HEADER_PADDING * 2 + (int)g.MeasureString(_baseTabControl.TabPages[i].Text, Font).Width) : _tabRects[i - 1].Right;
+                        _tabRects.Add(new Rectangle(tabRects_add_X, 0, TAB_HEADER_PADDING * 2 + (int)g.MeasureString(_baseTabControl.TabPages[i].Text, Font).Width, Height));
                     }
                 }
             }
