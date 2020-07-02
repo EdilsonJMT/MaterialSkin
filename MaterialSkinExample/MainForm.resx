@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="materialLabel8.Text" xml:space="preserve">
-    <value>در اینجا لیستی از انواع مختلفی که دکمه‌های Material که می‌توان استفاده کرد وجود دارد. سایه‌های دکمه موجود فقط در زمان اجرا کشیده می شوند.
-روی آنها کلیک کنید و انیمیشن های زیبای آن را ببینید. آهان راستی، دکمه ها از تم و رنگ پیروی می کنند ، سعی کنید آن ها را نیز تغییر دهید.
-به طور معمول دکمه ها باید AutoSize = true باشند ، اما به خاطر وسواس فکری من در هم‌ترازی، مقدارش false شده است.
-اگر در هنگام طراحی هر یک از دکمه ها عجیب به نظر رسید ، رنگ پس زمینه برگه را از شفاف به سفید تغییر دهید.</value>
-  </data>
   <metadata name="menuIconList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>219, 17</value>
   </metadata>
@@ -206,6 +200,12 @@
         AeABAAEHAf4BAAF/AfgB4AH/AfgBAAEfAeABAAEHAf8BAAL/AeEB/wH4AQABHwHgAQABBwT/AeMB/wH4
         AQABHwf/Aecc/ws=
 </value>
+  </data>
+  <data name="materialLabel8.Text" xml:space="preserve">
+    <value>در اینجا لیستی از انواع مختلفی که دکمه‌های Material که می‌توان استفاده کرد وجود دارد. سایه‌های دکمه موجود فقط در زمان اجرا کشیده می شوند.
+روی آنها کلیک کنید و انیمیشن های زیبای آن را ببینید. آهان راستی، دکمه ها از تم و رنگ پیروی می کنند ، سعی کنید آن ها را نیز تغییر دهید.
+به طور معمول دکمه ها باید AutoSize = true باشند ، اما به خاطر وسواس فکری من در هم‌ترازی، مقدارش false شده است.
+اگر در هنگام طراحی هر یک از دکمه ها عجیب به نظر رسید ، رنگ پس زمینه برگه را از شفاف به سفید تغییر دهید.</value>
   </data>
   <metadata name="materialContextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
