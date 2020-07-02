@@ -267,11 +267,11 @@ namespace MaterialSkinExample
             this.MaterialButton3.DrawShadows = true;
             this.MaterialButton3.HighEmphasis = true;
             this.MaterialButton3.Icon = null;
-            this.MaterialButton3.Location = new System.Drawing.Point(779, 432);
+            this.MaterialButton3.Location = new System.Drawing.Point(801, 432);
             this.MaterialButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.MaterialButton3.MouseState = MaterialSkin.MouseState.HOVER;
             this.MaterialButton3.Name = "MaterialButton3";
-            this.MaterialButton3.Size = new System.Drawing.Size(173, 36);
+            this.MaterialButton3.Size = new System.Drawing.Size(151, 36);
             this.MaterialButton3.TabIndex = 36;
             this.MaterialButton3.Text = "بازکـــــــــردن جعبه پیام";
             this.MaterialButton3.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -395,11 +395,11 @@ namespace MaterialSkinExample
             this.materialButton7.DrawShadows = true;
             this.materialButton7.HighEmphasis = true;
             this.materialButton7.Icon = null;
-            this.materialButton7.Location = new System.Drawing.Point(666, 166);
+            this.materialButton7.Location = new System.Drawing.Point(686, 166);
             this.materialButton7.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialButton7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton7.Name = "materialButton7";
-            this.materialButton7.Size = new System.Drawing.Size(122, 36);
+            this.materialButton7.Size = new System.Drawing.Size(102, 36);
             this.materialButton7.TabIndex = 0;
             this.materialButton7.Text = "تغییـــــــر قالب";
             this.materialButton7.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
@@ -434,11 +434,11 @@ namespace MaterialSkinExample
             this.MaterialButton4.DrawShadows = true;
             this.MaterialButton4.HighEmphasis = true;
             this.MaterialButton4.Icon = null;
-            this.MaterialButton4.Location = new System.Drawing.Point(834, 166);
+            this.MaterialButton4.Location = new System.Drawing.Point(852, 166);
             this.MaterialButton4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.MaterialButton4.MouseState = MaterialSkin.MouseState.HOVER;
             this.MaterialButton4.Name = "MaterialButton4";
-            this.MaterialButton4.Size = new System.Drawing.Size(118, 36);
+            this.MaterialButton4.Size = new System.Drawing.Size(100, 36);
             this.MaterialButton4.TabIndex = 22;
             this.MaterialButton4.Text = "تغییـــــــر رنگ";
             this.MaterialButton4.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -1565,6 +1565,11 @@ namespace MaterialSkinExample
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.White;
+            this.tabPage3.Controls.Add(this.materialLabel11);
+            this.tabPage3.Controls.Add(this.materialLabel12);
+            this.tabPage3.Controls.Add(this.materialLabel13);
+            this.tabPage3.Controls.Add(this.materialLabel14);
+            this.tabPage3.Controls.Add(this.materialLabel15);
             this.tabPage3.Controls.Add(this.materialTextBox5);
             this.tabPage3.Controls.Add(this.materialTextBox4);
             this.tabPage3.Controls.Add(this.materialTextBox3);
@@ -1585,11 +1590,6 @@ namespace MaterialSkinExample
             this.tabPage3.Controls.Add(this.materialLabel17);
             this.tabPage3.Controls.Add(this.materialLabel1);
             this.tabPage3.Controls.Add(this.materialLabel16);
-            this.tabPage3.Controls.Add(this.materialLabel15);
-            this.tabPage3.Controls.Add(this.materialLabel14);
-            this.tabPage3.Controls.Add(this.materialLabel13);
-            this.tabPage3.Controls.Add(this.materialLabel12);
-            this.tabPage3.Controls.Add(this.materialLabel11);
             this.tabPage3.ImageKey = "round_build_white_24dp.png";
             this.tabPage3.Location = new System.Drawing.Point(4, 31);
             this.tabPage3.Name = "tabPage3";
@@ -2107,7 +2107,7 @@ namespace MaterialSkinExample
             this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton2.Name = "materialFlatButton2";
-            this.materialFlatButton2.Size = new System.Drawing.Size(87, 36);
+            this.materialFlatButton2.Size = new System.Drawing.Size(81, 36);
             this.materialFlatButton2.TabIndex = 1;
             this.materialFlatButton2.Text = "کاهش";
             this.materialFlatButton2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
@@ -2138,11 +2138,11 @@ namespace MaterialSkinExample
             this.MaterialButton2.DrawShadows = true;
             this.MaterialButton2.HighEmphasis = true;
             this.MaterialButton2.Icon = global::MaterialSkinExample.Properties.Resources.plus;
-            this.MaterialButton2.Location = new System.Drawing.Point(99, 156);
+            this.MaterialButton2.Location = new System.Drawing.Point(101, 156);
             this.MaterialButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.MaterialButton2.MouseState = MaterialSkin.MouseState.HOVER;
             this.MaterialButton2.Name = "MaterialButton2";
-            this.MaterialButton2.Size = new System.Drawing.Size(90, 36);
+            this.MaterialButton2.Size = new System.Drawing.Size(88, 36);
             this.MaterialButton2.TabIndex = 2;
             this.MaterialButton2.Text = "افزایش";
             this.MaterialButton2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
