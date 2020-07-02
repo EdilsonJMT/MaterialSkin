@@ -133,6 +133,9 @@
         {
             Graphics g = pevent.Graphics;
 
+            var FORM_PADDING = RightToLeft == RightToLeft.Yes ? 0 : SkinManager.FORM_PADDING;
+            var Width = RightToLeft == RightToLeft.Yes ? this.Width - SkinManager.FORM_PADDING : this.Width;
+
             g.Clear(Parent.BackColor);
             g.FillRectangle(Enabled ? Focused ?
                 SkinManager.BackgroundFocusBrush : // Focused
@@ -144,9 +147,12 @@
 
             // Create and Draw the arrow
             System.Drawing.Drawing2D.GraphicsPath pth = new System.Drawing.Drawing2D.GraphicsPath();
-            PointF TopRight = new PointF(this.Width - 0.5f - SkinManager.FORM_PADDING, (this.Height >> 1) - 2.5f);
-            PointF MidBottom = new PointF(this.Width - 4.5f - SkinManager.FORM_PADDING, (this.Height >> 1) + 2.5f);
-            PointF TopLeft = new PointF(this.Width - 8.5f - SkinManager.FORM_PADDING, (this.Height >> 1) - 2.5f);
+            var TopRight_X= RightToLeft == RightToLeft.Yes ?  0.5f + SkinManager.FORM_PADDING : Width - 0.5f - FORM_PADDING;
+            PointF TopRight = new PointF(TopRight_X, (this.Height >> 1) - 2.5f);
+            var MidBottom_X = RightToLeft == RightToLeft.Yes ? 4.5f + SkinManager.FORM_PADDING : Width - 4.5f - FORM_PADDING;
+            PointF MidBottom = new PointF(MidBottom_X , (this.Height >> 1) + 2.5f);
+            var TopLeft_X = RightToLeft == RightToLeft.Yes ? 8.5f + SkinManager.FORM_PADDING : Width - 8.5f - FORM_PADDING;
+            PointF TopLeft = new PointF(TopLeft_X, (this.Height >> 1) - 2.5f);
             pth.AddLine(TopLeft, TopRight);
             pth.AddLine(TopRight, MidBottom);
 
@@ -156,11 +162,11 @@
 
             // HintText
             bool userTextPresent = SelectedIndex >= 0;
-            Rectangle hintRect = new Rectangle(SkinManager.FORM_PADDING, ClientRectangle.Y, Width, LINE_Y);
+            Rectangle hintRect = new Rectangle(FORM_PADDING, ClientRectangle.Y, Width, LINE_Y);
             int hintTextSize = 16;
 
             // bottom line base
-            g.FillRectangle(SkinManager.DividersAlternativeBrush, 0, LINE_Y, Width, 1);
+            g.FillRectangle(SkinManager.DividersAlternativeBrush, 0, LINE_Y, this.Width, 1);
 
             if (!_animationManager.IsAnimating())
             {
@@ -168,14 +174,14 @@
                 if (hasHint && UseTallSize && (DroppedDown || Focused || SelectedIndex >= 0))
                 {
                     // hint text
-                    hintRect = new Rectangle(SkinManager.FORM_PADDING, TEXT_SMALL_Y, Width, TEXT_SMALL_SIZE);
+                    hintRect = new Rectangle(FORM_PADDING, TEXT_SMALL_Y, Width, TEXT_SMALL_SIZE);
                     hintTextSize = 12;
                 }
 
                 // bottom line
                 if (DroppedDown || Focused)
                 {
-                    g.FillRectangle(UseAccent ? SkinManager.ColorScheme.AccentBrush : SkinManager.ColorScheme.PrimaryBrush, 0, LINE_Y, Width, 2);
+                    g.FillRectangle(UseAccent ? SkinManager.ColorScheme.AccentBrush : SkinManager.ColorScheme.PrimaryBrush, 0, LINE_Y, this.Width, 2);
                 }
             }
             else
@@ -187,7 +193,7 @@
                 if (hasHint && UseTallSize)
                 {
                     hintRect = new Rectangle(
-                        SkinManager.FORM_PADDING,
+                        FORM_PADDING,
                         userTextPresent && !_animationManager.IsAnimating() ? (TEXT_SMALL_Y) : ClientRectangle.Y + (int)((TEXT_SMALL_Y - ClientRectangle.Y) * animationProgress),
                         Width,
                         userTextPresent && !_animationManager.IsAnimating() ? (TEXT_SMALL_SIZE) : (int)(LINE_Y + (TEXT_SMALL_SIZE - LINE_Y) * animationProgress));
@@ -200,15 +206,15 @@
                 g.FillRectangle(UseAccent ? SkinManager.ColorScheme.AccentBrush : SkinManager.ColorScheme.PrimaryBrush, LineAnimationX, LINE_Y, LineAnimationWidth, 2);
             }
 
+            var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
             // Calc text Rect
             Rectangle textRect = new Rectangle(
-                SkinManager.FORM_PADDING,
+                Width - (ClientRectangle.Width - FORM_PADDING * 3 - 8),
                 hasHint && UseTallSize ? (hintRect.Y + hintRect.Height) - 2 : ClientRectangle.Y,
-                ClientRectangle.Width - SkinManager.FORM_PADDING * 3 - 8,
+                ClientRectangle.Width - FORM_PADDING * 3 - 8,
                 hasHint && UseTallSize ? LINE_Y - (hintRect.Y + hintRect.Height) : LINE_Y);
 
             g.Clip = new Region(textRect);
-
             using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
             {
                 // Draw user text
@@ -218,7 +224,7 @@
                     Enabled ? SkinManager.TextHighEmphasisColor : SkinManager.TextDisabledOrHintColor,
                     textRect.Location,
                     textRect.Size,
-                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
+                    textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
             }
 
             g.ResetClip();
@@ -238,7 +244,7 @@
                     SkinManager.TextDisabledOrHintColor, // Disabled
                     hintRect.Location,
                     hintRect.Size,
-                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
+                    textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
                 }
             }
         }
@@ -250,6 +256,9 @@
 
         private void CustomDrawItem(object sender, System.Windows.Forms.DrawItemEventArgs e)
         {
+            var FORM_PADDING = RightToLeft == RightToLeft.Yes ? 0 : SkinManager.FORM_PADDING;
+            var Width = RightToLeft == RightToLeft.Yes ? e.Bounds.Size.Width - SkinManager.FORM_PADDING : e.Bounds.Size.Width;
+
             if (e.Index < 0 || e.Index > Items.Count || !Focused) return;
 
             Graphics g = e.Graphics;
@@ -262,7 +271,7 @@
             {
                 g.FillRectangle(SkinManager.BackgroundHoverBrush, e.Bounds);
             }
-            
+
             string Text = "";
             if (!string.IsNullOrWhiteSpace(DisplayMember))
             {
@@ -272,16 +281,16 @@
             {
                 Text = Items[e.Index].ToString();
             }
-
+            var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
             using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
             {
                 NativeText.DrawTransparentText(
                 Text,
                 SkinManager.getFontByType(MaterialSkinManager.fontType.Subtitle1),
                 SkinManager.TextHighEmphasisColor,
-                new Point(e.Bounds.Location.X + SkinManager.FORM_PADDING, e.Bounds.Location.Y),
-                new Size(e.Bounds.Size.Width - SkinManager.FORM_PADDING * 2, e.Bounds.Size.Height),
-                NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle); ;
+                new Point(e.Bounds.Location.X + FORM_PADDING, e.Bounds.Location.Y),
+                new Size(Width - FORM_PADDING * 2, e.Bounds.Size.Height),
+                textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
             }
         }
 
@@ -318,7 +327,8 @@
             if (!AutoResize) return;
 
             int w = DropDownWidth;
-            int padding = SkinManager.FORM_PADDING * 3;
+            var FORM_PADDING = RightToLeft == RightToLeft.Yes ? 0 : SkinManager.FORM_PADDING;
+            int padding = FORM_PADDING * 3;
             int vertScrollBarWidth = (Items.Count > MaxDropDownItems) ? SystemInformation.VerticalScrollBarWidth : 0;
 
             Graphics g = CreateGraphics();

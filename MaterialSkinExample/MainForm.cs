@@ -29,13 +29,13 @@ namespace MaterialSkinExample
 
             // Add dummy data to the listview
             seedListView();
-            materialCheckedListBox1.Items.Add("Item1", false);
-            materialCheckedListBox1.Items.Add("Item2", true);
-            materialCheckedListBox1.Items.Add("Item3", true);
-            materialCheckedListBox1.Items.Add("Item4", false);
-            materialCheckedListBox1.Items.Add("Item5", true);
-            materialCheckedListBox1.Items.Add("Item6", false);
-            materialCheckedListBox1.Items.Add("Item7", false);
+            materialCheckedListBox1.Items.Add("آیتم۱", false);
+            materialCheckedListBox1.Items.Add("آیتم۲", true);
+            materialCheckedListBox1.Items.Add("آیتم۳", true);
+            materialCheckedListBox1.Items.Add("آیتم۴", false);
+            materialCheckedListBox1.Items.Add("آیتم۵", true);
+            materialCheckedListBox1.Items.Add("آیتم۶", false);
+            materialCheckedListBox1.Items.Add("آیتم۷", false);
 
             materialComboBox6.SelectedIndex = 0;
         }
@@ -192,6 +192,11 @@ namespace MaterialSkinExample
         }
 
         private void materialLabel8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
         {
 
         }
