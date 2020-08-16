@@ -191,7 +191,7 @@
         /// <param name="data">The data<see cref="object[]"/></param>
         public void StartNewAnimation(AnimationDirection animationDirection, object[] data = null)
         {
-            StartNewAnimation(animationDirection, new Point(0, 0), data);
+            StartNewAnimation(animationDirection, new Point(100, 100), data);
         }
 
         /// <summary>

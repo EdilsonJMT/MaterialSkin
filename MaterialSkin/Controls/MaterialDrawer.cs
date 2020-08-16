@@ -307,14 +307,13 @@
         {
             SetStyle(ControlStyles.DoubleBuffer | ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
             Height = 120;
-            Width = 250;
+            Width = 200;
             IndicatorWidth = 0;
             _isOpen = true;
             ShowIconsWhenHidden = false;
             AutoHide = false;
             HighlightWithAccent = true;
             BackgroundWithAccent = false;
-
             _showHideAnimManager = new AnimationManager
             {
                 AnimationType = AnimationType.EaseInOut,
@@ -374,13 +373,14 @@
             var showHideAnimProgress = _showHideAnimManager.GetProgress();
             if (_showHideAnimManager.IsAnimating())
             {
+                var rtlDir= RightToLeft== RightToLeft.Yes?-1:1;
                 if (ShowIconsWhenHidden)
                 {
-                    Location = new Point((int)((-Width + MinWidth) * showHideAnimProgress), Location.Y);
+                    Location = new Point((int)((-Width + MinWidth) * showHideAnimProgress) * rtlDir, Location.Y);
                 }
                 else
                 {
-                    Location = new Point((int)(-Width * showHideAnimProgress), Location.Y);
+                    Location = new Point((int)(-Width * showHideAnimProgress ) * rtlDir, Location.Y);
                 }
             }
             else
@@ -391,13 +391,14 @@
                 }
                 else
                 {
+                    var rtlDir = RightToLeft == RightToLeft.Yes ? -1 : 1;
                     if (ShowIconsWhenHidden)
                     {
-                        Location = new Point((int)(-Width + MinWidth), Location.Y);
+                        Location = new Point((-Width + MinWidth) * rtlDir, Location.Y);
                     }
                     else
                     {
-                        Location = new Point(-Width, Location.Y);
+                        Location = new Point(-Width * rtlDir, Location.Y);
                     }
                 }
             }
@@ -504,7 +505,10 @@
             {
                 using (Pen dividerPen = new Pen(SkinManager.DividersColor, 1))
                 {
-                    g.DrawLine(dividerPen, Width - 1, 0, Width - 1, Height);
+                    if (RightToLeft== RightToLeft.Yes)
+                        g.DrawLine(dividerPen,  base.Width-1, 0, base.Width - 1, Height);
+                    else
+                        g.DrawLine(dividerPen, Width - 1, 0, Width - 1, Height);
                 }
             }
 

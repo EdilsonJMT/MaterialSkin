@@ -182,7 +182,6 @@
             DrawerIndicatorWidth = 0;
             DrawerHighlightWithAccent = true;
             DrawerBackgroundWithAccent = false;
-
             FormBorderStyle = FormBorderStyle.None;
             Sizable = true;
             DoubleBuffered = true;
@@ -234,6 +233,8 @@
 
         [Category("Drawer")]
         public int DrawerIndicatorWidth { get; set; }
+
+
 
         private bool _drawerIsOpen;
 
@@ -343,10 +344,10 @@
             {
                 drawerOverlay.Opacity = (float)(_drawerShowHideAnimManager.GetProgress() * 0.55f);
             };
-
+            drawerControl.MinWidth = 62;
             int H = Size.Height - _statusBarBounds.Height - _actionBarBounds.Height;
             int Y = Location.Y + _statusBarBounds.Height + _actionBarBounds.Height;
-
+            int X = RightToLeft == RightToLeft.Yes ? Location.X + (Width - DrawerWidth) : Location.X;
             // Drawer Form definitions
             drawerForm.BackColor = Color.LimeGreen;
             drawerForm.TransparencyKey = Color.LimeGreen;
@@ -358,11 +359,10 @@
             drawerForm.FormBorderStyle = FormBorderStyle.None;
             drawerForm.Visible = true;
             drawerForm.Size = new Size(DrawerWidth, H);
-            drawerForm.Location = new Point(Location.X, Y);
+            drawerForm.Location = new Point(X, Y);
             drawerForm.ShowInTaskbar = false;
             drawerForm.Owner = drawerOverlay;
             drawerForm.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
-
             // Add drawer to overlay form
             drawerForm.Controls.Add(drawerControl);
             drawerControl.Location = new Point(0, 0);
@@ -370,6 +370,7 @@
             drawerControl.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom);
             drawerControl.BaseTabControl = DrawerTabControl;
             drawerControl.ShowIconsWhenHidden = true;
+            drawerControl.RightToLeft = RightToLeft;
             // Init Options
             drawerControl.IsOpen = DrawerIsOpen;
             drawerControl.ShowIconsWhenHidden = DrawerShowIconsWhenHidden;
@@ -420,9 +421,11 @@
 
             Move += (sender, e) =>
             {
-                Point pos = new Point(Location.X, Location.Y + _statusBarBounds.Height + _actionBarBounds.Height);
+                int locationY = Location.Y + _statusBarBounds.Height + _actionBarBounds.Height;
+                int locationX = RightToLeft == RightToLeft.Yes ? Location.X+ (Width - DrawerWidth) : Location.X;
+                Point pos = new Point(locationX, locationY);
                 drawerForm.Location = pos;
-                drawerOverlay.Location = pos;
+                drawerOverlay.Location = new Point(Location.X, locationY);
             };
 
             // Close when click outside menu
