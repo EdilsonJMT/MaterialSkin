@@ -257,7 +257,7 @@ namespace MaterialSkinExample
             this.tabPage1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.tabPage1.Size = new System.Drawing.Size(1015, 520);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Home";
+            this.tabPage1.Text = "خانه";
             // 
             // MaterialButton3
             // 
@@ -480,7 +480,7 @@ namespace MaterialSkinExample
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage7.Size = new System.Drawing.Size(1015, 520);
             this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "Buttons Galore";
+            this.tabPage7.Text = "دکمه‌های گالور";
             // 
             // materialButton23
             // 
@@ -965,7 +965,7 @@ namespace MaterialSkinExample
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1015, 520);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Selection Controls";
+            this.tabPage2.Text = "کنترل‌های انتخاب";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // materialComboBox6
@@ -1596,7 +1596,7 @@ namespace MaterialSkinExample
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(1015, 520);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Textbox & Label";
+            this.tabPage3.Text = "جعبه‌متن و برچسب";
             // 
             // materialLabel11
             // 
@@ -2001,7 +2001,7 @@ namespace MaterialSkinExample
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(1015, 520);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Table Example";
+            this.tabPage4.Text = "مثال جدول";
             // 
             // materialLabel39
             // 
@@ -2094,7 +2094,7 @@ namespace MaterialSkinExample
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage5.Size = new System.Drawing.Size(1015, 520);
             this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Progress Bar";
+            this.tabPage5.Text = "نوار پیشرفت";
             // 
             // materialFlatButton2
             // 
@@ -2193,7 +2193,7 @@ namespace MaterialSkinExample
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Size = new System.Drawing.Size(1015, 520);
             this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Containers";
+            this.tabPage6.Text = "نگهدارنده‌ها";
             // 
             // materialDivider3
             // 

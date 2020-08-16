@@ -183,6 +183,7 @@
             DrawerHighlightWithAccent = true;
             DrawerBackgroundWithAccent = false;
             FormBorderStyle = FormBorderStyle.None;
+            drawerControl.RightToLeft = RightToLeft;
             Sizable = true;
             DoubleBuffered = true;
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);

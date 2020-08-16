@@ -373,14 +373,14 @@
             var showHideAnimProgress = _showHideAnimManager.GetProgress();
             if (_showHideAnimManager.IsAnimating())
             {
-                var rtlDir= RightToLeft== RightToLeft.Yes?-1:1;
+                var rtlDir = RightToLeft == RightToLeft.Yes ? -1 : 1;
                 if (ShowIconsWhenHidden)
                 {
                     Location = new Point((int)((-Width + MinWidth) * showHideAnimProgress) * rtlDir, Location.Y);
                 }
                 else
                 {
-                    Location = new Point((int)(-Width * showHideAnimProgress ) * rtlDir, Location.Y);
+                    Location = new Point((int)(-Width * showHideAnimProgress) * rtlDir, Location.Y);
                 }
             }
             else
@@ -474,19 +474,22 @@
                 IntPtr textFont = SkinManager.getLogFontByType(MaterialSkinManager.fontType.Subtitle2);
 
                 Rectangle textRect = _drawerItemRects[currentTabIndex];
-                textRect.X += _baseTabControl.ImageList != null ? drawerItemHeight : (int)(SkinManager.FORM_PADDING * 0.75);
+                var textRectX = RightToLeft == RightToLeft.Yes ? SkinManager.FORM_PADDING : _baseTabControl.ImageList != null ? drawerItemHeight : (int)(SkinManager.FORM_PADDING * 0.75);
+                textRect.X = textRectX;
                 textRect.Width -= SkinManager.FORM_PADDING << 2;
 
-                using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
+                using (NativeTextRenderer nativeText = new NativeTextRenderer(g))
                 {
-                    NativeText.DrawTransparentText(tabPage.Text, textFont, textColor, textRect.Location, textRect.Size, NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
+                    var direction = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right | NativeTextRenderer.TextAlignFlags.Middle : NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle;
+                    nativeText.DrawTransparentText(tabPage.Text, textFont, textColor, textRect.Location, textRect.Size, direction);
                 }
 
                 // Icons
                 if (_baseTabControl.ImageList != null && !String.IsNullOrEmpty(tabPage.ImageKey))
                 {
+                    var rtlWidth = RightToLeft == RightToLeft.Yes ? Width : 0;
                     Rectangle iconRect = new Rectangle(
-                        _drawerItemRects[currentTabIndex].X + (drawerItemHeight >> 1) - (iconsSize[tabPage.ImageKey].Width >> 1),
+                         _drawerItemRects[currentTabIndex].X + (drawerItemHeight >> 1) - (iconsSize[tabPage.ImageKey].Width >> 1),
                         _drawerItemRects[currentTabIndex].Y + (drawerItemHeight >> 1) - (iconsSize[tabPage.ImageKey].Height >> 1),
                         iconsSize[tabPage.ImageKey].Width, iconsSize[tabPage.ImageKey].Height);
 
@@ -505,8 +508,8 @@
             {
                 using (Pen dividerPen = new Pen(SkinManager.DividersColor, 1))
                 {
-                    if (RightToLeft== RightToLeft.Yes)
-                        g.DrawLine(dividerPen,  base.Width-1, 0, base.Width - 1, Height);
+                    if (RightToLeft == RightToLeft.Yes)
+                        g.DrawLine(dividerPen, Width - 1, 0, Width - 1, Height);
                     else
                         g.DrawLine(dividerPen, Width - 1, 0, Width - 1, Height);
                 }
