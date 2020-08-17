@@ -183,7 +183,7 @@
             DrawerHighlightWithAccent = true;
             DrawerBackgroundWithAccent = false;
             FormBorderStyle = FormBorderStyle.None;
-            drawerControl.RightToLeft = RightToLeft;
+            drawerControl.RightToLeft = RightToLeft.Yes;
             Sizable = true;
             DoubleBuffered = true;
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
@@ -319,7 +319,7 @@
             }
         }
 
-        private MaterialDrawer drawerControl = new MaterialDrawer();
+        private MaterialDrawer drawerControl = new MaterialDrawer(RightToLeft.Yes);
 
         [Category("Drawer")]
         public MaterialTabControl DrawerTabControl { get; set; }

@@ -15,6 +15,7 @@
         // TODO: Invalidate when changing custom properties
 
         private bool _showIconsWhenHidden;
+        public new RightToLeft RightToLeft;
 
         [Category("Drawer")]
         public bool ShowIconsWhenHidden
@@ -268,9 +269,9 @@
 
                 // Translate the brushes to the correct positions
                 var currentTabIndex = _baseTabControl.TabPages.IndexOf(tabPage);
-
+                var rtlWidth = RightToLeft == RightToLeft.Yes ? Width - _baseTabControl.ImageList.Images[tabPage.ImageKey].Width : 0;
                 Rectangle iconRect = new Rectangle(
-                   _drawerItemRects[currentTabIndex].X + (drawerItemHeight / 2) - (_baseTabControl.ImageList.Images[tabPage.ImageKey].Width / 2),
+                    rtlWidth - (_drawerItemRects[currentTabIndex].X + (drawerItemHeight / 2) - (_baseTabControl.ImageList.Images[tabPage.ImageKey].Width / 2)),
                    _drawerItemRects[currentTabIndex].Y + (drawerItemHeight / 2) - (_baseTabControl.ImageList.Images[tabPage.ImageKey].Height / 2),
                    _baseTabControl.ImageList.Images[tabPage.ImageKey].Width, _baseTabControl.ImageList.Images[tabPage.ImageKey].Height);
 
@@ -303,8 +304,9 @@
 
         public int MinWidth;
 
-        public MaterialDrawer()
+        public MaterialDrawer(RightToLeft rightToLeft)
         {
+            RightToLeft = rightToLeft;
             SetStyle(ControlStyles.DoubleBuffer | ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
             Height = 120;
             Width = 200;
@@ -487,16 +489,17 @@
                 // Icons
                 if (_baseTabControl.ImageList != null && !String.IsNullOrEmpty(tabPage.ImageKey))
                 {
-                    var rtlWidth = RightToLeft == RightToLeft.Yes ? Width : 0;
+                    var rtlWidth = RightToLeft == RightToLeft.Yes ? Width - iconsSize[tabPage.ImageKey].Width : 0;
                     Rectangle iconRect = new Rectangle(
-                         _drawerItemRects[currentTabIndex].X + (drawerItemHeight >> 1) - (iconsSize[tabPage.ImageKey].Width >> 1),
+                        rtlWidth - (_drawerItemRects[currentTabIndex].X + (drawerItemHeight >> 1) - (iconsSize[tabPage.ImageKey].Width >> 1)),
                         _drawerItemRects[currentTabIndex].Y + (drawerItemHeight >> 1) - (iconsSize[tabPage.ImageKey].Height >> 1),
                         iconsSize[tabPage.ImageKey].Width, iconsSize[tabPage.ImageKey].Height);
 
                     if (ShowIconsWhenHidden)
                     {
-                        iconsBrushes[tabPage.ImageKey].TranslateTransform(dx, 0);
-                        iconsSelectedBrushes[tabPage.ImageKey].TranslateTransform(dx, 0);
+                        var rtldx = RightToLeft == RightToLeft.Yes ? Width - iconsSize[tabPage.ImageKey].Width : dx;
+                        //iconsBrushes[tabPage.ImageKey].TranslateTransform(dx, 0);
+                       // iconsSelectedBrushes[tabPage.ImageKey].TranslateTransform(dx, 0);
                     }
 
                     g.FillRectangle(currentTabIndex == _baseTabControl.SelectedIndex ? iconsSelectedBrushes[tabPage.ImageKey] : iconsBrushes[tabPage.ImageKey], iconRect);
@@ -508,10 +511,7 @@
             {
                 using (Pen dividerPen = new Pen(SkinManager.DividersColor, 1))
                 {
-                    if (RightToLeft == RightToLeft.Yes)
-                        g.DrawLine(dividerPen, Width - 1, 0, Width - 1, Height);
-                    else
-                        g.DrawLine(dividerPen, Width - 1, 0, Width - 1, Height);
+                    g.DrawLine(dividerPen, Width - 1, 0, Width - 1, Height);
                 }
             }
 
@@ -521,7 +521,7 @@
             var activeTabPageRect = _drawerItemRects[_baseTabControl.SelectedIndex];
 
             var y = previousActiveTabRect.Y + (int)((activeTabPageRect.Y - previousActiveTabRect.Y) * clickAnimProgress);
-            var x = ShowIconsWhenHidden ? -Location.X : 0;
+            var x = ShowIconsWhenHidden ? Location.X : 0;
             var height = drawerItemHeight;
 
             g.FillRectangle(SkinManager.ColorScheme.AccentBrush, x, y, IndicatorWidth, height);
@@ -659,10 +659,11 @@
             //Calculate the bounds of each tab header specified in the base tab control
             for (int i = 0; i < _baseTabControl.TabPages.Count; i++)
             {
+                var LocationX = this.RightToLeft == RightToLeft.Yes ? 0 : Location.X;
                 _drawerItemRects[i] = (new Rectangle(
-                    (int)(SkinManager.FORM_PADDING * 0.75) - (ShowIconsWhenHidden ? Location.X : 0),
+                    (int)(SkinManager.FORM_PADDING * 0.75) - (ShowIconsWhenHidden ? LocationX : 0),
                     (TAB_HEADER_PADDING * 2) * i + (int)(SkinManager.FORM_PADDING >> 1),
-                    (Width + (ShowIconsWhenHidden ? Location.X : 0)) - (int)(SkinManager.FORM_PADDING * 1.5) - 1,
+                    (Width + (ShowIconsWhenHidden ? LocationX : 0)) - (int)(SkinManager.FORM_PADDING * 1.5) - 1,
                     drawerItemHeight));
 
                 _drawerItemPaths[i] = DrawHelper.CreateRoundRect(new RectangleF(_drawerItemRects[i].X - 0.5f, _drawerItemRects[i].Y - 0.5f, _drawerItemRects[i].Width, _drawerItemRects[i].Height), 4);
