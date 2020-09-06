@@ -325,11 +325,18 @@
         public MaterialTabControl DrawerTabControl { get; set; }
 
         private AnimationManager _drawerShowHideAnimManager;
-
+        private Form drawerForm = new Form();
+        private Form drawerOverlay = new Form();
+        private void ResizeDrawer(object sender, EventArgs e)
+        {
+            int locationY = Location.Y + _statusBarBounds.Height + _actionBarBounds.Height;
+            int locationX = RightToLeft == RightToLeft.Yes ? Location.X + (Width - DrawerWidth) : Location.X;
+            Point pos = new Point(locationX, locationY);
+            drawerForm.Location = pos;
+            drawerOverlay.Location = new Point(Location.X, locationY);
+        }
         protected void AddDrawerOverlayForm()
         {
-            Form drawerOverlay = new Form();
-            Form drawerForm = new Form();
 
             if (DrawerTabControl == null)
                 return;
@@ -413,21 +420,14 @@
                 drawerOverlay.Visible = Visible;
             };
 
-            Resize += (sender, e) =>
+            Resize += (sender, args) =>
             {
                 H = Size.Height - _statusBarBounds.Height - _actionBarBounds.Height;
                 drawerForm.Size = new Size(DrawerWidth, H);
                 drawerOverlay.Size = new Size(Size.Width, H);
             };
 
-            Move += (sender, e) =>
-            {
-                int locationY = Location.Y + _statusBarBounds.Height + _actionBarBounds.Height;
-                int locationX = RightToLeft == RightToLeft.Yes ? Location.X+ (Width - DrawerWidth) : Location.X;
-                Point pos = new Point(locationX, locationY);
-                drawerForm.Location = pos;
-                drawerOverlay.Location = new Point(Location.X, locationY);
-            };
+            Move += ResizeDrawer;
 
             // Close when click outside menu
             drawerOverlay.Click += (sender, e) =>
@@ -607,22 +607,22 @@
 
                 if (e.Location.X < BORDER_WIDTH && e.Location.Y > Height - BORDER_WIDTH && !isChildUnderMouse && !_maximized)
                 {
-                    _resizeDir = ResizeDirection.BottomLeft;
-                    Cursor = Cursors.SizeNESW;
+                    _resizeDir = RightToLeft == RightToLeft.Yes ? ResizeDirection.BottomRight : ResizeDirection.BottomLeft;
+                    Cursor = RightToLeft == RightToLeft.Yes ? Cursors.SizeNWSE : Cursors.SizeNESW;
                 }
                 else if (e.Location.X < BORDER_WIDTH && !isChildUnderMouse && !_maximized)
                 {
-                    _resizeDir = ResizeDirection.Left;
+                    _resizeDir = RightToLeft == RightToLeft.Yes ? ResizeDirection.Right : ResizeDirection.Left;
                     Cursor = Cursors.SizeWE;
                 }
                 else if (e.Location.X > Width - BORDER_WIDTH && e.Location.Y > Height - BORDER_WIDTH && !isChildUnderMouse && !_maximized)
                 {
-                    _resizeDir = ResizeDirection.BottomRight;
-                    Cursor = Cursors.SizeNWSE;
+                    _resizeDir = RightToLeft == RightToLeft.Yes ? ResizeDirection.BottomLeft : ResizeDirection.BottomRight;
+                    Cursor = RightToLeft == RightToLeft.Yes ? Cursors.SizeNESW : Cursors.SizeNWSE;
                 }
                 else if (e.Location.X > Width - BORDER_WIDTH && !isChildUnderMouse && !_maximized)
                 {
-                    _resizeDir = ResizeDirection.Right;
+                    _resizeDir = RightToLeft == RightToLeft.Yes ? ResizeDirection.Left : ResizeDirection.Right;
                     Cursor = Cursors.SizeWE;
                 }
                 else if (e.Location.Y > Height - BORDER_WIDTH && !isChildUnderMouse && !_maximized)
@@ -640,6 +640,7 @@
                         Cursor = Cursors.Default;
                     }
                 }
+                drawerControl.Refresh();
             }
 
             UpdateButtons(e);
@@ -786,12 +787,12 @@
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
-
+            ResizeDrawer(this, e);
             _minButtonBounds = new Rectangle((Width) - 3 * STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
             _maxButtonBounds = new Rectangle((Width) - 2 * STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
             _xButtonBounds = new Rectangle((Width) - STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
-            _statusBarBounds = new Rectangle(0, 0, Width , STATUS_BAR_HEIGHT);
-            _actionBarBounds = new Rectangle(0, STATUS_BAR_HEIGHT, Width , ACTION_BAR_HEIGHT);
+            _statusBarBounds = new Rectangle(0, 0, Width, STATUS_BAR_HEIGHT);
+            _actionBarBounds = new Rectangle(0, STATUS_BAR_HEIGHT, Width, ACTION_BAR_HEIGHT);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -934,12 +935,15 @@
             //Form title
             using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
             {
+                var flag = RightToLeft == RightToLeft.Yes
+                    ? NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle
+                    : NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle;
                 Rectangle textLocation = new Rectangle(SkinManager.FORM_PADDING + (DrawerTabControl != null ? 24 + (int)(SkinManager.FORM_PADDING * 1.5) : 0), STATUS_BAR_HEIGHT, Width, ACTION_BAR_HEIGHT);
                 NativeText.DrawTransparentText(Text, SkinManager.getLogFontByType(MaterialSkinManager.fontType.H6),
                     SkinManager.ColorScheme.TextColor,
                     textLocation.Location,
                     textLocation.Size,
-                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
+                    flag);
             }
         }
 
