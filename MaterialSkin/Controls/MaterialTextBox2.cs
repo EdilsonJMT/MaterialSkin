@@ -1860,7 +1860,7 @@ namespace MaterialSkin.Controls
             else
                 _right_padding = RIGHT_PADDING;
 
-            if (_prefixsuffix == PrefixSuffixTypes.Prefix && _prefixsuffixText != null && _prefixsuffixText.Length > 0)
+            if (_prefixsuffix == PrefixSuffixTypes.Prefix && !string.IsNullOrEmpty(_prefixsuffixText))
             {
                 using (NativeTextRenderer NativeText = new NativeTextRenderer(CreateGraphics()))
                 {
@@ -1871,7 +1871,7 @@ namespace MaterialSkin.Controls
             else
                 _prefix_padding = 0;
                 
-            if (_prefixsuffix == PrefixSuffixTypes.Suffix && _prefixsuffixText != null && _prefixsuffixText.Length > 0)
+            if (_prefixsuffix == PrefixSuffixTypes.Suffix && !string.IsNullOrEmpty(_prefixsuffixText))
             {
                 using (NativeTextRenderer NativeText = new NativeTextRenderer(CreateGraphics()))
                 {
@@ -1882,7 +1882,7 @@ namespace MaterialSkin.Controls
             else
                 _suffix_padding = 0;
 
-            if (hasHint && UseTallSize && (isFocused || !String.IsNullOrEmpty(Text)))
+            if (hasHint && UseTallSize && (isFocused || !string.IsNullOrEmpty(Text)))
             {
                 baseTextBox.Location = new Point(_left_padding, 22);
                 baseTextBox.Width = Width - (_left_padding + _right_padding);
@@ -1942,8 +1942,7 @@ namespace MaterialSkin.Controls
 
         private void ContextMenuStripOnOpening(object sender, CancelEventArgs cancelEventArgs)
         {
-            var strip = sender as BaseTextBoxContextMenuStrip;
-            if (strip != null)
+            if (sender is BaseTextBoxContextMenuStrip strip)
             {
                 strip.undo.Enabled = baseTextBox.CanUndo && !ReadOnly;
                 strip.cut.Enabled = !string.IsNullOrEmpty(SelectedText) && !ReadOnly;

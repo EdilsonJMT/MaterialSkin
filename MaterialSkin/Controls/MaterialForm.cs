@@ -414,7 +414,7 @@ namespace MaterialSkin.Controls
 
         public MaterialForm() : this(RightToLeft.No)
         {
-
+           
         }
         public MaterialForm(RightToLeft rightToLeft)
         {

@@ -1,4 +1,4 @@
-using MaterialSkin;
+﻿using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
 using System.Text;
@@ -29,13 +29,13 @@ namespace MaterialSkinExample
 
             // Add dummy data to the listview
             seedListView();
-            materialCheckedListBox1.Items.Add("Item1", false);
-            materialCheckedListBox1.Items.Add("Item2", true);
-            materialCheckedListBox1.Items.Add("Item3", true);
-            materialCheckedListBox1.Items.Add("Item4", false);
-            materialCheckedListBox1.Items.Add("Item5", true);
-            materialCheckedListBox1.Items.Add("Item6", false);
-            materialCheckedListBox1.Items.Add("Item7", false);
+            materialCheckedListBox1.Items.Add("آیتم ۱", false);
+            materialCheckedListBox1.Items.Add("آیتم ۲", true);
+            materialCheckedListBox1.Items.Add("آیتم ۳", true);
+            materialCheckedListBox1.Items.Add("آیتم ۴", false);
+            materialCheckedListBox1.Items.Add("آیتم ۵", true);
+            materialCheckedListBox1.Items.Add("آیتم ۶", false);
+            materialCheckedListBox1.Items.Add("آیتم ۷", false);
 
 
             materialListBoxFormStyle.Clear();

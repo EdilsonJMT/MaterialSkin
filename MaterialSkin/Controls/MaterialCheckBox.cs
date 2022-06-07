@@ -126,8 +126,9 @@
             // clear the control
             g.Clear(Parent.BackColor);
 
-            int CHECKBOX_CENTER = _boxOffset + CHECKBOX_SIZE_HALF - 1;
-            Point animationSource = new Point(CHECKBOX_CENTER, CHECKBOX_CENTER);
+            int CHECKBOX_CENTER_X = RightToLeft==RightToLeft.Yes?Width - (_boxOffset + CHECKBOX_SIZE_HALF +1) : _boxOffset + CHECKBOX_SIZE_HALF - 1;
+            int CHECKBOX_CENTER_Y = _boxOffset + CHECKBOX_SIZE_HALF - 1;
+            Point animationSource = new Point(CHECKBOX_CENTER_X, CHECKBOX_CENTER_Y);
             double animationProgress = _checkAM.GetProgress();
 
             int colorAlpha = Enabled ? (int)(animationProgress * 255.0) : SkinManager.CheckBoxOffDisabledColor.A;
@@ -165,8 +166,9 @@
                 }
             }
 
-            Rectangle checkMarkLineFill = new Rectangle(_boxOffset, _boxOffset, (int)(CHECKBOX_SIZE * animationProgress), CHECKBOX_SIZE);
-            using (GraphicsPath checkmarkPath = DrawHelper.CreateRoundRect(_boxOffset - 0.5f, _boxOffset - 0.5f, CHECKBOX_SIZE, CHECKBOX_SIZE, 1))
+            var boxOffset_x = RightToLeft == RightToLeft.Yes ? Width - CHECKBOX_SIZE - _boxOffset : _boxOffset;
+            Rectangle checkMarkLineFill = new Rectangle(boxOffset_x , _boxOffset, (int)(CHECKBOX_SIZE * animationProgress), CHECKBOX_SIZE);
+            using (GraphicsPath checkmarkPath = DrawHelper.CreateRoundRect(boxOffset_x - 0.5f, _boxOffset - 0.5f, CHECKBOX_SIZE, CHECKBOX_SIZE, 1))
             {
                 if (Enabled)
                 {
@@ -188,16 +190,18 @@
 
                 g.DrawImageUnscaledAndClipped(DrawCheckMarkBitmap(), checkMarkLineFill);
             }
-
+            var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
             // draw checkbox text
             using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
             {
-                Rectangle textLocation = new Rectangle(_boxOffset + TEXT_OFFSET, 0, Width - (_boxOffset + TEXT_OFFSET), HEIGHT_RIPPLE);
-                NativeText.DrawTransparentText(Text, SkinManager.getLogFontByType(MaterialSkinManager.fontType.Body1, RightToLeft),
+                var x = RightToLeft == RightToLeft.Yes ? 0 : _boxOffset + TEXT_OFFSET;
+                var w = RightToLeft == RightToLeft.Yes ? Width - (_boxOffset + TEXT_OFFSET) : Width;
+                Rectangle textLocation = new Rectangle(x, 0, w, HEIGHT_RIPPLE);
+                NativeText.DrawTransparentText(Text, SkinManager.getLogFontByType(MaterialSkinManager.fontType.Body1,RightToLeft),
                     Enabled ? SkinManager.TextHighEmphasisColor : SkinManager.TextDisabledOrHintColor,
                     textLocation.Location,
                     textLocation.Size,
-                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
+                    textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
             }
 
             // dispose used paint objects

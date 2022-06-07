@@ -780,7 +780,7 @@
                     (TAB_HEADER_PADDING * 2) * i + (int)(SkinManager.FORM_PADDING >> 1),
                     (Width + (ShowIconsWhenHidden ? LocationX : 0)) - (int)(SkinManager.FORM_PADDING * 1.5) - 1,
                     drawerItemHeight));
-                var drawerItemRectWidth = _drawerItemRects[i].Width - Location.X;
+                var drawerItemRectWidth = this.RightToLeft == RightToLeft.Yes ? _drawerItemRects[i].Width - Location.X: _drawerItemRects[i].Width;
                 _drawerItemPaths[i] = DrawHelper.CreateRoundRect(new RectangleF(_drawerItemRects[i].X - 0.5f, _drawerItemRects[i].Y - 0.5f, drawerItemRectWidth, _drawerItemRects[i].Height), 4);
             }
         }
