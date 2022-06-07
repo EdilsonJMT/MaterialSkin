@@ -35,24 +35,24 @@ namespace MaterialSkinExample
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            MaterialSkin.MaterialListBoxItem materialListBoxItem1 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem2 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem3 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem4 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem5 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem6 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem7 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem8 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem9 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem10 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem11 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem12 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem13 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem14 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem15 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem16 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem17 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem18 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem19 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem20 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem21 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem22 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem23 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem24 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem25 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem26 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem27 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem28 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem29 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem30 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem31 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem32 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem33 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem34 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem35 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem36 = new MaterialSkin.MaterialListBoxItem();
             this.materialCheckbox3 = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialCheckbox1 = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
@@ -2852,7 +2852,7 @@ namespace MaterialSkinExample
             this.materialTabSelector1.BaseTabControl = this.materialTabControl2;
             this.materialTabSelector1.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Proper;
             this.materialTabSelector1.Depth = 0;
-            this.materialTabSelector1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialTabSelector1.Font = new System.Drawing.Font("IRANYekanMobileFN", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialTabSelector1.Location = new System.Drawing.Point(40, 90);
             this.materialTabSelector1.Margin = new System.Windows.Forms.Padding(0);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -2946,30 +2946,30 @@ namespace MaterialSkinExample
             this.materialListBox3.BorderColor = System.Drawing.Color.LightGray;
             this.materialListBox3.Depth = 0;
             this.materialListBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            materialListBoxItem1.SecondaryText = "A very very long secondary text to display 1 ";
-            materialListBoxItem1.Tag = null;
-            materialListBoxItem1.Text = "ListBoxItem1";
-            materialListBoxItem2.SecondaryText = "A very very long secondary text to display 2";
-            materialListBoxItem2.Tag = null;
-            materialListBoxItem2.Text = "ListBoxItem2";
-            materialListBoxItem3.SecondaryText = "A very very long secondary text to display 3";
-            materialListBoxItem3.Tag = null;
-            materialListBoxItem3.Text = "ListBoxItem3";
-            materialListBoxItem4.SecondaryText = "A very very long secondary text to display 4";
-            materialListBoxItem4.Tag = null;
-            materialListBoxItem4.Text = "ListBoxItem4";
-            materialListBoxItem5.SecondaryText = "A very very long secondary text to display 5";
-            materialListBoxItem5.Tag = null;
-            materialListBoxItem5.Text = "ListBoxItem5";
-            materialListBoxItem6.SecondaryText = "A very very long secondary text to display 6";
-            materialListBoxItem6.Tag = null;
-            materialListBoxItem6.Text = "ListBoxItem6";
-            this.materialListBox3.Items.Add(materialListBoxItem1);
-            this.materialListBox3.Items.Add(materialListBoxItem2);
-            this.materialListBox3.Items.Add(materialListBoxItem3);
-            this.materialListBox3.Items.Add(materialListBoxItem4);
-            this.materialListBox3.Items.Add(materialListBoxItem5);
-            this.materialListBox3.Items.Add(materialListBoxItem6);
+            materialListBoxItem19.SecondaryText = "A very very long secondary text to display 1 ";
+            materialListBoxItem19.Tag = null;
+            materialListBoxItem19.Text = "ListBoxItem1";
+            materialListBoxItem20.SecondaryText = "A very very long secondary text to display 2";
+            materialListBoxItem20.Tag = null;
+            materialListBoxItem20.Text = "ListBoxItem2";
+            materialListBoxItem21.SecondaryText = "A very very long secondary text to display 3";
+            materialListBoxItem21.Tag = null;
+            materialListBoxItem21.Text = "ListBoxItem3";
+            materialListBoxItem22.SecondaryText = "A very very long secondary text to display 4";
+            materialListBoxItem22.Tag = null;
+            materialListBoxItem22.Text = "ListBoxItem4";
+            materialListBoxItem23.SecondaryText = "A very very long secondary text to display 5";
+            materialListBoxItem23.Tag = null;
+            materialListBoxItem23.Text = "ListBoxItem5";
+            materialListBoxItem24.SecondaryText = "A very very long secondary text to display 6";
+            materialListBoxItem24.Tag = null;
+            materialListBoxItem24.Text = "ListBoxItem6";
+            this.materialListBox3.Items.Add(materialListBoxItem19);
+            this.materialListBox3.Items.Add(materialListBoxItem20);
+            this.materialListBox3.Items.Add(materialListBoxItem21);
+            this.materialListBox3.Items.Add(materialListBoxItem22);
+            this.materialListBox3.Items.Add(materialListBoxItem23);
+            this.materialListBox3.Items.Add(materialListBoxItem24);
             this.materialListBox3.Location = new System.Drawing.Point(579, 132);
             this.materialListBox3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialListBox3.Name = "materialListBox3";
@@ -2985,30 +2985,30 @@ namespace MaterialSkinExample
             this.materialListBox2.BorderColor = System.Drawing.Color.LightGray;
             this.materialListBox2.Depth = 0;
             this.materialListBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            materialListBoxItem7.SecondaryText = "Secondary text1";
-            materialListBoxItem7.Tag = null;
-            materialListBoxItem7.Text = "ListBoxItem1";
-            materialListBoxItem8.SecondaryText = "Secondary text2";
-            materialListBoxItem8.Tag = null;
-            materialListBoxItem8.Text = "ListBoxItem2";
-            materialListBoxItem9.SecondaryText = "Secondary text3";
-            materialListBoxItem9.Tag = null;
-            materialListBoxItem9.Text = "ListBoxItem3";
-            materialListBoxItem10.SecondaryText = "Secondary text4";
-            materialListBoxItem10.Tag = null;
-            materialListBoxItem10.Text = "ListBoxItem4";
-            materialListBoxItem11.SecondaryText = "Secondary text5";
-            materialListBoxItem11.Tag = null;
-            materialListBoxItem11.Text = "ListBoxItem5";
-            materialListBoxItem12.SecondaryText = "Secondary text6";
-            materialListBoxItem12.Tag = null;
-            materialListBoxItem12.Text = "ListBoxItem6";
-            this.materialListBox2.Items.Add(materialListBoxItem7);
-            this.materialListBox2.Items.Add(materialListBoxItem8);
-            this.materialListBox2.Items.Add(materialListBoxItem9);
-            this.materialListBox2.Items.Add(materialListBoxItem10);
-            this.materialListBox2.Items.Add(materialListBoxItem11);
-            this.materialListBox2.Items.Add(materialListBoxItem12);
+            materialListBoxItem25.SecondaryText = "Secondary text1";
+            materialListBoxItem25.Tag = null;
+            materialListBoxItem25.Text = "ListBoxItem1";
+            materialListBoxItem26.SecondaryText = "Secondary text2";
+            materialListBoxItem26.Tag = null;
+            materialListBoxItem26.Text = "ListBoxItem2";
+            materialListBoxItem27.SecondaryText = "Secondary text3";
+            materialListBoxItem27.Tag = null;
+            materialListBoxItem27.Text = "ListBoxItem3";
+            materialListBoxItem28.SecondaryText = "Secondary text4";
+            materialListBoxItem28.Tag = null;
+            materialListBoxItem28.Text = "ListBoxItem4";
+            materialListBoxItem29.SecondaryText = "Secondary text5";
+            materialListBoxItem29.Tag = null;
+            materialListBoxItem29.Text = "ListBoxItem5";
+            materialListBoxItem30.SecondaryText = "Secondary text6";
+            materialListBoxItem30.Tag = null;
+            materialListBoxItem30.Text = "ListBoxItem6";
+            this.materialListBox2.Items.Add(materialListBoxItem25);
+            this.materialListBox2.Items.Add(materialListBoxItem26);
+            this.materialListBox2.Items.Add(materialListBoxItem27);
+            this.materialListBox2.Items.Add(materialListBoxItem28);
+            this.materialListBox2.Items.Add(materialListBoxItem29);
+            this.materialListBox2.Items.Add(materialListBoxItem30);
             this.materialListBox2.Location = new System.Drawing.Point(306, 132);
             this.materialListBox2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialListBox2.Name = "materialListBox2";
@@ -3025,30 +3025,30 @@ namespace MaterialSkinExample
             this.materialListBox1.BorderColor = System.Drawing.Color.LightGray;
             this.materialListBox1.Depth = 0;
             this.materialListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            materialListBoxItem13.SecondaryText = "";
-            materialListBoxItem13.Tag = null;
-            materialListBoxItem13.Text = "ListBoxItem1";
-            materialListBoxItem14.SecondaryText = "";
-            materialListBoxItem14.Tag = null;
-            materialListBoxItem14.Text = "ListBoxItem2";
-            materialListBoxItem15.SecondaryText = "";
-            materialListBoxItem15.Tag = null;
-            materialListBoxItem15.Text = "ListBoxItem3";
-            materialListBoxItem16.SecondaryText = "";
-            materialListBoxItem16.Tag = null;
-            materialListBoxItem16.Text = "ListBoxItem4";
-            materialListBoxItem17.SecondaryText = "";
-            materialListBoxItem17.Tag = null;
-            materialListBoxItem17.Text = "ListBoxItem5";
-            materialListBoxItem18.SecondaryText = "";
-            materialListBoxItem18.Tag = null;
-            materialListBoxItem18.Text = "ListBoxItem6";
-            this.materialListBox1.Items.Add(materialListBoxItem13);
-            this.materialListBox1.Items.Add(materialListBoxItem14);
-            this.materialListBox1.Items.Add(materialListBoxItem15);
-            this.materialListBox1.Items.Add(materialListBoxItem16);
-            this.materialListBox1.Items.Add(materialListBoxItem17);
-            this.materialListBox1.Items.Add(materialListBoxItem18);
+            materialListBoxItem31.SecondaryText = "";
+            materialListBoxItem31.Tag = null;
+            materialListBoxItem31.Text = "ListBoxItem1";
+            materialListBoxItem32.SecondaryText = "";
+            materialListBoxItem32.Tag = null;
+            materialListBoxItem32.Text = "ListBoxItem2";
+            materialListBoxItem33.SecondaryText = "";
+            materialListBoxItem33.Tag = null;
+            materialListBoxItem33.Text = "ListBoxItem3";
+            materialListBoxItem34.SecondaryText = "";
+            materialListBoxItem34.Tag = null;
+            materialListBoxItem34.Text = "ListBoxItem4";
+            materialListBoxItem35.SecondaryText = "";
+            materialListBoxItem35.Tag = null;
+            materialListBoxItem35.Text = "ListBoxItem5";
+            materialListBoxItem36.SecondaryText = "";
+            materialListBoxItem36.Tag = null;
+            materialListBoxItem36.Text = "ListBoxItem6";
+            this.materialListBox1.Items.Add(materialListBoxItem31);
+            this.materialListBox1.Items.Add(materialListBoxItem32);
+            this.materialListBox1.Items.Add(materialListBoxItem33);
+            this.materialListBox1.Items.Add(materialListBoxItem34);
+            this.materialListBox1.Items.Add(materialListBoxItem35);
+            this.materialListBox1.Items.Add(materialListBoxItem36);
             this.materialListBox1.Location = new System.Drawing.Point(38, 132);
             this.materialListBox1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialListBox1.Name = "materialListBox1";
@@ -3078,7 +3078,7 @@ namespace MaterialSkinExample
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(561, 541);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(561, 517);
             this.flowLayoutPanel1.TabIndex = 0;
             this.flowLayoutPanel1.WrapContents = false;
             // 
@@ -3087,7 +3087,7 @@ namespace MaterialSkinExample
             this.materialExpansionPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.materialExpansionPanel1.Controls.Add(this.materialLabel51);
             this.materialExpansionPanel1.Depth = 0;
-            this.materialExpansionPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialExpansionPanel1.Font = new System.Drawing.Font("IRANYekanMobileFN", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialExpansionPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialExpansionPanel1.Location = new System.Drawing.Point(22, 16);
             this.materialExpansionPanel1.Margin = new System.Windows.Forms.Padding(16);
@@ -3107,8 +3107,9 @@ namespace MaterialSkinExample
             this.materialLabel51.Name = "materialLabel51";
             this.materialLabel51.Size = new System.Drawing.Size(468, 64);
             this.materialLabel51.TabIndex = 2;
-            this.materialLabel51.Text = "An expansion panel is a lightweight container that may either stand alone or be c" +
-    "onnected to a larger surface, such as a card.";
+            this.materialLabel51.Text = "پانل گسترش یک ظرف سبک وزن است که ممکن است به تنهایی یا به یک سطح بزرگتر مانند کار" +
+    "ت متصل شود.";
+            this.materialLabel51.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // materialExpansionPanel2
             // 
@@ -3116,7 +3117,7 @@ namespace MaterialSkinExample
             this.materialExpansionPanel2.Collapse = true;
             this.materialExpansionPanel2.Depth = 0;
             this.materialExpansionPanel2.Description = "With accent color";
-            this.materialExpansionPanel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialExpansionPanel2.Font = new System.Drawing.Font("IRANYekanMobileFN", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialExpansionPanel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialExpansionPanel2.Location = new System.Drawing.Point(22, 273);
             this.materialExpansionPanel2.Margin = new System.Windows.Forms.Padding(16, 1, 16, 0);
@@ -3127,6 +3128,7 @@ namespace MaterialSkinExample
             this.materialExpansionPanel2.TabIndex = 2;
             this.materialExpansionPanel2.Title = "Expansion panel";
             this.materialExpansionPanel2.UseAccentColor = true;
+            this.materialExpansionPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.materialExpansionPanel2_Paint);
             // 
             // tabPage12
             // 
@@ -3164,25 +3166,25 @@ namespace MaterialSkinExample
             this.materialLabel58.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel58.FontType = MaterialSkin.MaterialSkinManager.fontType.SubtleEmphasis;
             this.materialLabel58.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel58.Location = new System.Drawing.Point(492, 483);
+            this.materialLabel58.Location = new System.Drawing.Point(433, 483);
             this.materialLabel58.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel58.Name = "materialLabel58";
-            this.materialLabel58.Size = new System.Drawing.Size(80, 13);
+            this.materialLabel58.Size = new System.Drawing.Size(54, 13);
             this.materialLabel58.TabIndex = 84;
-            this.materialLabel58.Text = "SubtleEmphasis";
+            this.materialLabel58.Text = "تاکید ظریف";
             // 
             // materialLabel43
             // 
             this.materialLabel43.Depth = 0;
             this.materialLabel43.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel43.Location = new System.Drawing.Point(675, 283);
+            this.materialLabel43.Location = new System.Drawing.Point(12, 298);
             this.materialLabel43.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel43.Name = "materialLabel43";
-            this.materialLabel43.Size = new System.Drawing.Size(245, 103);
+            this.materialLabel43.Size = new System.Drawing.Size(345, 103);
             this.materialLabel43.TabIndex = 83;
-            this.materialLabel43.Text = "Want to make a multiline label?\r\nNo problem! just disable the AutoSize Property\r\n" +
-    "TextAlign should work too";
+            this.materialLabel43.Text = "آیا می خواهید یک برچسب چند خطی بسازید؟\r\nمشکلی نیست! فقط ویژگی AutoSize را غیرفعال" +
+    " کنید\r\nTextAign نیز باید کار کند";
             this.materialLabel43.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // materialLabel42
@@ -3193,12 +3195,12 @@ namespace MaterialSkinExample
             this.materialLabel42.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel42.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2;
             this.materialLabel42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel42.Location = new System.Drawing.Point(643, 468);
+            this.materialLabel42.Location = new System.Drawing.Point(12, 483);
             this.materialLabel42.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel42.Name = "materialLabel42";
-            this.materialLabel42.Size = new System.Drawing.Size(240, 15);
+            this.materialLabel42.Size = new System.Drawing.Size(345, 15);
             this.materialLabel42.TabIndex = 82;
-            this.materialLabel42.Text = "This is a label is disabled (use it for hints!)";
+            this.materialLabel42.Text = "این یک برچسب غیرفعال است (از آن برای راهنمایی استفاده کنید!)";
             // 
             // materialLabel41
             // 
@@ -3208,12 +3210,12 @@ namespace MaterialSkinExample
             this.materialLabel41.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2;
             this.materialLabel41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel41.HighEmphasis = true;
-            this.materialLabel41.Location = new System.Drawing.Point(643, 441);
+            this.materialLabel41.Location = new System.Drawing.Point(65, 456);
             this.materialLabel41.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel41.Name = "materialLabel41";
-            this.materialLabel41.Size = new System.Drawing.Size(275, 15);
+            this.materialLabel41.Size = new System.Drawing.Size(292, 15);
             this.materialLabel41.TabIndex = 81;
-            this.materialLabel41.Text = "This is a label with High Emphasis + Use Accent";
+            this.materialLabel41.Text = "این یک برچسب با تأکید زیاد + استفاده از رنگ مد است";
             this.materialLabel41.UseAccent = true;
             // 
             // materialLabel40
@@ -3224,12 +3226,12 @@ namespace MaterialSkinExample
             this.materialLabel40.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2;
             this.materialLabel40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel40.HighEmphasis = true;
-            this.materialLabel40.Location = new System.Drawing.Point(643, 415);
+            this.materialLabel40.Location = new System.Drawing.Point(175, 430);
             this.materialLabel40.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel40.Name = "materialLabel40";
-            this.materialLabel40.Size = new System.Drawing.Size(195, 15);
+            this.materialLabel40.Size = new System.Drawing.Size(182, 15);
             this.materialLabel40.TabIndex = 80;
-            this.materialLabel40.Text = "This is a label with High Emphasis";
+            this.materialLabel40.Text = "این یک برچسب با تأکید زیاد است";
             // 
             // materialLabel22
             // 
@@ -3238,12 +3240,12 @@ namespace MaterialSkinExample
             this.materialLabel22.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel22.FontType = MaterialSkin.MaterialSkinManager.fontType.Overline;
             this.materialLabel22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel22.Location = new System.Drawing.Point(492, 468);
+            this.materialLabel22.Location = new System.Drawing.Point(457, 468);
             this.materialLabel22.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel22.Name = "materialLabel22";
-            this.materialLabel22.Size = new System.Drawing.Size(42, 10);
+            this.materialLabel22.Size = new System.Drawing.Size(30, 10);
             this.materialLabel22.TabIndex = 79;
-            this.materialLabel22.Text = "OVERLINE";
+            this.materialLabel22.Text = "روی خط";
             // 
             // materialLabel21
             // 
@@ -3252,12 +3254,12 @@ namespace MaterialSkinExample
             this.materialLabel21.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel21.FontType = MaterialSkin.MaterialSkinManager.fontType.Caption;
             this.materialLabel21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel21.Location = new System.Drawing.Point(492, 448);
+            this.materialLabel21.Location = new System.Drawing.Point(460, 448);
             this.materialLabel21.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel21.Name = "materialLabel21";
-            this.materialLabel21.Size = new System.Drawing.Size(39, 13);
+            this.materialLabel21.Size = new System.Drawing.Size(27, 13);
             this.materialLabel21.TabIndex = 78;
-            this.materialLabel21.Text = "Caption";
+            this.materialLabel21.Text = "عنوان";
             // 
             // materialLabel20
             // 
@@ -3266,12 +3268,12 @@ namespace MaterialSkinExample
             this.materialLabel20.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel20.FontType = MaterialSkin.MaterialSkinManager.fontType.Button;
             this.materialLabel20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel20.Location = new System.Drawing.Point(492, 428);
+            this.materialLabel20.Location = new System.Drawing.Point(459, 428);
             this.materialLabel20.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel20.Name = "materialLabel20";
-            this.materialLabel20.Size = new System.Drawing.Size(51, 15);
+            this.materialLabel20.Size = new System.Drawing.Size(28, 15);
             this.materialLabel20.TabIndex = 77;
-            this.materialLabel20.Text = "BUTTON";
+            this.materialLabel20.Text = "دکمه";
             // 
             // materialLabel19
             // 
@@ -3280,12 +3282,12 @@ namespace MaterialSkinExample
             this.materialLabel19.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel19.FontType = MaterialSkin.MaterialSkinManager.fontType.Body2;
             this.materialLabel19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel19.Location = new System.Drawing.Point(492, 407);
+            this.materialLabel19.Location = new System.Drawing.Point(452, 407);
             this.materialLabel19.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel19.Name = "materialLabel19";
-            this.materialLabel19.Size = new System.Drawing.Size(40, 15);
+            this.materialLabel19.Size = new System.Drawing.Size(35, 15);
             this.materialLabel19.TabIndex = 76;
-            this.materialLabel19.Text = "Body 2";
+            this.materialLabel19.Text = "متن ۲";
             // 
             // materialLabel18
             // 
@@ -3293,12 +3295,12 @@ namespace MaterialSkinExample
             this.materialLabel18.Depth = 0;
             this.materialLabel18.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel18.Location = new System.Drawing.Point(492, 384);
+            this.materialLabel18.Location = new System.Drawing.Point(452, 384);
             this.materialLabel18.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel18.Name = "materialLabel18";
-            this.materialLabel18.Size = new System.Drawing.Size(42, 17);
+            this.materialLabel18.Size = new System.Drawing.Size(35, 17);
             this.materialLabel18.TabIndex = 75;
-            this.materialLabel18.Text = "Body 1";
+            this.materialLabel18.Text = "متن ۱";
             // 
             // materialLabel17
             // 
@@ -3307,12 +3309,12 @@ namespace MaterialSkinExample
             this.materialLabel17.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel17.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2;
             this.materialLabel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel17.Location = new System.Drawing.Point(492, 365);
+            this.materialLabel17.Location = new System.Drawing.Point(431, 365);
             this.materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel17.Name = "materialLabel17";
-            this.materialLabel17.Size = new System.Drawing.Size(55, 15);
+            this.materialLabel17.Size = new System.Drawing.Size(56, 15);
             this.materialLabel17.TabIndex = 74;
-            this.materialLabel17.Text = "Subtitle 2";
+            this.materialLabel17.Text = "زیرعنوان ۲";
             // 
             // materialLabel1
             // 
@@ -3321,12 +3323,12 @@ namespace MaterialSkinExample
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(491, 342);
+            this.materialLabel1.Location = new System.Drawing.Point(427, 342);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(59, 17);
+            this.materialLabel1.Size = new System.Drawing.Size(60, 17);
             this.materialLabel1.TabIndex = 73;
-            this.materialLabel1.Text = "Subtitle 1";
+            this.materialLabel1.Text = "زیرعنوان ۱";
             // 
             // materialLabel16
             // 
@@ -3335,12 +3337,12 @@ namespace MaterialSkinExample
             this.materialLabel16.Font = new System.Drawing.Font("Roboto Medium", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel16.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
             this.materialLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel16.Location = new System.Drawing.Point(491, 314);
+            this.materialLabel16.Location = new System.Drawing.Point(418, 314);
             this.materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel16.Name = "materialLabel16";
-            this.materialLabel16.Size = new System.Drawing.Size(84, 22);
+            this.materialLabel16.Size = new System.Drawing.Size(69, 22);
             this.materialLabel16.TabIndex = 72;
-            this.materialLabel16.Text = "Heading 6";
+            this.materialLabel16.Text = "سرتیتر ۶";
             // 
             // materialLabel15
             // 
@@ -3349,12 +3351,12 @@ namespace MaterialSkinExample
             this.materialLabel15.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel15.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
             this.materialLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel15.Location = new System.Drawing.Point(490, 283);
+            this.materialLabel15.Location = new System.Drawing.Point(402, 283);
             this.materialLabel15.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel15.Name = "materialLabel15";
-            this.materialLabel15.Size = new System.Drawing.Size(100, 26);
+            this.materialLabel15.Size = new System.Drawing.Size(85, 26);
             this.materialLabel15.TabIndex = 71;
-            this.materialLabel15.Text = "Heading 5";
+            this.materialLabel15.Text = "سرتیتر ۵";
             // 
             // materialLabel14
             // 
@@ -3363,12 +3365,12 @@ namespace MaterialSkinExample
             this.materialLabel14.Font = new System.Drawing.Font("Roboto", 34F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel14.FontType = MaterialSkin.MaterialSkinManager.fontType.H4;
             this.materialLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel14.Location = new System.Drawing.Point(488, 242);
+            this.materialLabel14.Location = new System.Drawing.Point(364, 242);
             this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel14.Name = "materialLabel14";
-            this.materialLabel14.Size = new System.Drawing.Size(143, 36);
+            this.materialLabel14.Size = new System.Drawing.Size(123, 36);
             this.materialLabel14.TabIndex = 70;
-            this.materialLabel14.Text = "Heading 4";
+            this.materialLabel14.Text = "سرتیتر ۴";
             // 
             // materialLabel13
             // 
@@ -3377,12 +3379,12 @@ namespace MaterialSkinExample
             this.materialLabel13.Font = new System.Drawing.Font("Roboto", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel13.FontType = MaterialSkin.MaterialSkinManager.fontType.H3;
             this.materialLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel13.Location = new System.Drawing.Point(485, 185);
+            this.materialLabel13.Location = new System.Drawing.Point(313, 185);
             this.materialLabel13.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel13.Name = "materialLabel13";
-            this.materialLabel13.Size = new System.Drawing.Size(203, 51);
+            this.materialLabel13.Size = new System.Drawing.Size(174, 51);
             this.materialLabel13.TabIndex = 69;
-            this.materialLabel13.Text = "Heading 3";
+            this.materialLabel13.Text = "سرتیتر ۳";
             // 
             // materialLabel12
             // 
@@ -3391,12 +3393,12 @@ namespace MaterialSkinExample
             this.materialLabel12.Font = new System.Drawing.Font("Roboto Light", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel12.FontType = MaterialSkin.MaterialSkinManager.fontType.H2;
             this.materialLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel12.Location = new System.Drawing.Point(482, 114);
+            this.materialLabel12.Location = new System.Drawing.Point(278, 114);
             this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel12.Name = "materialLabel12";
-            this.materialLabel12.Size = new System.Drawing.Size(243, 64);
+            this.materialLabel12.Size = new System.Drawing.Size(209, 64);
             this.materialLabel12.TabIndex = 68;
-            this.materialLabel12.Text = "Heading 2";
+            this.materialLabel12.Text = "سرتیتر ۲";
             // 
             // materialLabel11
             // 
@@ -3405,12 +3407,12 @@ namespace MaterialSkinExample
             this.materialLabel11.Font = new System.Drawing.Font("Roboto Light", 96F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel11.FontType = MaterialSkin.MaterialSkinManager.fontType.H1;
             this.materialLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel11.Location = new System.Drawing.Point(475, 18);
+            this.materialLabel11.Location = new System.Drawing.Point(175, 18);
             this.materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel11.Name = "materialLabel11";
-            this.materialLabel11.Size = new System.Drawing.Size(366, 102);
+            this.materialLabel11.Size = new System.Drawing.Size(312, 102);
             this.materialLabel11.TabIndex = 67;
-            this.materialLabel11.Text = "Heading 1";
+            this.materialLabel11.Text = "سرتیتر ۱";
             // 
             // materialLabel54
             // 
@@ -3418,12 +3420,12 @@ namespace MaterialSkinExample
             this.materialLabel54.Depth = 0;
             this.materialLabel54.Font = new System.Drawing.Font("Roboto", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel54.FontType = MaterialSkin.MaterialSkinManager.fontType.H3;
-            this.materialLabel54.Location = new System.Drawing.Point(28, 18);
+            this.materialLabel54.Location = new System.Drawing.Point(809, 18);
             this.materialLabel54.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel54.Name = "materialLabel54";
-            this.materialLabel54.Size = new System.Drawing.Size(104, 51);
+            this.materialLabel54.Size = new System.Drawing.Size(133, 51);
             this.materialLabel54.TabIndex = 63;
-            this.materialLabel54.Text = "Label";
+            this.materialLabel54.Text = "برچسب";
             // 
             // menuIconList
             // 

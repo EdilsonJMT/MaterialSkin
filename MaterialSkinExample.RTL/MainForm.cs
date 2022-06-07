@@ -307,5 +307,10 @@ namespace MaterialSkinExample
         {
 
         }
+
+        private void materialExpansionPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
