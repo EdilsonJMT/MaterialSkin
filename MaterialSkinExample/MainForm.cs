@@ -10,7 +10,7 @@ namespace MaterialSkinExample
     {
         private readonly MaterialSkinManager materialSkinManager;
 
-        public MainForm(RightToLeft RightToLeft=RightToLeft.No) :base(RightToLeft)
+        public MainForm()
         {
             InitializeComponent();
 
