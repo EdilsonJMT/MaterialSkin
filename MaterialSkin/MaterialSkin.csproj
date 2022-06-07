@@ -33,6 +33,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
@@ -42,10 +44,16 @@
     <Compile Include="Animations\Animations.cs" />
     <Compile Include="ColorHelper.cs" />
     <Compile Include="ColorScheme.cs" />
+    <Compile Include="Controls\BaseTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\FlexibleMaterialDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controls\MaterialSwitch.cs">
+    <Compile Include="Controls\MaterialButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialCard.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\MaterialCheckBox.cs">
@@ -60,10 +68,16 @@
     <Compile Include="Controls\MaterialContextMenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\MaterialDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Controls\MaterialDivider.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\MaterialButton.cs">
+    <Compile Include="Controls\MaterialDrawer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialExpansionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\MaterialFloatingActionButton.cs">
@@ -75,38 +89,59 @@
     <Compile Include="Controls\MaterialLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\MaterialListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\MaterialListView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\MaterialMessageBox.cs" />
-    <Compile Include="Controls\MaterialRadioButton.cs">
+    <Compile Include="Controls\MaterialMaskedTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\MaterialMessageBox.cs" />
     <Compile Include="Controls\MaterialMultiLineTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\MaterialCard.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\MaterialTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\MaterialTabControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\MaterialDrawer.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\MaterialTabSelector.cs">
+    <Compile Include="Controls\MaterialMultiLineTextBox2.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\MaterialProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\MaterialRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialScrollBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialSlider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialSnackBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialSwitch.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialTabSelector.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MaterialTextBox2.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DrawHelper.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="IMaterialControl.cs" />
+    <Compile Include="MaterialItemCollection.cs" />
+    <Compile Include="MaterialItemCollectionEditor.cs" />
     <Compile Include="MaterialSkinManager.cs" />
+    <Compile Include="MouseWheelRedirector.cs" />
     <Compile Include="NativeTextRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -123,9 +158,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Controls\FlexibleMaterialDialog.resx">
       <DependentUpon>FlexibleMaterialDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\MaterialForm.fa-IR.resx">
-      <DependentUpon>MaterialForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\MaterialForm.resx">
       <DependentUpon>MaterialForm.cs</DependentUpon>
@@ -154,12 +186,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Resources\IRANSans-Black.ttf" />
-    <None Include="Resources\IRANSans-Bold.ttf" />
-    <None Include="Resources\IRANSans-Light.ttf" />
-    <None Include="Resources\IRANSans-Medium.ttf" />
-    <None Include="Resources\IRANSans-Regular.ttf" />
-    <None Include="Resources\IRANSans-UltraLight.ttf" />
+    <None Include="Resources\IRANYekanMobileBlack.ttf" />
+    <None Include="Resources\IRANYekanMobileBold.ttf" />
+    <None Include="Resources\IRANYekanMobileLight.ttf" />
+    <None Include="Resources\IRANYekanMobileMedium.ttf" />
+    <None Include="Resources\IRANYekanMobileRegular.ttf" />
+    <None Include="Resources\IRANYekanMobileThin.ttf" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

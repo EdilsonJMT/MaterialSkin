@@ -1,7 +1,4 @@
-﻿using System.Drawing.Drawing2D;
-using System.Drawing.Text;
-
-namespace MaterialSkin.Controls
+﻿namespace MaterialSkin.Controls
 {
     using System.ComponentModel;
     using System.Drawing;
@@ -36,10 +33,6 @@ namespace MaterialSkin.Controls
         }
 
         [Category("Material Skin"),
-         DefaultValue(false)]
-        public bool Multiline { get; set; }
-
-        [Category("Material Skin"),
         DefaultValue(false)]
         public bool HighEmphasis { get; set; }
 
@@ -60,7 +53,7 @@ namespace MaterialSkin.Controls
             set
             {
                 _fontType = value;
-                Font = SkinManager.getFontByType(_fontType);
+                Font = SkinManager.getFontByType(_fontType, RightToLeft);
                 Refresh();
             }
         }
@@ -78,7 +71,7 @@ namespace MaterialSkin.Controls
                 Size strSize;
                 using (NativeTextRenderer NativeText = new NativeTextRenderer(CreateGraphics()))
                 {
-                    strSize = NativeText.MeasureLogString(Text, SkinManager.getLogFontByType(_fontType));
+                    strSize = NativeText.MeasureLogString(Text, SkinManager.getLogFontByType(_fontType, RightToLeft));
                     strSize.Width += 1; // necessary to avoid a bug when autosize = true
                 }
                 return strSize;
@@ -140,45 +133,30 @@ namespace MaterialSkin.Controls
         protected override void OnPaint(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
-            g.SmoothingMode = SmoothingMode.AntiAlias;
-
             g.Clear(Parent.BackColor);
 
             // Draw Text
             using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
             {
-                if (Multiline)
                 NativeText.DrawMultilineTransparentText(
                     Text,
-                    SkinManager.getLogFontByType(_fontType),
+                    SkinManager.getLogFontByType(_fontType, RightToLeft),
                     Enabled ? HighEmphasis ? UseAccent ?
                     SkinManager.ColorScheme.AccentColor : // High emphasis, accent
-                    SkinManager.ColorScheme.PrimaryColor : // High emphasis, primary
+                    (SkinManager.Theme == MaterialSkin.MaterialSkinManager.Themes.LIGHT) ?
+                    SkinManager.ColorScheme.PrimaryColor : // High emphasis, primary Light theme
+                    SkinManager.ColorScheme.PrimaryColor.Lighten(0.25f) : // High emphasis, primary Dark theme
                     SkinManager.TextHighEmphasisColor : // Normal
                     SkinManager.TextDisabledOrHintColor, // Disabled
                     ClientRectangle.Location,
                     ClientRectangle.Size,
                     Alignment);
-                else
-                    NativeText.DrawTransparentText(
-                        Text,
-                        SkinManager.getLogFontByType(_fontType),
-                        Enabled ? HighEmphasis ? UseAccent ?
-                                SkinManager.ColorScheme.AccentColor : // High emphasis, accent
-                                SkinManager.ColorScheme.PrimaryColor : // High emphasis, primary
-                            SkinManager.TextHighEmphasisColor : // Normal
-                            SkinManager.TextDisabledOrHintColor, // Disabled
-                        ClientRectangle.Location,
-                        ClientRectangle.Size,
-                        Alignment);
             }
         }
 
         protected override void InitLayout()
         {
-            Font = SkinManager.getFontByType(_fontType);
-            BackColorChanged += (sender, args) => Refresh();
+            Font = SkinManager.getFontByType(_fontType, RightToLeft);
         }
     }
 }

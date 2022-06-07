@@ -5,6 +5,7 @@
     using System.ComponentModel;
     using System.Drawing;
     using System.Linq;
+    using System.Data;
     using System.Windows.Forms;
 
     public class MaterialComboBox : ComboBox, IMaterialControl
@@ -52,7 +53,7 @@
 
         private string _hint = string.Empty;
 
-        [Category("Material Skin"), DefaultValue("")]
+        [Category("Material Skin"), DefaultValue(""), Localizable(true)]
         public string Hint
         {
             get { return _hint; }
@@ -60,6 +61,24 @@
             {
                 _hint = value;
                 hasHint = !String.IsNullOrEmpty(Hint);
+                Invalidate();
+            }
+        }
+
+        private int _startIndex;
+        public int StartIndex
+        {
+            get => _startIndex;
+            set
+            {
+                _startIndex = value;
+                try
+                {
+                    base.SelectedIndex = value;
+                }
+                catch
+                {
+                }
                 Invalidate();
             }
         }
@@ -84,7 +103,7 @@
             UseTallSize = true;
             MaxDropDownItems = 4;
 
-            Font = SkinManager.getFontByType(MaterialSkinManager.fontType.Body1);
+            Font = SkinManager.getFontByType(MaterialSkinManager.fontType.Subtitle2, RightToLeft);
             BackColor = SkinManager.BackgroundColor;
             ForeColor = SkinManager.TextHighEmphasisColor;
             DrawMode = DrawMode.OwnerDrawVariable;
@@ -98,7 +117,7 @@
                 AnimationType = AnimationType.EaseInOut
             };
             _animationManager.OnAnimationProgress += sender => Invalidate();
-
+            _animationManager.OnAnimationFinished += sender => _animationManager.SetProgress(0);
             DropDownClosed += (sender, args) =>
             {
                 MouseState = MouseState.OUT;
@@ -116,6 +135,7 @@
             GotFocus += (sender, args) =>
             {
                 _animationManager.StartNewAnimation(AnimationDirection.In);
+                Invalidate();
             };
             MouseEnter += (sender, args) =>
             {
@@ -127,14 +147,23 @@
                 MouseState = MouseState.OUT;
                 Invalidate();
             };
+            SelectedIndexChanged += (sender, args) =>
+            {
+                Invalidate();
+            };
+            KeyUp += (sender, args) =>
+            { 
+                if (Enabled && DropDownStyle == ComboBoxStyle.DropDownList && (args.KeyCode == Keys.Delete || args.KeyCode == Keys.Back))
+                {
+                    SelectedIndex = -1;
+                    Invalidate();
+                }
+            };
         }
 
         protected override void OnPaint(PaintEventArgs pevent)
         {
             Graphics g = pevent.Graphics;
-
-            var FORM_PADDING = RightToLeft == RightToLeft.Yes ? 0 : SkinManager.FORM_PADDING;
-            var Width = RightToLeft == RightToLeft.Yes ? this.Width - SkinManager.FORM_PADDING : this.Width;
 
             g.Clear(Parent.BackColor);
             g.FillRectangle(Enabled ? Focused ?
@@ -145,28 +174,37 @@
                 SkinManager.BackgroundDisabledBrush // Disabled
                 , ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width, LINE_Y);
 
+            //Set color and brush
+            Color SelectedColor = new Color();
+            if (UseAccent)
+                SelectedColor = SkinManager.ColorScheme.AccentColor;
+            else
+                SelectedColor = SkinManager.ColorScheme.PrimaryColor;
+            SolidBrush SelectedBrush = new SolidBrush(SelectedColor);
+
             // Create and Draw the arrow
             System.Drawing.Drawing2D.GraphicsPath pth = new System.Drawing.Drawing2D.GraphicsPath();
-            var TopRight_X= RightToLeft == RightToLeft.Yes ?  0.5f + SkinManager.FORM_PADDING : Width - 0.5f - FORM_PADDING;
-            PointF TopRight = new PointF(TopRight_X, (this.Height >> 1) - 2.5f);
-            var MidBottom_X = RightToLeft == RightToLeft.Yes ? 4.5f + SkinManager.FORM_PADDING : Width - 4.5f - FORM_PADDING;
-            PointF MidBottom = new PointF(MidBottom_X , (this.Height >> 1) + 2.5f);
-            var TopLeft_X = RightToLeft == RightToLeft.Yes ? 8.5f + SkinManager.FORM_PADDING : Width - 8.5f - FORM_PADDING;
-            PointF TopLeft = new PointF(TopLeft_X, (this.Height >> 1) - 2.5f);
+            PointF TopRight = new PointF(this.Width - 0.5f - SkinManager.FORM_PADDING, (this.Height >> 1) - 2.5f);
+            PointF MidBottom = new PointF(this.Width - 4.5f - SkinManager.FORM_PADDING, (this.Height >> 1) + 2.5f);
+            PointF TopLeft = new PointF(this.Width - 8.5f - SkinManager.FORM_PADDING, (this.Height >> 1) - 2.5f);
             pth.AddLine(TopLeft, TopRight);
             pth.AddLine(TopRight, MidBottom);
 
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            g.FillPath((SolidBrush)(DroppedDown || Focused ? UseAccent ? SkinManager.ColorScheme.AccentBrush : SkinManager.ColorScheme.PrimaryBrush : SkinManager.TextHighEmphasisBrush), pth);
+            g.FillPath((SolidBrush)(Enabled ? DroppedDown || Focused ?
+                SelectedBrush : //DroppedDown or Focused
+                SkinManager.TextHighEmphasisBrush : //Not DroppedDown and not Focused
+                new SolidBrush(DrawHelper.BlendColor(SkinManager.TextHighEmphasisColor, SkinManager.SwitchOffDisabledThumbColor, 197))  //Disabled
+                ), pth);
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
 
             // HintText
             bool userTextPresent = SelectedIndex >= 0;
-            Rectangle hintRect = new Rectangle(FORM_PADDING, ClientRectangle.Y, Width, LINE_Y);
+            Rectangle hintRect = new Rectangle(SkinManager.FORM_PADDING, ClientRectangle.Y, Width, LINE_Y);
             int hintTextSize = 16;
 
             // bottom line base
-            g.FillRectangle(SkinManager.DividersAlternativeBrush, 0, LINE_Y, this.Width, 1);
+            g.FillRectangle(SkinManager.DividersAlternativeBrush, 0, LINE_Y, Width, 1);
 
             if (!_animationManager.IsAnimating())
             {
@@ -174,14 +212,14 @@
                 if (hasHint && UseTallSize && (DroppedDown || Focused || SelectedIndex >= 0))
                 {
                     // hint text
-                    hintRect = new Rectangle(FORM_PADDING, TEXT_SMALL_Y, Width, TEXT_SMALL_SIZE);
+                    hintRect = new Rectangle(SkinManager.FORM_PADDING, TEXT_SMALL_Y, Width, TEXT_SMALL_SIZE);
                     hintTextSize = 12;
                 }
 
                 // bottom line
                 if (DroppedDown || Focused)
                 {
-                    g.FillRectangle(UseAccent ? SkinManager.ColorScheme.AccentBrush : SkinManager.ColorScheme.PrimaryBrush, 0, LINE_Y, this.Width, 2);
+                    g.FillRectangle(SelectedBrush, 0, LINE_Y, Width, 2);
                 }
             }
             else
@@ -193,7 +231,7 @@
                 if (hasHint && UseTallSize)
                 {
                     hintRect = new Rectangle(
-                        FORM_PADDING,
+                        SkinManager.FORM_PADDING,
                         userTextPresent && !_animationManager.IsAnimating() ? (TEXT_SMALL_Y) : ClientRectangle.Y + (int)((TEXT_SMALL_Y - ClientRectangle.Y) * animationProgress),
                         Width,
                         userTextPresent && !_animationManager.IsAnimating() ? (TEXT_SMALL_SIZE) : (int)(LINE_Y + (TEXT_SMALL_SIZE - LINE_Y) * animationProgress));
@@ -203,28 +241,28 @@
                 // Line Animation
                 int LineAnimationWidth = (int)(Width * animationProgress);
                 int LineAnimationX = (Width / 2) - (LineAnimationWidth / 2);
-                g.FillRectangle(UseAccent ? SkinManager.ColorScheme.AccentBrush : SkinManager.ColorScheme.PrimaryBrush, LineAnimationX, LINE_Y, LineAnimationWidth, 2);
+                g.FillRectangle(SelectedBrush, LineAnimationX, LINE_Y, LineAnimationWidth, 2);
             }
 
-            var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
             // Calc text Rect
             Rectangle textRect = new Rectangle(
-                Width - (ClientRectangle.Width - FORM_PADDING * 3 - 8),
+                SkinManager.FORM_PADDING,
                 hasHint && UseTallSize ? (hintRect.Y + hintRect.Height) - 2 : ClientRectangle.Y,
-                ClientRectangle.Width - FORM_PADDING * 3 - 8,
+                ClientRectangle.Width - SkinManager.FORM_PADDING * 3 - 8,
                 hasHint && UseTallSize ? LINE_Y - (hintRect.Y + hintRect.Height) : LINE_Y);
 
             g.Clip = new Region(textRect);
+
             using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
             {
                 // Draw user text
                 NativeText.DrawTransparentText(
                     Text,
-                    SkinManager.getLogFontByType(MaterialSkinManager.fontType.Subtitle1),
+                    SkinManager.getLogFontByType(MaterialSkinManager.fontType.Subtitle1, RightToLeft),
                     Enabled ? SkinManager.TextHighEmphasisColor : SkinManager.TextDisabledOrHintColor,
                     textRect.Location,
                     textRect.Size,
-                    textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
+                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
             }
 
             g.ResetClip();
@@ -236,15 +274,14 @@
                 {
                     NativeText.DrawTransparentText(
                     Hint,
-                    SkinManager.getTextBoxFontBySize(hintTextSize),
-                    Enabled ? DroppedDown || Focused ? UseAccent ?
-                    SkinManager.ColorScheme.AccentColor : // Focus Accent
-                    SkinManager.ColorScheme.PrimaryColor : // Focus Primary
+                    SkinManager.getTextBoxFontBySize(hintTextSize,RightToLeft),
+                    Enabled ? DroppedDown || Focused ? 
+                    SelectedColor : // Focus 
                     SkinManager.TextMediumEmphasisColor : // not focused
                     SkinManager.TextDisabledOrHintColor, // Disabled
                     hintRect.Location,
                     hintRect.Size,
-                    textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
+                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
                 }
             }
         }
@@ -256,9 +293,6 @@
 
         private void CustomDrawItem(object sender, System.Windows.Forms.DrawItemEventArgs e)
         {
-            var FORM_PADDING = RightToLeft == RightToLeft.Yes ? 0 : SkinManager.FORM_PADDING;
-            var Width = RightToLeft == RightToLeft.Yes ? e.Bounds.Size.Width - SkinManager.FORM_PADDING : e.Bounds.Size.Width;
-
             if (e.Index < 0 || e.Index > Items.Count || !Focused) return;
 
             Graphics g = e.Graphics;
@@ -271,26 +305,35 @@
             {
                 g.FillRectangle(SkinManager.BackgroundHoverBrush, e.Bounds);
             }
-
+            
             string Text = "";
             if (!string.IsNullOrWhiteSpace(DisplayMember))
             {
-                Text = Items[e.Index].GetType().GetProperty(DisplayMember).GetValue(Items[e.Index], null).ToString();
+                if (!Items[e.Index].GetType().Equals(typeof(DataRowView)))
+                {
+                    var item = Items[e.Index].GetType().GetProperty(DisplayMember).GetValue(Items[e.Index]);
+                    Text = item.ToString();
+                }
+                else
+                {
+                    var table = ((DataRow)Items[e.Index].GetType().GetProperty("Row").GetValue(Items[e.Index])).Table;
+                    Text = table.Rows[e.Index][DisplayMember].ToString();
+                }
             }
             else
             {
                 Text = Items[e.Index].ToString();
             }
-            var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
+
             using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
             {
                 NativeText.DrawTransparentText(
                 Text,
-                SkinManager.getFontByType(MaterialSkinManager.fontType.Subtitle1),
-                SkinManager.TextHighEmphasisColor,
-                new Point(e.Bounds.Location.X + FORM_PADDING, e.Bounds.Location.Y),
-                new Size(Width - FORM_PADDING * 2, e.Bounds.Size.Height),
-                textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
+                SkinManager.getFontByType(MaterialSkinManager.fontType.Subtitle1, RightToLeft),
+                SkinManager.TextHighEmphasisNoAlphaColor,
+                new Point(e.Bounds.Location.X + SkinManager.FORM_PADDING, e.Bounds.Location.Y),
+                new Size(e.Bounds.Size.Width - SkinManager.FORM_PADDING * 2, e.Bounds.Size.Height),
+                NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle); ;
             }
         }
 
@@ -327,8 +370,7 @@
             if (!AutoResize) return;
 
             int w = DropDownWidth;
-            var FORM_PADDING = RightToLeft == RightToLeft.Yes ? 0 : SkinManager.FORM_PADDING;
-            int padding = FORM_PADDING * 3;
+            int padding = SkinManager.FORM_PADDING * 3;
             int vertScrollBarWidth = (Items.Count > MaxDropDownItems) ? SystemInformation.VerticalScrollBarWidth : 0;
 
             Graphics g = CreateGraphics();
@@ -337,7 +379,7 @@
                 var itemsList = this.Items.Cast<object>().Select(item => item.ToString());
                 foreach (string s in itemsList)
                 {
-                    int newWidth = NativeText.MeasureLogString(s, SkinManager.getLogFontByType(MaterialSkinManager.fontType.Subtitle1)).Width + vertScrollBarWidth + padding;
+                    int newWidth = NativeText.MeasureLogString(s, SkinManager.getLogFontByType(MaterialSkinManager.fontType.Subtitle1, RightToLeft)).Width + vertScrollBarWidth + padding;
                     if (w < newWidth) w = newWidth;
                 }
             }

@@ -28,7 +28,7 @@
         public bool Ripple
         {
             get { return _ripple; }
-            set
+            set 
             {
                 _ripple = value;
                 AutoSize = AutoSize; //Make AutoSize directly set the bounds.
@@ -41,6 +41,10 @@
                 Invalidate();
             }
         }
+
+        [Category("Appearance")]
+        [Browsable(true), DefaultValue(false), EditorBrowsable(EditorBrowsableState.Always)]
+        public bool ReadOnly { get; set; }
 
         private readonly AnimationManager _checkAM;
         private readonly AnimationManager _hoverAM;
@@ -93,6 +97,12 @@
 
             Ripple = true;
             MouseLocation = new Point(-1, -1);
+            ReadOnly = false;
+        }
+
+        protected override void OnClick(EventArgs e)
+        {
+            if (!ReadOnly) base.OnClick(e);
         }
 
         protected override void OnSizeChanged(EventArgs e)
@@ -102,7 +112,7 @@
             _trackOffsetY = Height / 2 - THUMB_SIZE_HALF;
 
             TRACK_CENTER_Y = _trackOffsetY + THUMB_SIZE_HALF - 1;
-            TRACK_CENTER_X_BEGIN = (RightToLeft == RightToLeft.Yes) ? this.Width -TRACK_SIZE_WIDTH - (TRACK_RADIUS /2): TRACK_CENTER_Y;
+            TRACK_CENTER_X_BEGIN = (RightToLeft == RightToLeft.Yes) ? this.Width - TRACK_SIZE_WIDTH - (TRACK_RADIUS / 2) : TRACK_CENTER_Y;
             TRACK_CENTER_X_END = TRACK_CENTER_X_BEGIN + TRACK_SIZE_WIDTH - (TRACK_RADIUS * 2);
             TRACK_CENTER_X_DELTA = TRACK_CENTER_X_END - TRACK_CENTER_X_BEGIN;
         }
@@ -112,7 +122,7 @@
             Size strSize;
             using (NativeTextRenderer NativeText = new NativeTextRenderer(CreateGraphics()))
             {
-                strSize = NativeText.MeasureLogString(Text, SkinManager.getLogFontByType(MaterialSkinManager.fontType.Body1));
+                strSize = NativeText.MeasureLogString(Text, SkinManager.getLogFontByType(MaterialSkinManager.fontType.Body1, RightToLeft));
             }
             var w = TRACK_SIZE_WIDTH + THUMB_SIZE + strSize.Width;
             return Ripple ? new Size(w, RIPPLE_DIAMETER) : new Size(w, THUMB_SIZE);
@@ -211,7 +221,7 @@
                 Rectangle textLocation = (RightToLeft == RightToLeft.Yes) ? new Rectangle(0, 0, Width - (TEXT_OFFSET + TRACK_SIZE_WIDTH), Height) : new Rectangle(TEXT_OFFSET + TRACK_SIZE_WIDTH, 0, Width - (TEXT_OFFSET + TRACK_SIZE_WIDTH), Height);
                 NativeText.DrawTransparentText(
                     Text,
-                    SkinManager.getLogFontByType(MaterialSkinManager.fontType.Body1),
+                    SkinManager.getLogFontByType(MaterialSkinManager.fontType.Body1, RightToLeft),
                     Enabled ? SkinManager.TextHighEmphasisColor : SkinManager.TextDisabledOrHintColor,
                     textLocation.Location,
                     textLocation.Size,

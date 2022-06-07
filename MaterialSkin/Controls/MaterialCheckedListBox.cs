@@ -71,7 +71,6 @@
                 Add(cb);
                 cb.Checked = defaultValue;
                 cb.Text = text;
-                cb.RightToLeft = RightToLeft.Inherit;
             }
 
             public new void Add(MaterialSkin.Controls.MaterialCheckbox value)

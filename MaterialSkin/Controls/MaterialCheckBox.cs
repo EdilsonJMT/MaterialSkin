@@ -10,6 +10,7 @@
 
     public class MaterialCheckbox : CheckBox, IMaterialControl
     {
+        #region Public properties
         [Browsable(false)]
         public int Depth { get; set; }
 
@@ -42,6 +43,11 @@
             }
         }
 
+        [Browsable(true)]
+        public bool ReadOnly { get; set; }
+        #endregion
+
+        #region Private fields
         private readonly AnimationManager _checkAM;
         private readonly AnimationManager _rippleAM;
         private readonly AnimationManager _hoverAM;
@@ -51,7 +57,12 @@
         private const int CHECKBOX_SIZE = 18;
         private const int CHECKBOX_SIZE_HALF = CHECKBOX_SIZE / 2;
         private int _boxOffset;
+        private static readonly Point[] CheckmarkLine = { new Point(3, 8), new Point(7, 12), new Point(14, 5) };
+        private bool hovered = false;
+        private CheckState _oldCheckState;
+        #endregion
 
+        #region Constructor
         public MaterialCheckbox()
         {
             _checkAM = new AnimationManager
@@ -83,7 +94,9 @@
             Height = HEIGHT_RIPPLE;
             MouseLocation = new Point(-1, -1);
         }
+        #endregion
 
+        #region Overridden events
         protected override void OnSizeChanged(EventArgs e)
         {
             base.OnSizeChanged(e);
@@ -97,14 +110,12 @@
 
             using (NativeTextRenderer NativeText = new NativeTextRenderer(CreateGraphics()))
             {
-                strSize = NativeText.MeasureLogString(Text, SkinManager.getLogFontByType(MaterialSkinManager.fontType.Body1));
+                strSize = NativeText.MeasureLogString(Text, SkinManager.getLogFontByType(MaterialSkinManager.fontType.Body1, RightToLeft));
             }
 
             int w = _boxOffset + TEXT_OFFSET + strSize.Width;
             return Ripple ? new Size(w, HEIGHT_RIPPLE) : new Size(w, HEIGHT_NO_RIPPLE);
         }
-
-        private static readonly Point[] CheckmarkLine = { new Point(3, 8), new Point(7, 12), new Point(14, 5) };
 
         protected override void OnPaint(PaintEventArgs pevent)
         {
@@ -115,9 +126,8 @@
             // clear the control
             g.Clear(Parent.BackColor);
 
-            int CHECKBOX_CENTER_X = RightToLeft==RightToLeft.Yes?Width - (_boxOffset + CHECKBOX_SIZE_HALF +1) : _boxOffset + CHECKBOX_SIZE_HALF - 1;
-            int CHECKBOX_CENTER_Y = _boxOffset + CHECKBOX_SIZE_HALF - 1;
-            Point animationSource = new Point(CHECKBOX_CENTER_X, CHECKBOX_CENTER_Y);
+            int CHECKBOX_CENTER = _boxOffset + CHECKBOX_SIZE_HALF - 1;
+            Point animationSource = new Point(CHECKBOX_CENTER, CHECKBOX_CENTER);
             double animationProgress = _checkAM.GetProgress();
 
             int colorAlpha = Enabled ? (int)(animationProgress * 255.0) : SkinManager.CheckBoxOffDisabledColor.A;
@@ -155,9 +165,8 @@
                 }
             }
 
-            var boxOffset_x = RightToLeft == RightToLeft.Yes ? Width - CHECKBOX_SIZE - _boxOffset : _boxOffset;
-            Rectangle checkMarkLineFill = new Rectangle(boxOffset_x , _boxOffset, (int)(CHECKBOX_SIZE * animationProgress), CHECKBOX_SIZE);
-            using (GraphicsPath checkmarkPath = DrawHelper.CreateRoundRect(boxOffset_x - 0.5f, _boxOffset - 0.5f, CHECKBOX_SIZE, CHECKBOX_SIZE, 1))
+            Rectangle checkMarkLineFill = new Rectangle(_boxOffset, _boxOffset, (int)(CHECKBOX_SIZE * animationProgress), CHECKBOX_SIZE);
+            using (GraphicsPath checkmarkPath = DrawHelper.CreateRoundRect(_boxOffset - 0.5f, _boxOffset - 0.5f, CHECKBOX_SIZE, CHECKBOX_SIZE, 1))
             {
                 if (Enabled)
                 {
@@ -179,40 +188,21 @@
 
                 g.DrawImageUnscaledAndClipped(DrawCheckMarkBitmap(), checkMarkLineFill);
             }
-            var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
+
             // draw checkbox text
             using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
             {
-                var x = RightToLeft == RightToLeft.Yes ? 0 : _boxOffset + TEXT_OFFSET;
-                var w = RightToLeft == RightToLeft.Yes ? Width - (_boxOffset + TEXT_OFFSET) : Width;
-                Rectangle textLocation = new Rectangle(x, 0, w, HEIGHT_RIPPLE);
-                NativeText.DrawTransparentText(Text, SkinManager.getLogFontByType(MaterialSkinManager.fontType.Body1),
+                Rectangle textLocation = new Rectangle(_boxOffset + TEXT_OFFSET, 0, Width - (_boxOffset + TEXT_OFFSET), HEIGHT_RIPPLE);
+                NativeText.DrawTransparentText(Text, SkinManager.getLogFontByType(MaterialSkinManager.fontType.Body1, RightToLeft),
                     Enabled ? SkinManager.TextHighEmphasisColor : SkinManager.TextDisabledOrHintColor,
                     textLocation.Location,
                     textLocation.Size,
-                    textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
+                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
             }
 
             // dispose used paint objects
             pen.Dispose();
             brush.Dispose();
-        }
-
-        private Bitmap DrawCheckMarkBitmap()
-        {
-            Bitmap checkMark = new Bitmap(CHECKBOX_SIZE, CHECKBOX_SIZE);
-            Graphics g = Graphics.FromImage(checkMark);
-
-            // clear everything, transparent
-            g.Clear(Color.Transparent);
-
-            // draw the checkmark lines
-            using (Pen pen = new Pen(Parent.BackColor, 2))
-            {
-                g.DrawLines(pen, CheckmarkLine);
-            }
-
-            return checkMark;
         }
 
         public override bool AutoSize
@@ -227,13 +217,6 @@
                 }
             }
         }
-
-        private bool IsMouseInCheckArea()
-        {
-            return ClientRectangle.Contains(MouseLocation);
-        }
-
-        private bool hovered = false;
 
         protected override void OnCreateControl()
         {
@@ -269,6 +252,7 @@
                 //    _hoverAM.StartNewAnimation(AnimationDirection.In, new object[] { Checked });
                 //    hovered = true;
                 //}
+                _oldCheckState = CheckState;
             };
 
             MouseLeave += (sender, args) =>
@@ -290,6 +274,7 @@
                     _rippleAM.SecondaryIncrement = 0;
                     _rippleAM.StartNewAnimation(AnimationDirection.InOutIn, new object[] { Checked });
                 }
+                if (ReadOnly) CheckState = _oldCheckState;
             };
 
             KeyDown += (sender, args) =>
@@ -299,6 +284,7 @@
                     _rippleAM.SecondaryIncrement = 0;
                     _rippleAM.StartNewAnimation(AnimationDirection.InOutIn, new object[] { Checked });
                 }
+                if (ReadOnly) CheckState = _oldCheckState;
             };
 
             MouseUp += (sender, args) =>
@@ -310,6 +296,7 @@
                     _hoverAM.StartNewAnimation(AnimationDirection.Out, new object[] { Checked });
                     hovered = false;
                 }
+                if (ReadOnly) CheckState = _oldCheckState;
             };
 
             KeyUp += (sender, args) =>
@@ -319,6 +306,7 @@
                     MouseState = MouseState.HOVER;
                     _rippleAM.SecondaryIncrement = 0.08;
                 }
+                if (ReadOnly) CheckState = _oldCheckState;
             };
 
             MouseMove += (sender, args) =>
@@ -327,5 +315,30 @@
                 Cursor = IsMouseInCheckArea() ? Cursors.Hand : Cursors.Default;
             };
         }
+        #endregion
+
+        #region Private events and methods
+        private Bitmap DrawCheckMarkBitmap()
+        {
+            Bitmap checkMark = new Bitmap(CHECKBOX_SIZE, CHECKBOX_SIZE);
+            Graphics g = Graphics.FromImage(checkMark);
+
+            // clear everything, transparent
+            g.Clear(Color.Transparent);
+
+            // draw the checkmark lines
+            using (Pen pen = new Pen(Parent.BackColor, 2))
+            {
+                g.DrawLines(pen, CheckmarkLine);
+            }
+
+            return checkMark;
+        }
+
+        private bool IsMouseInCheckArea()
+        {
+            return ClientRectangle.Contains(MouseLocation);
+        }
+        #endregion
     }
 }

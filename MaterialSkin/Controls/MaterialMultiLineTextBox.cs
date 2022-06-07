@@ -30,6 +30,7 @@
 
         private string hint = string.Empty;
 
+        [Category("Material Skin"), DefaultValue(""), Localizable(true)]
         public string Hint
         {
             get { return hint; }
@@ -37,6 +38,27 @@
             {
                 hint = value;
                 SendMessage(Handle, EM_SETCUEBANNER, (int)IntPtr.Zero, Hint);
+            }
+        }
+
+        private bool _leaveOnEnterKey;
+
+        [Category("Material Skin"), DefaultValue(false), Description("Select next control which have TabStop property set to True when enter key is pressed. To add enter in text, the user must press CTRL+Enter")]
+        public bool LeaveOnEnterKey
+        {
+            get => _leaveOnEnterKey;
+            set
+            {
+                _leaveOnEnterKey = value;
+                if (value)
+                {
+                    KeyDown += new KeyEventHandler(LeaveOnEnterKey_KeyDown);
+                }
+                else
+                {
+                    KeyDown -= LeaveOnEnterKey_KeyDown;
+                }
+                Invalidate();
             }
         }
 
@@ -57,13 +79,23 @@
             });
         }
 
+        private void LeaveOnEnterKey_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter && e.Control == false)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                SendKeys.Send("{TAB}");
+            }
+        }
+
         public MaterialMultiLineTextBox()
         {
             base.OnCreateControl();
             this.Multiline = true;
 
             BorderStyle = BorderStyle.None;
-            Font = SkinManager.getFontByType(MaterialSkinManager.fontType.Body1);
+            Font = SkinManager.getFontByType(MaterialSkinManager.fontType.Body1, RightToLeft);
             BackColor = SkinManager.BackgroundColor;
             ForeColor = SkinManager.TextHighEmphasisColor;
             BackColorChanged += (sender, args) => BackColor = SkinManager.BackgroundColor;

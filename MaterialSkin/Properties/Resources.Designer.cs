@@ -63,9 +63,9 @@ namespace MaterialSkin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] IRANSans_Black {
+        public static byte[] IRANYekan_Black {
             get {
-                object obj = ResourceManager.GetObject("IRANSans_Black", resourceCulture);
+                object obj = ResourceManager.GetObject("IRANYekan_Black", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace MaterialSkin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] IRANSans_Bold {
+        public static byte[] IRANYekan_Bold {
             get {
-                object obj = ResourceManager.GetObject("IRANSans_Bold", resourceCulture);
+                object obj = ResourceManager.GetObject("IRANYekan_Bold", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace MaterialSkin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] IRANSans_Light {
+        public static byte[] IRANYekan_Light {
             get {
-                object obj = ResourceManager.GetObject("IRANSans_Light", resourceCulture);
+                object obj = ResourceManager.GetObject("IRANYekan_Light", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace MaterialSkin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] IRANSans_Medium {
+        public static byte[] IRANYekan_Medium {
             get {
-                object obj = ResourceManager.GetObject("IRANSans_Medium", resourceCulture);
+                object obj = ResourceManager.GetObject("IRANYekan_Medium", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace MaterialSkin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] IRANSans_Regular {
+        public static byte[] IRANYekan_Regular {
             get {
-                object obj = ResourceManager.GetObject("IRANSans_Regular", resourceCulture);
+                object obj = ResourceManager.GetObject("IRANYekan_Regular", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace MaterialSkin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] IRANSans_UltraLight {
+        public static byte[] IRANYekan_Thin {
             get {
-                object obj = ResourceManager.GetObject("IRANSans_UltraLight", resourceCulture);
+                object obj = ResourceManager.GetObject("IRANYekan_Thin", resourceCulture);
                 return ((byte[])(obj));
             }
         }

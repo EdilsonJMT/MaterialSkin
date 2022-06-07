@@ -38,6 +38,7 @@ public sealed class NativeTextRenderer : IDisposable
         SetFont(font);
 
         var size = new Size();
+        if (string.IsNullOrEmpty(str)) return size;
         GetTextExtentPoint32(_hdc, str, str.Length, ref size);
         return size;
     }
@@ -47,6 +48,7 @@ public sealed class NativeTextRenderer : IDisposable
         SelectObject(_hdc, LogFont);
 
         var size = new Size();
+        if (string.IsNullOrEmpty(str)) return size;
         GetTextExtentPoint32(_hdc, str, str.Length, ref size);
         return size;
     }
@@ -149,7 +151,7 @@ public sealed class NativeTextRenderer : IDisposable
 
                 // Draw Text for multiline format
                 Rect region = new Rect(new Rectangle(pos, size));
-                DrawText(memoryHdc, str, str.Length, ref region, fmtFlags);
+                DrawText(memoryHdc, str, -1, ref region, fmtFlags);
             }
             else
             {
@@ -233,7 +235,7 @@ public sealed class NativeTextRenderer : IDisposable
         SetTextColor(_hdc, rgb);
     }
 
-    [DllImport("user32.dll")]
+    [DllImport("user32.dll", CharSet = CharSet.Auto)]
     private static extern int DrawText(IntPtr hdc, string lpchText, int cchText, ref Rect lprc, TextFormatFlags dwDTFormat);
 
     [DllImport("gdi32.dll")]
@@ -250,7 +252,7 @@ public sealed class NativeTextRenderer : IDisposable
 
     [DllImport("gdi32.dll", EntryPoint = "GetTextExtentExPointW")]
     private static extern bool GetTextExtentExPoint(IntPtr hDc, [MarshalAs(UnmanagedType.LPWStr)]string str, int nLength, int nMaxExtent, int[] lpnFit, int[] alpDx, ref Size size);
-            
+
     [DllImport("gdi32.dll", EntryPoint = "TextOutW")]
     private static extern bool TextOut(IntPtr hdc, int x, int y, [MarshalAs(UnmanagedType.LPWStr)] string str, int len);
 

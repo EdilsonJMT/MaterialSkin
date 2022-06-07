@@ -61,6 +61,9 @@
         public bool AutoHide { get; set; }
 
         [Category("Drawer")]
+        public bool AutoShow { get; set; }
+
+        [Category("Drawer")]
         private bool _useColors;
 
         public bool UseColors
@@ -135,6 +138,8 @@
         public event DrawerStateHandler DrawerEndClose;
 
         public event DrawerStateHandler DrawerShowIconsWhenHiddenChanged;
+
+        public event EventHandler<Cursor> CursorUpdate;
 
         // icons
         private Dictionary<string, TextureBrush> iconsBrushes;
@@ -269,11 +274,12 @@
 
                 // Translate the brushes to the correct positions
                 var currentTabIndex = _baseTabControl.TabPages.IndexOf(tabPage);
-                var rtlWidth = RightToLeft == RightToLeft.Yes ? Width - _baseTabControl.ImageList.Images[tabPage.ImageKey].Width : 0;
+                var rectangleX = RightToLeft == RightToLeft.Yes ? Width - ((_baseTabControl.ImageList.Images[tabPage.ImageKey].Width / 2) * 2) - (_drawerItemRects[currentTabIndex].X + (drawerItemHeight / 2) - (_baseTabControl.ImageList.Images[tabPage.ImageKey].Width / 2))
+                    : (_drawerItemRects[currentTabIndex].X + (drawerItemHeight / 2) - (_baseTabControl.ImageList.Images[tabPage.ImageKey].Width / 2));
                 Rectangle iconRect = new Rectangle(
-                    rtlWidth - (_drawerItemRects[currentTabIndex].X + (drawerItemHeight / 2) - (_baseTabControl.ImageList.Images[tabPage.ImageKey].Width / 2)),
+                    rectangleX,
                    _drawerItemRects[currentTabIndex].Y + (drawerItemHeight / 2) - (_baseTabControl.ImageList.Images[tabPage.ImageKey].Height / 2),
-                   _baseTabControl.ImageList.Images[tabPage.ImageKey].Width, _baseTabControl.ImageList.Images[tabPage.ImageKey].Height);
+                   _baseTabControl.ImageList.Images[tabPage.ImageKey].Width , _baseTabControl.ImageList.Images[tabPage.ImageKey].Height);
 
                 textureBrushGray.TranslateTransform(iconRect.X + iconRect.Width / 2 - _baseTabControl.ImageList.Images[tabPage.ImageKey].Width / 2,
                                                     iconRect.Y + iconRect.Height / 2 - _baseTabControl.ImageList.Images[tabPage.ImageKey].Height / 2);
@@ -299,23 +305,28 @@
         private List<GraphicsPath> _drawerItemPaths;
 
         private const int TAB_HEADER_PADDING = 24;
+        private const int BORDER_WIDTH = 7;
 
         private int drawerItemHeight;
 
         public int MinWidth;
+        private int _lastMouseY;
+        private int _lastLocationY;
 
         public MaterialDrawer(RightToLeft rightToLeft)
         {
             RightToLeft = rightToLeft;
             SetStyle(ControlStyles.DoubleBuffer | ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
             Height = 120;
-            Width = 200;
+            Width = 250;
             IndicatorWidth = 0;
-            _isOpen = true;
+            _isOpen = false;
             ShowIconsWhenHidden = false;
             AutoHide = false;
+            AutoShow = false;
             HighlightWithAccent = true;
             BackgroundWithAccent = false;
+
             _showHideAnimManager = new AnimationManager
             {
                 AnimationType = AnimationType.EaseInOut,
@@ -356,6 +367,29 @@
                 Increment = 0.04
             };
             _clickAnimManager.OnAnimationProgress += sender => Invalidate();
+
+            MouseWheel += MaterialDrawer_MouseWheel;
+        }
+
+        private void MaterialDrawer_MouseWheel(object sender, MouseEventArgs e)
+        {
+            int step = 20;
+            if (e.Delta > 0)
+            {
+                if (Location.Y < 0)
+                {
+                    Location = new Point(Location.X, Location.Y + step > 0 ? 0 : Location.Y + step);
+                    Height = Location.Y + step > 0 ? Parent.Height : Height - step;
+                }
+            }
+            else
+            {
+                if (Height < (8 + drawerItemHeight) * _drawerItemRects.Count)
+                {
+                    Location = new Point(Location.X, Location.Y - step);
+                    Height += step;
+                }
+            }
         }
 
         [EditorBrowsable(EditorBrowsableState.Advanced)]
@@ -396,7 +430,7 @@
                     var rtlDir = RightToLeft == RightToLeft.Yes ? -1 : 1;
                     if (ShowIconsWhenHidden)
                     {
-                        Location = new Point((-Width + MinWidth) * rtlDir, Location.Y);
+                        Location = new Point((int)(-Width + MinWidth) * rtlDir, Location.Y);
                     }
                     else
                     {
@@ -473,33 +507,33 @@
                     (currentTabIndex == _baseTabControl.SelectedIndex ? (_highlightWithAccent ? SkinManager.ColorScheme.AccentColor : SkinManager.ColorScheme.PrimaryColor) : // selected
                     SkinManager.TextHighEmphasisColor));
 
-                IntPtr textFont = SkinManager.getLogFontByType(MaterialSkinManager.fontType.Subtitle2);
+                IntPtr textFont = SkinManager.getLogFontByType(MaterialSkinManager.fontType.Subtitle2, RightToLeft);
 
                 Rectangle textRect = _drawerItemRects[currentTabIndex];
                 var textRectX = RightToLeft == RightToLeft.Yes ? SkinManager.FORM_PADDING : _baseTabControl.ImageList != null ? drawerItemHeight : (int)(SkinManager.FORM_PADDING * 0.75);
-                textRect.X = textRectX;
+                textRect.X += textRectX;
                 textRect.Width -= SkinManager.FORM_PADDING << 2;
 
-                using (NativeTextRenderer nativeText = new NativeTextRenderer(g))
+                using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
                 {
                     var direction = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right | NativeTextRenderer.TextAlignFlags.Middle : NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle;
-                    nativeText.DrawTransparentText(tabPage.Text, textFont, textColor, textRect.Location, textRect.Size, direction);
+                    NativeText.DrawTransparentText(tabPage.Text, textFont, textColor, textRect.Location, textRect.Size, direction);
                 }
 
                 // Icons
                 if (_baseTabControl.ImageList != null && !String.IsNullOrEmpty(tabPage.ImageKey))
                 {
-                    var rtlWidth = RightToLeft == RightToLeft.Yes ? Width - iconsSize[tabPage.ImageKey].Width : 0;
+                    var rectangleX = RightToLeft == RightToLeft.Yes ? Width - ((_baseTabControl.ImageList.Images[tabPage.ImageKey].Width/2)*2) - _drawerItemRects[currentTabIndex].X + (drawerItemHeight >> 1) - (iconsSize[tabPage.ImageKey].Width >> 1) : 
+                        _drawerItemRects[currentTabIndex].X + (drawerItemHeight >> 1) - (iconsSize[tabPage.ImageKey].Width >> 1);
                     Rectangle iconRect = new Rectangle(
-                        rtlWidth - (_drawerItemRects[currentTabIndex].X + (drawerItemHeight >> 1) - (iconsSize[tabPage.ImageKey].Width >> 1)),
+                        rectangleX,
                         _drawerItemRects[currentTabIndex].Y + (drawerItemHeight >> 1) - (iconsSize[tabPage.ImageKey].Height >> 1),
                         iconsSize[tabPage.ImageKey].Width, iconsSize[tabPage.ImageKey].Height);
 
                     if (ShowIconsWhenHidden)
                     {
-                        var rtldx = RightToLeft == RightToLeft.Yes ? Width - iconsSize[tabPage.ImageKey].Width : dx;
-                        //iconsBrushes[tabPage.ImageKey].TranslateTransform(dx, 0);
-                       // iconsSelectedBrushes[tabPage.ImageKey].TranslateTransform(dx, 0);
+                        iconsBrushes[tabPage.ImageKey].TranslateTransform(dx, 0);
+                        iconsSelectedBrushes[tabPage.ImageKey].TranslateTransform(dx, 0);
                     }
 
                     g.FillRectangle(currentTabIndex == _baseTabControl.SelectedIndex ? iconsSelectedBrushes[tabPage.ImageKey] : iconsBrushes[tabPage.ImageKey], iconRect);
@@ -521,7 +555,7 @@
             var activeTabPageRect = _drawerItemRects[_baseTabControl.SelectedIndex];
 
             var y = previousActiveTabRect.Y + (int)((activeTabPageRect.Y - previousActiveTabRect.Y) * clickAnimProgress);
-            var x = ShowIconsWhenHidden ? Location.X : 0;
+            var x = ShowIconsWhenHidden ? -Location.X : 0;
             var height = drawerItemHeight;
 
             g.FillRectangle(SkinManager.ColorScheme.AccentBrush, x, y, IndicatorWidth, height);
@@ -602,10 +636,10 @@
                 UpdateTabRects();
             for (var i = 0; i < _drawerItemRects.Count; i++)
             {
-                if (_drawerItemRects[i].Contains(e.Location))
+                if (_drawerItemRects[i].Contains(e.Location) && _lastLocationY == Location.Y)
                 {
                     _baseTabControl.SelectedIndex = i;
-                    if (AutoHide)
+                    if (AutoHide && !AutoShow)
                         Hide();
                 }
             }
@@ -613,24 +647,104 @@
             _animationSource = e.Location;
         }
 
-        protected override void OnMouseMove(MouseEventArgs e)
+        protected override void OnMouseDown(MouseEventArgs e)
         {
-            base.OnMouseMove(e);
-
+            _lastMouseY = e.Y;
+            _lastLocationY = Location.Y; // memorize Y location of drawer
+            base.OnMouseDown(e);
             if (DesignMode)
                 return;
+            MouseState = MouseState.DOWN;
+        }
+
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            base.OnMouseUp(e);
+            if (DesignMode)
+                return;
+            MouseState = MouseState.OUT;
+        }
+
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            if (DesignMode)
+                return;
+            
+            if (e.Button == MouseButtons.Left && e.Y != _lastMouseY && (Location.Y < 0 || Height < (8 + drawerItemHeight) * _drawerItemRects.Count))
+            {
+                int diff = e.Y - _lastMouseY;
+                if (diff > 0) 
+                {
+                    if (Location.Y < 0)
+                    {
+                        Location = new Point(Location.X, Location.Y + diff > 0 ? 0 : Location.Y + diff);
+                        Height = Parent.Height + Math.Abs(Location.Y);
+                    }
+                }
+                else 
+                {
+                    if (Height < (8 + drawerItemHeight) * _drawerItemRects.Count)
+                    {
+                        Location = new Point(Location.X, Location.Y + diff);
+                        Height = Parent.Height + Math.Abs(Location.Y);
+                    }
+                }
+                //return;
+            }
+            
+            base.OnMouseMove(e);
 
             if (_drawerItemRects == null)
                 UpdateTabRects();
-            for (var i = 0; i < _drawerItemRects.Count; i++)
+                
+            Cursor previousCursor = Cursor;
+
+            if (e.Location.X + this.Location.X < BORDER_WIDTH)
             {
-                if (_drawerItemRects[i].Contains(e.Location))
-                {
-                    Cursor = Cursors.Hand;
-                    return;
-                }
+                if (e.Location.Y > this.Height - BORDER_WIDTH)
+                    Cursor = Cursors.SizeNESW;                  //Bottom Left
+                else
+                    Cursor = Cursors.SizeWE;                    //Left
             }
-            Cursor = Cursors.Arrow;
+            else if (e.Location.Y > this.Height - BORDER_WIDTH)
+            {
+                Cursor = Cursors.SizeNS;                        //Bottom
+            }
+            else
+            {
+                if (e.Location.Y < _drawerItemRects[_drawerItemRects.Count - 1].Bottom && (e.Location.X + this.Location.X) >= BORDER_WIDTH)
+                    Cursor = Cursors.Hand;
+                else
+                    Cursor = Cursors.Default;
+            }
+
+            if (previousCursor != Cursor) CursorUpdate?.Invoke(this, Cursor);
+
+        }
+
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            base.OnMouseEnter(e);
+            if (AutoShow && _isOpen==false)
+            {
+                Show();
+            }
+        }
+
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            base.OnMouseLeave(e);
+
+            if (MouseState != MouseState.DOWN)
+            {
+                Cursor = Cursors.Default;
+                CursorUpdate?.Invoke(this, Cursor);
+            }
+
+            if (AutoShow)
+            {
+                Hide();
+            }
         }
 
         private void UpdateTabRects()

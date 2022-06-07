@@ -114,7 +114,7 @@
 
             using (NativeTextRenderer NativeText = new NativeTextRenderer(CreateGraphics()))
             {
-                strSize = NativeText.MeasureLogString(Text, SkinManager.getLogFontByType(MaterialSkinManager.fontType.Body1));
+                strSize = NativeText.MeasureLogString(Text, SkinManager.getLogFontByType(MaterialSkinManager.fontType.Body1, RightToLeft));
             }
 
             int w = _boxOffset + TEXT_OFFSET + strSize.Width;
@@ -130,9 +130,8 @@
             // clear the control
             g.Clear(Parent.BackColor);
 
-            int RADIOBUTTON_CENTER_X = RightToLeft==RightToLeft.Yes? Width-(_boxOffset + RADIOBUTTON_SIZE_HALF) : _boxOffset + RADIOBUTTON_SIZE_HALF;
-            int RADIOBUTTON_CENTER_Y = _boxOffset + RADIOBUTTON_SIZE_HALF;
-            Point animationSource = new Point(RADIOBUTTON_CENTER_X, RADIOBUTTON_CENTER_Y);
+            int RADIOBUTTON_CENTER = _boxOffset + RADIOBUTTON_SIZE_HALF;
+            Point animationSource = new Point(RADIOBUTTON_CENTER, RADIOBUTTON_CENTER);
 
             double animationProgress = _checkAM.GetProgress();
 
@@ -175,16 +174,14 @@
             // draw radiobutton circle
             using (Pen pen = new Pen(DrawHelper.BlendColor(Parent.BackColor, Enabled ? SkinManager.CheckboxOffColor : SkinManager.CheckBoxOffDisabledColor, backgroundAlpha), 2))
             {
-                var x = RightToLeft == RightToLeft.Yes ? Width- RADIOBUTTON_SIZE - _boxOffset : _boxOffset;
-                g.DrawEllipse(pen, new Rectangle(x, _boxOffset, RADIOBUTTON_SIZE, RADIOBUTTON_SIZE));
+                g.DrawEllipse(pen, new Rectangle(_boxOffset, _boxOffset, RADIOBUTTON_SIZE, RADIOBUTTON_SIZE));
             }
 
             if (Enabled)
             {
                 using (Pen pen = new Pen(RadioColor, 2))
                 {
-                    var x = RightToLeft == RightToLeft.Yes ? Width - RADIOBUTTON_SIZE - _boxOffset : _boxOffset;
-                    g.DrawEllipse(pen, new Rectangle(x, _boxOffset, RADIOBUTTON_SIZE, RADIOBUTTON_SIZE));
+                    g.DrawEllipse(pen, new Rectangle(_boxOffset, _boxOffset, RADIOBUTTON_SIZE, RADIOBUTTON_SIZE));
                 }
             }
 
@@ -192,17 +189,15 @@
             {
                 using (SolidBrush brush = new SolidBrush(RadioColor))
                 {
-                    g.FillEllipse(brush, new RectangleF(RADIOBUTTON_CENTER_X - animationSizeHalf, RADIOBUTTON_CENTER_Y - animationSizeHalf, animationSize, animationSize));
+                    g.FillEllipse(brush, new RectangleF(RADIOBUTTON_CENTER - animationSizeHalf, RADIOBUTTON_CENTER - animationSizeHalf, animationSize, animationSize));
                 }
             }
 
             // Text
             using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
             {
-                var x = RightToLeft == RightToLeft.Yes ? 0 : _boxOffset + TEXT_OFFSET;
-                var w = RightToLeft == RightToLeft.Yes ? Width-(_boxOffset + TEXT_OFFSET) : Width;
-                Rectangle textLocation = new Rectangle(x, 0, Width, Height);
-                NativeText.DrawTransparentText(Text, SkinManager.getLogFontByType(MaterialSkinManager.fontType.Body1),
+                Rectangle textLocation = new Rectangle(_boxOffset + TEXT_OFFSET, 0, Width, Height);
+                NativeText.DrawTransparentText(Text, SkinManager.getLogFontByType(MaterialSkinManager.fontType.Body1, RightToLeft),
                     Enabled ? SkinManager.TextHighEmphasisColor : SkinManager.TextDisabledOrHintColor,
                     textLocation.Location,
                     textLocation.Size,
