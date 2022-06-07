@@ -289,7 +289,7 @@
                 // add to dictionary
                 iconsBrushes.Add(tabPage.ImageKey, textureBrushGray);
                 iconsSelectedBrushes.Add(tabPage.ImageKey, textureBrushColor);
-                iconsSize.Add(tabPage.ImageKey, new Rectangle(0, 0, iconRect.Width, iconRect.Height));
+                iconsSize.Add(tabPage.ImageKey, new Rectangle(0, 0, iconRect.Width*3, iconRect.Height));
             }
         }
 
@@ -510,7 +510,7 @@
                 IntPtr textFont = SkinManager.getLogFontByType(MaterialSkinManager.fontType.Subtitle2, RightToLeft);
 
                 Rectangle textRect = _drawerItemRects[currentTabIndex];
-                var textRectX = RightToLeft == RightToLeft.Yes ? SkinManager.FORM_PADDING : _baseTabControl.ImageList != null ? drawerItemHeight : (int)(SkinManager.FORM_PADDING * 0.75);
+                var textRectX = RightToLeft == RightToLeft.Yes ? SkinManager.FORM_PADDING - Location.X : _baseTabControl.ImageList != null ? drawerItemHeight : (int)(SkinManager.FORM_PADDING * 0.75);
                 textRect.X += textRectX;
                 textRect.Width -= SkinManager.FORM_PADDING << 2;
 
@@ -523,7 +523,7 @@
                 // Icons
                 if (_baseTabControl.ImageList != null && !String.IsNullOrEmpty(tabPage.ImageKey))
                 {
-                    var rectangleX = RightToLeft == RightToLeft.Yes ? Width - ((_baseTabControl.ImageList.Images[tabPage.ImageKey].Width/2)*2) - _drawerItemRects[currentTabIndex].X + (drawerItemHeight >> 1) - (iconsSize[tabPage.ImageKey].Width >> 1) : 
+                    var rectangleX = RightToLeft == RightToLeft.Yes ? Width - Location.X - ((_baseTabControl.ImageList.Images[tabPage.ImageKey].Width/2)*2) - _drawerItemRects[currentTabIndex].X + (drawerItemHeight >> 1) - (iconsSize[tabPage.ImageKey].Width >> 1) : 
                         _drawerItemRects[currentTabIndex].X + (drawerItemHeight >> 1) - (iconsSize[tabPage.ImageKey].Width >> 1);
                     Rectangle iconRect = new Rectangle(
                         rectangleX,
@@ -545,7 +545,8 @@
             {
                 using (Pen dividerPen = new Pen(SkinManager.DividersColor, 1))
                 {
-                    g.DrawLine(dividerPen, Width - 1, 0, Width - 1, Height);
+                    var lineX = RightToLeft == RightToLeft.Yes ? 0 : Width - 1;
+                    g.DrawLine(dividerPen, lineX, 0, lineX, Height);
                 }
             }
 
@@ -553,9 +554,9 @@
             var previousSelectedTabIndexIfHasOne = _previousSelectedTabIndex == -1 ? _baseTabControl.SelectedIndex : _previousSelectedTabIndex;
             var previousActiveTabRect = _drawerItemRects[previousSelectedTabIndexIfHasOne];
             var activeTabPageRect = _drawerItemRects[_baseTabControl.SelectedIndex];
-
             var y = previousActiveTabRect.Y + (int)((activeTabPageRect.Y - previousActiveTabRect.Y) * clickAnimProgress);
-            var x = ShowIconsWhenHidden ? -Location.X : 0;
+            var offset = RightToLeft == RightToLeft.Yes ? Width - IndicatorWidth:0;
+            var x = ShowIconsWhenHidden ? offset - Location.X : 0;
             var height = drawerItemHeight;
 
             g.FillRectangle(SkinManager.ColorScheme.AccentBrush, x, y, IndicatorWidth, height);
@@ -779,8 +780,8 @@
                     (TAB_HEADER_PADDING * 2) * i + (int)(SkinManager.FORM_PADDING >> 1),
                     (Width + (ShowIconsWhenHidden ? LocationX : 0)) - (int)(SkinManager.FORM_PADDING * 1.5) - 1,
                     drawerItemHeight));
-
-                _drawerItemPaths[i] = DrawHelper.CreateRoundRect(new RectangleF(_drawerItemRects[i].X - 0.5f, _drawerItemRects[i].Y - 0.5f, _drawerItemRects[i].Width, _drawerItemRects[i].Height), 4);
+                var drawerItemRectWidth = _drawerItemRects[i].Width - Location.X;
+                _drawerItemPaths[i] = DrawHelper.CreateRoundRect(new RectangleF(_drawerItemRects[i].X - 0.5f, _drawerItemRects[i].Y - 0.5f, drawerItemRectWidth, _drawerItemRects[i].Height), 4);
             }
         }
     }
