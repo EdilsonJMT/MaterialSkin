@@ -1130,7 +1130,11 @@ namespace MaterialSkin.Controls
         private readonly IntPtr ptrLparam = new IntPtr(0);
 
         protected readonly BaseTextBox baseTextBox;
-        public MaterialMultiLineTextBox2()
+        public MaterialMultiLineTextBox2():this(RightToLeft.No)
+        {
+
+        }
+        public MaterialMultiLineTextBox2(RightToLeft RightToLeft)
         {
             AllowScroll = true;
             // Material Properties
@@ -1278,7 +1282,7 @@ namespace MaterialSkin.Controls
                 base.OnMouseDown(e);
             }
         }
-
+        
         protected override void OnMouseMove(MouseEventArgs e)
         {
             if (DesignMode)

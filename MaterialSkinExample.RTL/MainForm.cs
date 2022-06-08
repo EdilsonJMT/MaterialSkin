@@ -213,7 +213,7 @@ namespace MaterialSkinExample
         private void materialSwitch12_CheckedChanged(object sender, EventArgs e)
         {
             if (materialSwitch12.Checked)
-                materialTextBox21.Hint = "Hint text";
+                materialTextBox21.Hint = "متن اشاره";
             else
                 materialTextBox21.Hint = "";
         }
@@ -243,7 +243,7 @@ namespace MaterialSkinExample
         private void materialSwitch14_CheckedChanged(object sender, EventArgs e)
         {
             if (materialSwitch14.Checked)
-                materialTextBox21.LeadingIcon = global::MaterialSkinExample.Properties.Resources.baseline_fingerprint_black_24dp;
+                materialTextBox21.LeadingIcon = global::MaterialSkinExample.RTL.Properties.Resources.baseline_fingerprint_black_24dp;
             else
                 materialTextBox21.LeadingIcon = null;
         }
@@ -251,7 +251,7 @@ namespace MaterialSkinExample
         private void materialSwitch15_CheckedChanged(object sender, EventArgs e)
         {
             if (materialSwitch15.Checked)
-                materialTextBox21.TrailingIcon = global::MaterialSkinExample.Properties.Resources.baseline_build_black_24dp;
+                materialTextBox21.TrailingIcon = global::MaterialSkinExample.RTL.Properties.Resources.baseline_build_black_24dp;
             else
                 materialTextBox21.TrailingIcon = null;
         }

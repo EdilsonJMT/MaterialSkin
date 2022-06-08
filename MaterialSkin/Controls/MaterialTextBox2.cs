@@ -1262,12 +1262,13 @@ namespace MaterialSkin.Controls
         private const int ICON_SIZE = 24;
         private const int HINT_TEXT_SMALL_SIZE = 18;
         private const int HINT_TEXT_SMALL_Y = 4;
-        private const int LEFT_PADDING = 16;
-        private const int RIGHT_PADDING = 12;
         private const int ACTIVATION_INDICATOR_HEIGHT = 2;
         private const int HELPER_TEXT_HEIGHT = 16;
         private const int FONT_HEIGHT = 20;
-        
+
+        private int LEFT_PADDING = 16;
+        private int RIGHT_PADDING = 12;
+
         private int HEIGHT = 48;
 
         private int LINE_Y;
@@ -1286,9 +1287,20 @@ namespace MaterialSkin.Controls
 
         protected readonly BaseTextBox baseTextBox;
 
-        public MaterialTextBox2()
+        public MaterialTextBox2():this(RightToLeft.No)
+        {
+
+        }
+        public MaterialTextBox2(RightToLeft RightToLeft)
         {
             // Material Properties
+            if (RightToLeft == RightToLeft.Yes)
+            {
+                var temp = LEFT_PADDING;
+                LEFT_PADDING = RIGHT_PADDING;
+                RIGHT_PADDING = temp;
+            }
+
             UseAccent = true;
             MouseState = MouseState.OUT;
 
@@ -1323,7 +1335,9 @@ namespace MaterialSkin.Controls
                 Multiline = false,
                 Location = new Point(LEFT_PADDING, HEIGHT/2- FONT_HEIGHT/2),
                 Width = Width - (LEFT_PADDING + RIGHT_PADDING),
-                Height = FONT_HEIGHT
+                Height = FONT_HEIGHT,
+                RightToLeft=RightToLeft,
+                TextAlign= (RightToLeft == RightToLeft.Yes)? HorizontalAlignment.Right: HorizontalAlignment.Left
             };
 
             Enabled = true;
@@ -1346,6 +1360,7 @@ namespace MaterialSkin.Controls
                 if (Enabled)
                 {
                     isFocused = true;
+                    if (RightToLeft==RightToLeft.Yes) SendKeys.Send("^+");
                     _animationManager.StartNewAnimation(AnimationDirection.In);
                 }
                 else
@@ -1376,9 +1391,9 @@ namespace MaterialSkin.Controls
             Invalidate();
             ResumeLayout(false);
         }
-
+        
         protected override void OnPaint(PaintEventArgs pevent)
-        {
+        {            
             var g = pevent.Graphics;
             g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             g.Clear(Parent.BackColor);
@@ -1461,13 +1476,14 @@ namespace MaterialSkin.Controls
                         hasHint && UseTallSize ? LINE_Y - (hintRect.Y + hintRect.Height) : LINE_Y);
 
                     // Draw Prefix text 
+                    var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
                     NativeText.DrawTransparentText(
                     _prefixsuffixText,
                     SkinManager.getLogFontByType(MaterialSkinManager.fontType.Subtitle1, RightToLeft),
                     Enabled ? SkinManager.TextMediumEmphasisColor : SkinManager.TextDisabledOrHintColor,
                     prefixRect.Location,
                     prefixRect.Size,
-                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
+                    textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
                 }
             }
 
@@ -1484,19 +1500,21 @@ namespace MaterialSkin.Controls
                         hasHint && UseTallSize ? LINE_Y - (hintRect.Y + hintRect.Height) : LINE_Y);
 
                     // Draw Suffix text 
+                    var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Left : NativeTextRenderer.TextAlignFlags.Right;
                     NativeText.DrawTransparentText(
                     _prefixsuffixText,
                     SkinManager.getLogFontByType(MaterialSkinManager.fontType.Subtitle1, RightToLeft),
                     Enabled ? SkinManager.TextMediumEmphasisColor : SkinManager.TextDisabledOrHintColor,
                     suffixRect.Location,
                     suffixRect.Size,
-                    NativeTextRenderer.TextAlignFlags.Right | NativeTextRenderer.TextAlignFlags.Middle);
+                    textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
                 }
             }
 
             // Draw hint text
             if(hasHint && UseTallSize && (isFocused || userTextPresent))
             {
+                var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
                 using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
                 {
                     NativeText.DrawTransparentText(
@@ -1510,7 +1528,7 @@ namespace MaterialSkin.Controls
                     SkinManager.TextDisabledOrHintColor, // Disabled
                     hintRect.Location,
                     hintRect.Size,
-                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
+                    textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
                 }
             }
 
@@ -1519,6 +1537,7 @@ namespace MaterialSkin.Controls
             {
                 using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
                 {
+                    var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
                     NativeText.DrawTransparentText(
                     HelperText,
                     SkinManager.getTextBoxFontBySize(hintTextSize, RightToLeft),
@@ -1530,7 +1549,7 @@ namespace MaterialSkin.Controls
                     SkinManager.TextDisabledOrHintColor, // Disabled
                     helperTextRect.Location,
                     helperTextRect.Size,
-                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
+                    textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
                 }
             }
 
@@ -1539,6 +1558,7 @@ namespace MaterialSkin.Controls
             {
                 using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
                 {
+                    var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
                     NativeText.DrawTransparentText(
                     ErrorMessage,
                     SkinManager.getTextBoxFontBySize(hintTextSize, RightToLeft),
@@ -1547,7 +1567,7 @@ namespace MaterialSkin.Controls
                     SkinManager.TextDisabledOrHintColor, // Disabled
                     helperTextRect.Location,
                     helperTextRect.Size,
-                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
+                    textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
                 }
             }
 

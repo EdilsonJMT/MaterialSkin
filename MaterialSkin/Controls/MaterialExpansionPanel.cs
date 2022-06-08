@@ -507,13 +507,14 @@ namespace MaterialSkin.Controls
             using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
             {
                 // Draw header text
+                var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
                 NativeText.DrawTransparentText(
                     _titleHeader,
                     SkinManager.getLogFontByType(MaterialSkinManager.fontType.Body1, RightToLeft),
                     Enabled ? SkinManager.TextHighEmphasisColor : SkinManager.TextDisabledOrHintColor,
                     headerRect.Location,
                     headerRect.Size,
-                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
+                    textAlignFlag  | NativeTextRenderer.TextAlignFlags.Middle);
             }
 
             if (!String.IsNullOrEmpty(_descriptionHeader))
@@ -529,13 +530,14 @@ namespace MaterialSkin.Controls
                 using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
                 {
                     // Draw description header text 
+                    var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
                     NativeText.DrawTransparentText(
                     _descriptionHeader,
                     SkinManager.getLogFontByType(MaterialSkinManager.fontType.Body1, RightToLeft),
                      SkinManager.TextDisabledOrHintColor,
                     headerDescriptionRect.Location,
                     headerDescriptionRect.Size,
-                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
+                    textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
                 }
             }
 

@@ -83,6 +83,7 @@ namespace MaterialSkin.Controls
             {
                 using (NativeTextRenderer NativeText = new NativeTextRenderer(Graphics.FromHwnd(m.HWnd)))
                 {
+                    var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
                     NativeText.DrawTransparentText(
                     Hint,
                     SkinManager.getFontByType(MaterialSkinManager.fontType.Subtitle1,RightToLeft),
@@ -91,7 +92,7 @@ namespace MaterialSkin.Controls
                     ColorHelper.RemoveAlpha(SkinManager.TextDisabledOrHintColor, BackColor), // Disabled
                     ClientRectangle.Location,
                     ClientRectangle.Size,
-                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Top);
+                    textAlignFlag | NativeTextRenderer.TextAlignFlags.Top);
                 }
             }
 
@@ -183,6 +184,7 @@ namespace MaterialSkin.Controls
             {
                 using (NativeTextRenderer NativeText = new NativeTextRenderer(Graphics.FromHwnd(m.HWnd)))
                 {
+                    var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
                     NativeText.DrawTransparentText(
                     Hint,
                     SkinManager.getFontByType(MaterialSkinManager.fontType.Subtitle1, RightToLeft),
@@ -191,7 +193,7 @@ namespace MaterialSkin.Controls
                     ColorHelper.RemoveAlpha(SkinManager.TextDisabledOrHintColor, BackColor), // Disabled
                     ClientRectangle.Location,
                     ClientRectangle.Size,
-                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Top);
+                    textAlignFlag | NativeTextRenderer.TextAlignFlags.Top);
                 }
             }
 

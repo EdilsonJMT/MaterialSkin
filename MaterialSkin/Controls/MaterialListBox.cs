@@ -39,7 +39,7 @@ namespace MaterialSkin.Controls
         private MaterialScrollBar _scrollBar;
         private object _selectedValue;
 
-        private bool _updating=false;
+        private bool _updating = false;
         private int _itemHeight;
         private bool _showBorder;
         private Color _borderColor;
@@ -88,7 +88,7 @@ namespace MaterialSkin.Controls
         public bool UseAccentColor
         {
             get { return useAccentColor; }
-            set { useAccentColor = value; _scrollBar.UseAccentColor = value;  Invalidate(); }
+            set { useAccentColor = value; _scrollBar.UseAccentColor = value; Invalidate(); }
         }
 
         [TypeConverter(typeof(CollectionConverter))]
@@ -244,9 +244,10 @@ namespace MaterialSkin.Controls
         #endregion Properties
 
         #region Constructors
-
-        public MaterialListBox()
+        public MaterialListBox() : this(RightToLeft.No) { }
+        public MaterialListBox(RightToLeft RightToLeft)
         {
+            this.RightToLeft = RightToLeft;
             SetStyle
             (
                 ControlStyles.UserPaint |
@@ -383,16 +384,17 @@ namespace MaterialSkin.Controls
             g.FillRectangle(Enabled ? SkinManager.BackgroundBrush : SkinManager.BackgroundDisabledBrush, mainRect);
 
             //Set TextAlignFlags
+            var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
             NativeTextRenderer.TextAlignFlags primaryTextAlignFlags;
-            NativeTextRenderer.TextAlignFlags secondaryTextAlignFlags = NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Top;
+            NativeTextRenderer.TextAlignFlags secondaryTextAlignFlags = textAlignFlag | NativeTextRenderer.TextAlignFlags.Top;
             if (_style == ListBoxStyle.TwoLine || _style == ListBoxStyle.ThreeLine)
             {
-                primaryTextAlignFlags = NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Bottom;
+                primaryTextAlignFlags = textAlignFlag | NativeTextRenderer.TextAlignFlags.Bottom;
             }
             else
             {
                 //SingleLine
-                primaryTextAlignFlags = NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle;
+                primaryTextAlignFlags = textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle;
             }
 
             //Set color and brush
@@ -466,8 +468,8 @@ namespace MaterialSkin.Controls
                     NativeText.DrawTransparentText(
                     itemText,
                     _primaryFont,
-                    Enabled ? (i != SelectedIndex || UseAccentColor) ? 
-                    SkinManager.TextHighEmphasisColor : 
+                    Enabled ? (i != SelectedIndex || UseAccentColor) ?
+                    SkinManager.TextHighEmphasisColor :
                     SkinManager.ColorScheme.TextColor :
                     SkinManager.TextDisabledOrHintColor, // Disabled
                     primaryTextRect.Location,
@@ -478,8 +480,8 @@ namespace MaterialSkin.Controls
                         NativeText.DrawTransparentText(
                         itemSecondaryText,
                         _secondaryFont,
-                        Enabled ? (i != SelectedIndex || UseAccentColor) ? 
-                        SkinManager.TextDisabledOrHintColor : 
+                        Enabled ? (i != SelectedIndex || UseAccentColor) ?
+                        SkinManager.TextDisabledOrHintColor :
                         SkinManager.ColorScheme.TextColor.Darken(0.25f) :
                         SkinManager.TextDisabledOrHintColor, // Disabled
                         secondaryTextRect.Location,
@@ -491,8 +493,8 @@ namespace MaterialSkin.Controls
                         NativeText.DrawMultilineTransparentText(
                         itemSecondaryText,
                         _secondaryFont,
-                        Enabled ? (i != SelectedIndex || UseAccentColor) ? 
-                        SkinManager.TextDisabledOrHintColor : 
+                        Enabled ? (i != SelectedIndex || UseAccentColor) ?
+                        SkinManager.TextDisabledOrHintColor :
                         SkinManager.ColorScheme.TextColor.Darken(0.25f) :
                         SkinManager.TextDisabledOrHintColor, // Disabled
                         secondaryTextRect.Location,
@@ -555,9 +557,9 @@ namespace MaterialSkin.Controls
 
         public void RemoveItemAt(int index)
         {
-           if (index<= _selectedIndex)
+            if (index <= _selectedIndex)
             {
-                _selectedIndex -=1;
+                _selectedIndex -= 1;
                 update_selection();
             }
             _items.RemoveAt(index);
@@ -567,7 +569,7 @@ namespace MaterialSkin.Controls
 
         public void RemoveItem(MaterialListBoxItem item)
         {
-            if (_items.IndexOf(item)<= _selectedIndex)
+            if (_items.IndexOf(item) <= _selectedIndex)
             {
                 _selectedIndex -= 1;
                 update_selection();
@@ -725,7 +727,8 @@ namespace MaterialSkin.Controls
         private void InvalidateLayout()
         {
             _scrollBar.Size = new Size(12, Height - (ShowBorder ? 2 : 0));
-            _scrollBar.Location = new Point(Width - (_scrollBar.Width + (ShowBorder ? 1 : 0)), ShowBorder ? 1 : 0);
+            var PointX = (RightToLeft == RightToLeft.Yes) ? 0 : Width - (_scrollBar.Width + (ShowBorder ? 1 : 0));
+            _scrollBar.Location = new Point(PointX, ShowBorder ? 1 : 0);
             Invalidate();
         }
 
@@ -737,7 +740,7 @@ namespace MaterialSkin.Controls
                     _scrollBar.Value = _scrollBar.Minimum;
                 else if (_scrollBar.Maximum < _scrollBar.Value + Height)
                 {
-                    if (e.Delta>0)
+                    if (e.Delta > 0)
                         _scrollBar.Value -= e.Delta / 2;
                     else
                     { } //Do nothing, maximum reached
@@ -805,7 +808,7 @@ namespace MaterialSkin.Controls
                 index = -1;
             }
 
-            if (index >= 0 && index<Items.Count)
+            if (index >= 0 && index < Items.Count)
             {
                 _hoveredItem = index;
             }
@@ -824,7 +827,7 @@ namespace MaterialSkin.Controls
         {
             base.OnHandleCreated(e);
             _scrollBar.Size = new Size(12, Height - (ShowBorder ? 2 : 0));
-            _scrollBar.Location = new Point( Width - (_scrollBar.Width + (ShowBorder ? 1 : 0)), ShowBorder ? 1 : 0);
+            _scrollBar.Location = new Point(Width - (_scrollBar.Width + (ShowBorder ? 1 : 0)), ShowBorder ? 1 : 0);
             InvalidateScroll(this, e);
         }
 

@@ -98,13 +98,14 @@
             // Draw Text
             using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
             {
+                var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
                 NativeText.DrawTransparentText(
                     e.Header.Text,
                     SkinManager.getLogFontByType(MaterialSkinManager.fontType.Subtitle2, RightToLeft),
                     Enabled ? SkinManager.TextHighEmphasisNoAlphaColor : SkinManager.TextDisabledOrHintColor,
                     new Point(e.Bounds.Location.X + PAD, e.Bounds.Location.Y),
                     new Size(e.Bounds.Size.Width - PAD * 2, e.Bounds.Size.Height),
-                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
+                    textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
             }
         }
 
@@ -136,13 +137,14 @@
                 // Draw Text
                 using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
                 {
+                    var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
                     NativeText.DrawTransparentText(
                         subItem.Text,
                         SkinManager.getLogFontByType(MaterialSkinManager.fontType.Body2, RightToLeft),
                         Enabled ? SkinManager.TextHighEmphasisNoAlphaColor : SkinManager.TextDisabledOrHintColor,
                         new Point(subItem.Bounds.X + PAD, subItem.Bounds.Y),
                         new Size(subItem.Bounds.Width - PAD * 2, subItem.Bounds.Height),
-                        NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
+                        textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
                 }
             }
         }
@@ -199,6 +201,7 @@
             OwnerDraw = true;
             ResizeRedraw = true;
             BorderStyle = BorderStyle.None;
+            RightToLeft = RightToLeft;
         }
 
         protected override void OnCreateControl()

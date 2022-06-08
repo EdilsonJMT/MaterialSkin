@@ -379,10 +379,16 @@
                             else if (TabWidth < TAB_WIDTH_MIN)
                                 TabWidth = TAB_WIDTH_MIN;
 
-                            if (i==0)
-                                _tabRects.Add(new Rectangle(FIRST_TAB_PADDING - (TAB_HEADER_PADDING), 0, TabWidth, Height));
+                            if (i == 0)
+                            {
+                                var RectangleX = (RightToLeft == RightToLeft.Yes) ? Width - TabWidth - FIRST_TAB_PADDING + (TAB_HEADER_PADDING) : FIRST_TAB_PADDING - (TAB_HEADER_PADDING);
+                                _tabRects.Add(new Rectangle(RectangleX, 0, TabWidth, Height));
+                            }
                             else
-                                _tabRects.Add(new Rectangle(_tabRects[i - 1].Right, 0, TabWidth, Height));
+                            {
+                                var RectangleX = (RightToLeft == RightToLeft.Yes) ? _tabRects[i - 1].Left - TabWidth : _tabRects[i - 1].Right;
+                                _tabRects.Add(new Rectangle(RectangleX, 0, TabWidth, Height));
+                            }
                         }
                     }
                 }
