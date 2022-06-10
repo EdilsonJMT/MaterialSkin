@@ -35,24 +35,24 @@ namespace MaterialSkinExample
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            MaterialSkin.MaterialListBoxItem materialListBoxItem19 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem20 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem21 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem22 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem23 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem24 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem25 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem26 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem27 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem28 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem29 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem30 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem31 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem32 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem33 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem34 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem35 = new MaterialSkin.MaterialListBoxItem();
-            MaterialSkin.MaterialListBoxItem materialListBoxItem36 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem37 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem38 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem39 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem40 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem41 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem42 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem43 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem44 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem45 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem46 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem47 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem48 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem49 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem50 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem51 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem52 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem53 = new MaterialSkin.MaterialListBoxItem();
+            MaterialSkin.MaterialListBoxItem materialListBoxItem54 = new MaterialSkin.MaterialListBoxItem();
             this.materialCheckbox3 = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialCheckbox1 = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
@@ -148,11 +148,6 @@ namespace MaterialSkinExample
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.materialLabel39 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel28 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.materialSlider1 = new MaterialSkin.Controls.MaterialSlider();
             this.materialLabel49 = new MaterialSkin.Controls.MaterialLabel();
@@ -221,6 +216,11 @@ namespace MaterialSkinExample
             this.item2ToolStripMenuItem = new MaterialSkin.Controls.MaterialToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.item3ToolStripMenuItem = new MaterialSkin.Controls.MaterialToolStripMenuItem();
+            this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -2284,9 +2284,9 @@ namespace MaterialSkinExample
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.White;
+            this.tabPage4.Controls.Add(this.materialListView1);
             this.tabPage4.Controls.Add(this.materialLabel39);
             this.tabPage4.Controls.Add(this.materialLabel28);
-            this.tabPage4.Controls.Add(this.materialListView1);
             this.tabPage4.ImageKey = "round_backup_white_24dp.png";
             this.tabPage4.Location = new System.Drawing.Point(4, 31);
             this.tabPage4.Name = "tabPage4";
@@ -2322,58 +2322,6 @@ namespace MaterialSkinExample
             this.materialLabel28.Size = new System.Drawing.Size(99, 51);
             this.materialLabel28.TabIndex = 63;
             this.materialLabel28.Text = "جدول";
-            // 
-            // materialListView1
-            // 
-            this.materialListView1.AllowColumnReorder = true;
-            this.materialListView1.AutoSizeTable = true;
-            this.materialListView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.materialListView1.Depth = 0;
-            this.materialListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 34F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.materialListView1.FullRowSelect = true;
-            this.materialListView1.HideSelection = false;
-            this.materialListView1.Location = new System.Drawing.Point(372, 149);
-            this.materialListView1.MinimumSize = new System.Drawing.Size(200, 100);
-            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView1.Name = "materialListView1";
-            this.materialListView1.OwnerDraw = true;
-            this.materialListView1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.materialListView1.RightToLeftLayout = true;
-            this.materialListView1.Scrollable = false;
-            this.materialListView1.Size = new System.Drawing.Size(547, 100);
-            this.materialListView1.TabIndex = 0;
-            this.materialListView1.UseCompatibleStateImageBehavior = false;
-            this.materialListView1.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "دسر (100 گرم)";
-            this.columnHeader1.Width = 200;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "کالری";
-            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader2.Width = 99;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "چربی (گرم)";
-            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader3.Width = 94;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "پروتئین (گرم)";
-            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader4.Width = 154;
             // 
             // tabPage5
             // 
@@ -2431,7 +2379,7 @@ namespace MaterialSkinExample
             this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton2.Name = "materialFlatButton2";
             this.materialFlatButton2.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialFlatButton2.Size = new System.Drawing.Size(79, 36);
+            this.materialFlatButton2.Size = new System.Drawing.Size(80, 36);
             this.materialFlatButton2.TabIndex = 1;
             this.materialFlatButton2.Text = "Remove";
             this.materialFlatButton2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
@@ -2830,30 +2778,30 @@ namespace MaterialSkinExample
             this.materialListBox3.BorderColor = System.Drawing.Color.LightGray;
             this.materialListBox3.Depth = 0;
             this.materialListBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            materialListBoxItem19.SecondaryText = "یک متن ثانویه بسیار بسیار طولانی برای نمایش 1";
-            materialListBoxItem19.Tag = null;
-            materialListBoxItem19.Text = "فهرست مورد 1";
-            materialListBoxItem20.SecondaryText = "یک متن ثانویه بسیار بسیار طولانی برای نمایش ۲";
-            materialListBoxItem20.Tag = null;
-            materialListBoxItem20.Text = "فهرست مورد ۲";
-            materialListBoxItem21.SecondaryText = "یک متن ثانویه بسیار بسیار طولانی برای نمایش ۳";
-            materialListBoxItem21.Tag = null;
-            materialListBoxItem21.Text = "فهرست مورد ۳";
-            materialListBoxItem22.SecondaryText = "یک متن ثانویه بسیار بسیار طولانی برای نمایش ۴";
-            materialListBoxItem22.Tag = null;
-            materialListBoxItem22.Text = "فهرست مورد ۴";
-            materialListBoxItem23.SecondaryText = "یک متن ثانویه بسیار بسیار طولانی برای نمایش ۵";
-            materialListBoxItem23.Tag = null;
-            materialListBoxItem23.Text = "فهرست مورد ۵";
-            materialListBoxItem24.SecondaryText = "یک متن ثانویه بسیار بسیار طولانی برای نمایش ۶";
-            materialListBoxItem24.Tag = null;
-            materialListBoxItem24.Text = "فهرست مورد ۶";
-            this.materialListBox3.Items.Add(materialListBoxItem19);
-            this.materialListBox3.Items.Add(materialListBoxItem20);
-            this.materialListBox3.Items.Add(materialListBoxItem21);
-            this.materialListBox3.Items.Add(materialListBoxItem22);
-            this.materialListBox3.Items.Add(materialListBoxItem23);
-            this.materialListBox3.Items.Add(materialListBoxItem24);
+            materialListBoxItem37.SecondaryText = "یک متن ثانویه بسیار بسیار طولانی برای نمایش 1";
+            materialListBoxItem37.Tag = null;
+            materialListBoxItem37.Text = "فهرست مورد 1";
+            materialListBoxItem38.SecondaryText = "یک متن ثانویه بسیار بسیار طولانی برای نمایش ۲";
+            materialListBoxItem38.Tag = null;
+            materialListBoxItem38.Text = "فهرست مورد ۲";
+            materialListBoxItem39.SecondaryText = "یک متن ثانویه بسیار بسیار طولانی برای نمایش ۳";
+            materialListBoxItem39.Tag = null;
+            materialListBoxItem39.Text = "فهرست مورد ۳";
+            materialListBoxItem40.SecondaryText = "یک متن ثانویه بسیار بسیار طولانی برای نمایش ۴";
+            materialListBoxItem40.Tag = null;
+            materialListBoxItem40.Text = "فهرست مورد ۴";
+            materialListBoxItem41.SecondaryText = "یک متن ثانویه بسیار بسیار طولانی برای نمایش ۵";
+            materialListBoxItem41.Tag = null;
+            materialListBoxItem41.Text = "فهرست مورد ۵";
+            materialListBoxItem42.SecondaryText = "یک متن ثانویه بسیار بسیار طولانی برای نمایش ۶";
+            materialListBoxItem42.Tag = null;
+            materialListBoxItem42.Text = "فهرست مورد ۶";
+            this.materialListBox3.Items.Add(materialListBoxItem37);
+            this.materialListBox3.Items.Add(materialListBoxItem38);
+            this.materialListBox3.Items.Add(materialListBoxItem39);
+            this.materialListBox3.Items.Add(materialListBoxItem40);
+            this.materialListBox3.Items.Add(materialListBoxItem41);
+            this.materialListBox3.Items.Add(materialListBoxItem42);
             this.materialListBox3.Location = new System.Drawing.Point(31, 132);
             this.materialListBox3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialListBox3.Name = "materialListBox3";
@@ -2870,30 +2818,30 @@ namespace MaterialSkinExample
             this.materialListBox2.BorderColor = System.Drawing.Color.LightGray;
             this.materialListBox2.Depth = 0;
             this.materialListBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            materialListBoxItem25.SecondaryText = "متن ثانویه ۱";
-            materialListBoxItem25.Tag = null;
-            materialListBoxItem25.Text = "فهرست مورد ۱";
-            materialListBoxItem26.SecondaryText = "متن ثانویه ۲";
-            materialListBoxItem26.Tag = null;
-            materialListBoxItem26.Text = "فهرست مورد ۲";
-            materialListBoxItem27.SecondaryText = "متن ثانویه ۳";
-            materialListBoxItem27.Tag = null;
-            materialListBoxItem27.Text = "فهرست مورد ۳";
-            materialListBoxItem28.SecondaryText = "متن ثانویه ۴";
-            materialListBoxItem28.Tag = null;
-            materialListBoxItem28.Text = "فهرست مورد ۴";
-            materialListBoxItem29.SecondaryText = "متن ثانویه ۵";
-            materialListBoxItem29.Tag = null;
-            materialListBoxItem29.Text = "فهرست مورد ۵";
-            materialListBoxItem30.SecondaryText = "متن ثانویه ۶";
-            materialListBoxItem30.Tag = null;
-            materialListBoxItem30.Text = "فهرست مورد ۶";
-            this.materialListBox2.Items.Add(materialListBoxItem25);
-            this.materialListBox2.Items.Add(materialListBoxItem26);
-            this.materialListBox2.Items.Add(materialListBoxItem27);
-            this.materialListBox2.Items.Add(materialListBoxItem28);
-            this.materialListBox2.Items.Add(materialListBoxItem29);
-            this.materialListBox2.Items.Add(materialListBoxItem30);
+            materialListBoxItem43.SecondaryText = "متن ثانویه ۱";
+            materialListBoxItem43.Tag = null;
+            materialListBoxItem43.Text = "فهرست مورد ۱";
+            materialListBoxItem44.SecondaryText = "متن ثانویه ۲";
+            materialListBoxItem44.Tag = null;
+            materialListBoxItem44.Text = "فهرست مورد ۲";
+            materialListBoxItem45.SecondaryText = "متن ثانویه ۳";
+            materialListBoxItem45.Tag = null;
+            materialListBoxItem45.Text = "فهرست مورد ۳";
+            materialListBoxItem46.SecondaryText = "متن ثانویه ۴";
+            materialListBoxItem46.Tag = null;
+            materialListBoxItem46.Text = "فهرست مورد ۴";
+            materialListBoxItem47.SecondaryText = "متن ثانویه ۵";
+            materialListBoxItem47.Tag = null;
+            materialListBoxItem47.Text = "فهرست مورد ۵";
+            materialListBoxItem48.SecondaryText = "متن ثانویه ۶";
+            materialListBoxItem48.Tag = null;
+            materialListBoxItem48.Text = "فهرست مورد ۶";
+            this.materialListBox2.Items.Add(materialListBoxItem43);
+            this.materialListBox2.Items.Add(materialListBoxItem44);
+            this.materialListBox2.Items.Add(materialListBoxItem45);
+            this.materialListBox2.Items.Add(materialListBoxItem46);
+            this.materialListBox2.Items.Add(materialListBoxItem47);
+            this.materialListBox2.Items.Add(materialListBoxItem48);
             this.materialListBox2.Location = new System.Drawing.Point(357, 132);
             this.materialListBox2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialListBox2.Name = "materialListBox2";
@@ -2911,30 +2859,30 @@ namespace MaterialSkinExample
             this.materialListBox1.BorderColor = System.Drawing.Color.LightGray;
             this.materialListBox1.Depth = 0;
             this.materialListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            materialListBoxItem31.SecondaryText = "";
-            materialListBoxItem31.Tag = null;
-            materialListBoxItem31.Text = "فهرست مورد ۱";
-            materialListBoxItem32.SecondaryText = "";
-            materialListBoxItem32.Tag = null;
-            materialListBoxItem32.Text = "فهرست مورد ۲";
-            materialListBoxItem33.SecondaryText = "";
-            materialListBoxItem33.Tag = null;
-            materialListBoxItem33.Text = "فهرست مورد ۳";
-            materialListBoxItem34.SecondaryText = "";
-            materialListBoxItem34.Tag = null;
-            materialListBoxItem34.Text = "فهرست مورد ۴";
-            materialListBoxItem35.SecondaryText = "";
-            materialListBoxItem35.Tag = null;
-            materialListBoxItem35.Text = "فهرست مورد ۵";
-            materialListBoxItem36.SecondaryText = "";
-            materialListBoxItem36.Tag = null;
-            materialListBoxItem36.Text = "فهرست مورد ۶";
-            this.materialListBox1.Items.Add(materialListBoxItem31);
-            this.materialListBox1.Items.Add(materialListBoxItem32);
-            this.materialListBox1.Items.Add(materialListBoxItem33);
-            this.materialListBox1.Items.Add(materialListBoxItem34);
-            this.materialListBox1.Items.Add(materialListBoxItem35);
-            this.materialListBox1.Items.Add(materialListBoxItem36);
+            materialListBoxItem49.SecondaryText = "";
+            materialListBoxItem49.Tag = null;
+            materialListBoxItem49.Text = "فهرست مورد ۱";
+            materialListBoxItem50.SecondaryText = "";
+            materialListBoxItem50.Tag = null;
+            materialListBoxItem50.Text = "فهرست مورد ۲";
+            materialListBoxItem51.SecondaryText = "";
+            materialListBoxItem51.Tag = null;
+            materialListBoxItem51.Text = "فهرست مورد ۳";
+            materialListBoxItem52.SecondaryText = "";
+            materialListBoxItem52.Tag = null;
+            materialListBoxItem52.Text = "فهرست مورد ۴";
+            materialListBoxItem53.SecondaryText = "";
+            materialListBoxItem53.Tag = null;
+            materialListBoxItem53.Text = "فهرست مورد ۵";
+            materialListBoxItem54.SecondaryText = "";
+            materialListBoxItem54.Tag = null;
+            materialListBoxItem54.Text = "فهرست مورد ۶";
+            this.materialListBox1.Items.Add(materialListBoxItem49);
+            this.materialListBox1.Items.Add(materialListBoxItem50);
+            this.materialListBox1.Items.Add(materialListBoxItem51);
+            this.materialListBox1.Items.Add(materialListBoxItem52);
+            this.materialListBox1.Items.Add(materialListBoxItem53);
+            this.materialListBox1.Items.Add(materialListBoxItem54);
             this.materialListBox1.Location = new System.Drawing.Point(691, 132);
             this.materialListBox1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialListBox1.Name = "materialListBox1";
@@ -3413,6 +3361,57 @@ namespace MaterialSkinExample
             this.item3ToolStripMenuItem.Size = new System.Drawing.Size(170, 30);
             this.item3ToolStripMenuItem.Text = "Item 3";
             // 
+            // materialListView1
+            // 
+            this.materialListView1.AllowColumnReorder = true;
+            this.materialListView1.AutoSizeTable = true;
+            this.materialListView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+            this.materialListView1.Depth = 0;
+            this.materialListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 34F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.materialListView1.FullRowSelect = true;
+            this.materialListView1.HideSelection = false;
+            this.materialListView1.Location = new System.Drawing.Point(372, 149);
+            this.materialListView1.MinimumSize = new System.Drawing.Size(200, 100);
+            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
+            this.materialListView1.Name = "materialListView1";
+            this.materialListView1.OwnerDraw = true;
+            this.materialListView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.materialListView1.Scrollable = false;
+            this.materialListView1.Size = new System.Drawing.Size(547, 100);
+            this.materialListView1.TabIndex = 65;
+            this.materialListView1.UseCompatibleStateImageBehavior = false;
+            this.materialListView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Dessert (100g serving)";
+            this.columnHeader1.Width = 200;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Calories";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader2.Width = 99;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Fat (g)";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader3.Width = 94;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Protein (g)";
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader4.Width = 154;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3489,11 +3488,6 @@ namespace MaterialSkinExample
         private MaterialLabel materialLabel2;
         private TabPage tabPage6;
         private ImageList menuIconList;
-        private MaterialListView materialListView1;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader3;
-        private ColumnHeader columnHeader4;
         private MaterialButton materialFlatButton2;
         private TabPage tabPage7;
         private MaterialLabel materialLabel8;
@@ -3634,5 +3628,10 @@ namespace MaterialSkinExample
         private MaterialComboBox materialComboBox4;
         private MaterialComboBox materialComboBox3;
         private MaterialComboBox materialComboBox1;
+        private MaterialListView materialListView1;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
     }
 }

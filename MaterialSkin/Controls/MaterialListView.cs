@@ -41,8 +41,12 @@
         private const int PAD = 16;
         private const int ITEMS_HEIGHT = 52;
 
-        public MaterialListView()
+        public MaterialListView() : this(RightToLeft.Yes)
+        { }
+
+        public MaterialListView(RightToLeft RightToLeft)
         {
+            this.RightToLeft = RightToLeft;
             GridLines = false;
             FullRowSelect = true;
             View = View.Details;
@@ -130,7 +134,9 @@
             }
 
             // Draw separator line
-            g.DrawLine(new Pen(SkinManager.DividersColor), e.Bounds.Left, e.Bounds.Y, e.Bounds.Right, e.Bounds.Y);
+            var gx1 = (RightToLeft == RightToLeft.Yes) ? e.Bounds.Right : e.Bounds.Left;
+            var gx2 = (RightToLeft == RightToLeft.Yes) ? e.Bounds.Left : e.Bounds.Right;
+            g.DrawLine(new Pen(SkinManager.DividersColor), gx1, e.Bounds.Y, gx2, e.Bounds.Y);
 
             foreach (ListViewItem.ListViewSubItem subItem in e.Item.SubItems)
             {
