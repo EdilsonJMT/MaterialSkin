@@ -1,6 +1,7 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
+using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 
@@ -12,6 +13,10 @@ namespace MaterialSkinExample
 
         public MainForm(RightToLeft RightToLeft = RightToLeft.Yes) : base(RightToLeft)
         {
+            var culture = new CultureInfo("fa-IR");
+            CultureInfo.DefaultThreadCurrentCulture = culture;
+            CultureInfo.DefaultThreadCurrentUICulture = culture;
+
             base.RightToLeft = RightToLeft.Yes;
             InitializeComponent();
             // Initialize MaterialSkinManager
@@ -158,7 +163,7 @@ namespace MaterialSkinExample
 
         private void MaterialButton3_Click(object sender, EventArgs e)
         {
-            var builder = new StringBuilder("Batch operation report:\n\n");
+            var builder = new StringBuilder("گزارش عملیات دسته‌ای:\n\n");
             var random = new Random();
             var result = 0;
 
@@ -168,17 +173,17 @@ namespace MaterialSkinExample
 
                 if (result < 950)
                 {
-                    builder.AppendFormat(" - Task {0}: Operation completed sucessfully.\n", i);
+                    builder.AppendFormat(" - وظیفه {0}: عملیات با موفقیت انجام شد.\n", i);
                 }
                 else
                 {
-                    builder.AppendFormat(" - Task {0}: Operation failed! A very very very very very very very very very very very very serious error has occured during this sub-operation. The errorcode is: {1}).\n", i, result);
+                    builder.AppendFormat(" - وظیفه {0}: عملیات انجام نشد! یک خطای خیلی خیلی خیلی خیلی خیلی خیلی خیلی خیلی خیلی خیلی خیلی جدی در این عملیات فرعی رخ داده است. کد خطا این است: {1}).\n", i, result);
                 }
             }
 
             var batchOperationResults = builder.ToString();
-            batchOperationResults = "Simple text";
-            var mresult = MaterialMessageBox.Show(batchOperationResults, "Batch Operation", MessageBoxButtons.YesNoCancel, FlexibleMaterialForm.ButtonsPosition.Center);
+            batchOperationResults = "متن ساده";
+            var mresult = MaterialMessageBox.Show(batchOperationResults, "عملیات دسته‌ای", MessageBoxButtons.YesNoCancel, FlexibleMaterialForm.ButtonsPosition.Center, RightToLeft.Yes);
             //materialComboBox1.Items.Add("this is a very long string");
         }
 
@@ -189,14 +194,14 @@ namespace MaterialSkinExample
 
         private void materialTextBox2_LeadingIconClick(object sender, EventArgs e)
         {
-            MaterialSnackBar SnackBarMessage = new MaterialSnackBar("Leading Icon Click");
+            MaterialSnackBar SnackBarMessage = new MaterialSnackBar("آیکون پیشرو کلیک کنید");
             SnackBarMessage.Show(this);
 
         }
 
         private void materialButton6_Click(object sender, EventArgs e)
         {
-            MaterialSnackBar SnackBarMessage = new MaterialSnackBar("SnackBar started succesfully", "OK", true);
+            MaterialSnackBar SnackBarMessage = new MaterialSnackBar("اسنک بار با موفقیت انجام شد", "حله", true, RightToLeft.Yes);
             SnackBarMessage.Show(this);
         }
 
@@ -258,13 +263,13 @@ namespace MaterialSkinExample
 
         private void materialTextBox21_LeadingIconClick(object sender, EventArgs e)
         {
-            MaterialSnackBar SnackBarMessage = new MaterialSnackBar("Leading Icon Click");
+            MaterialSnackBar SnackBarMessage = new MaterialSnackBar("آیکون پیشرو کلیک کنید");
             SnackBarMessage.Show(this);
         }
 
         private void materialTextBox21_TrailingIconClick(object sender, EventArgs e)
         {
-            MaterialSnackBar SnackBarMessage = new MaterialSnackBar("Trailing Icon Click");
+            MaterialSnackBar SnackBarMessage = new MaterialSnackBar("نماد دنباله کلیک کنید");
             SnackBarMessage.Show(this);
         }
 
@@ -275,10 +280,10 @@ namespace MaterialSkinExample
         
         private void materialButton25_Click(object sender, EventArgs e)
         {
-            MaterialDialog materialDialog = new MaterialDialog(this,"Dialog Title", "Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks.", "OK", true, "Cancel");
+            MaterialDialog materialDialog = new MaterialDialog(this, "عنوان دیالوگ", "دیالوگ ها به کاربران در مورد یک کار اطلاع می دهند و می توانند حاوی اطلاعات حیاتی باشند، نیاز به تصمیم گیری داشته باشند یا چندین کار را شامل شوند.", "حله", true, "انصراف", RightToLeft.Yes);
             DialogResult result = materialDialog.ShowDialog(this);
 
-            MaterialSnackBar SnackBarMessage = new MaterialSnackBar(result.ToString(),750);
+            MaterialSnackBar SnackBarMessage = new MaterialSnackBar(result.ToString(),750, false, "حله",false, RightToLeft.Yes);
             SnackBarMessage.Show(this);
 
         }

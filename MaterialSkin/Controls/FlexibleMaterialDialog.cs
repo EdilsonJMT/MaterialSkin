@@ -360,7 +360,11 @@ namespace MaterialSkin.Controls
             /// <summary>
             /// Defines the pl
             /// </summary>
-            pl
+            pl,
+            /// <summary>
+            /// Defines the fa
+            /// </summary>
+            fa
         };
 
         /// <summary>
@@ -399,6 +403,11 @@ namespace MaterialSkin.Controls
         private static readonly String[] BUTTON_TEXTS_POLISH_PL = { "OK", "Anuluj", "Tak", "Nie", "Opuść", "Powtórz", "Ignoruj" };
 
         /// <summary>
+        /// Defines the BUTTON_TEXTS_ROMANIAN_PL
+        /// </summary>
+        private static readonly String[] BUTTON_TEXTS_PERSIAN_FA = { "حله", "انصراف", "بله", "خیر", "بیخیال", "دوباره", "رد‌ کن" };//Note: This is also the fallback language
+
+        /// <summary>
         /// Defines the defaultButton
         /// </summary>
         private MessageBoxDefaultButton defaultButton;
@@ -428,7 +437,7 @@ namespace MaterialSkin.Controls
 
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
-            FONT = materialSkinManager.getFontByType(MaterialSkinManager.fontType.Body1, RightToLeft);
+            FONT = materialSkinManager.getFontByType(MaterialSkinManager.fontType.Body1, rightToLeft);
             messageContainer.BackColor = this.BackColor;
         }
 
@@ -466,6 +475,7 @@ namespace MaterialSkin.Controls
                 case TwoLetterISOLanguageID.fr: return BUTTON_TEXTS_FRENCH_FR[buttonTextArrayIndex];
                 case TwoLetterISOLanguageID.ro: return BUTTON_TEXTS_ROMANIAN_RO[buttonTextArrayIndex];
                 case TwoLetterISOLanguageID.pl: return BUTTON_TEXTS_POLISH_PL[buttonTextArrayIndex];
+                case TwoLetterISOLanguageID.fa: return BUTTON_TEXTS_PERSIAN_FA[buttonTextArrayIndex];
 
                 default: return BUTTON_TEXTS_ENGLISH_EN[buttonTextArrayIndex];
             }
