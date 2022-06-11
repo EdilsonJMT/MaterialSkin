@@ -1,4 +1,4 @@
-# MaterialSkin 2 for .NET WinForms
+# MaterialSkin 2 for .NET WinForms with RTL support
 
 Theming .NET WinForms, C# or VB.Net, to Google's Material Design Principles.
 
@@ -22,36 +22,36 @@ You can access it [here](https://github.com/leocb/MaterialSkin/wiki)
 
 ## Current state of the MaterialSkin components
 
-| Component                    | Supported | Disabled mode | Animated |
-| ---------------------------- | :-------: | :-----------: | :------: |
-| Backdrop                     |  **No**   |       -       |    -     |
-| Banner                       |  **No**   |       -       |    -     |
-| Buttons                      |    Yes    |      Yes      |   Yes    |
-| Cards                        |    Yes    |      N/A      |   N/A    |
-| Check Box                    |    Yes    |      Yes      |   Yes    |
-| Check Box List               |    Yes    |      Yes      |   Yes    |
-| Chips                        |  **No**   |       -       |    -     |
-| Combobox                     |    Yes    |      Yes      |   Yes    |
-| Context Menu                 |    Yes    |      Yes      |   Yes    |
-| Date Picker                  |  **No**   |       -       |    -     |
-| Dialog                       |    Yes    |      N/A      |  **No**  |
-| Divider                      |    Yes    |      N/A      |   N/A    |
-| Drawer                       |    Yes    |      N/A      |   Yes    |
-| Expansion Panel              |    Yes    |      Yes      |  **No**  |
-| Flexible Dialog (big)        |    Yes    |      Yes      |   N/A    |
-| FAB - Floating Action Button |    Yes    |      Yes      |   Yes    |
-| Label                        |    Yes    |      Yes      |   N/A    |
-| ListBox                      |    Yes    |      Yes      |   N/A    |
-| ListView                     |    Yes    |    **No**     |   N/A    |
-| Progress Bar                 |  _Partial_  |    **No**     |  **No**  |
-| Radio Button                 |    Yes    |      Yes      |   Yes    |
-| Text field                   |    Yes    |      Yes      |   Yes    |
-| Sliders                      |    Yes    |      Yes      |  **No**  |
-| SnackBar                     |    Yes    |      N/A      |   Yes    |
-| Switch                       |    Yes    |      Yes      |   Yes    |
-| Tabs                         |    Yes    |      N/A      |   Yes    |
-| Time Picker                  |  **No**   |       -       |    -     |
-| Tooltips                     |  **No**   |       -       |    -     |
+| Component                    | Supported   | Disabled mode | Animated | RTL supported |
+| ---------------------------- | :-------:   | :-----------: | :------: | :-----------: |
+| Backdrop                     |  **No**     |       -       |    -     |    -          |
+| Banner                       |  **No**     |       -       |    -     |    -          |
+| Buttons                      |    Yes      |      Yes      |   Yes    |   Yes         |
+| Cards                        |    Yes      |      N/A      |   N/A    |   Yes         |
+| Check Box                    |    Yes      |      Yes      |   Yes    |   Yes         |
+| Check Box List               |    Yes      |      Yes      |   Yes    |   Yes         |
+| Chips                        |  **No**     |       -       |    -     |    -          |
+| Combobox                     |    Yes      |      Yes      |   Yes    |   Yes         |
+| Context Menu                 |    Yes      |      Yes      |   Yes    |   Yes         |
+| Date Picker                  |  **No**     |       -       |    -     |    -          |
+| Dialog                       |    Yes      |      N/A      |  **No**  |   Yes         |
+| Divider                      |    Yes      |      N/A      |   N/A    |   N/A         |
+| Drawer                       |    Yes      |      N/A      |   Yes    |   Yes         |
+| Expansion Panel              |    Yes      |      Yes      |  **No**  |   Yes         |
+| Flexible Dialog (big)        |    Yes      |      Yes      |   N/A    |   Yes         |
+| FAB - Floating Action Button |    Yes      |      Yes      |   Yes    |   Yes         |
+| Label                        |    Yes      |      Yes      |   N/A    |   Yes         |
+| ListBox                      |    Yes      |      Yes      |   N/A    |   Yes         |
+| ListView                     |    Yes      |    **No**     |   N/A    |   N/A         |
+| Progress Bar                 |  _Partial_  |    **No**     |  **No**  |   N/A         |
+| Radio Button                 |    Yes      |      Yes      |   Yes    |   Yes         |
+| Text field                   |    Yes      |      Yes      |   Yes    |   Yes         |
+| Sliders                      |    Yes      |      Yes      |  **No**  |   N/A         |
+| SnackBar                     |    Yes      |      N/A      |   Yes    |   Yes         |
+| Switch                       |    Yes      |      Yes      |   Yes    |   Yes         |
+| Tabs                         |    Yes      |      N/A      |   Yes    |   Yes         |
+| Time Picker                  |  **No**     |       -       |    -     |    -          |
+| Tooltips                     |  **No**     |       -       |    -     |    -          |
 
 All supported components have a dark theme
 

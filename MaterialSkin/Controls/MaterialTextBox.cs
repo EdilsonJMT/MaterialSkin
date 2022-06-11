@@ -653,13 +653,14 @@
                     LINE_Y - BOTTOM_PADDING * 2); // not tall
 
                 // Draw user text
+                var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
                 NativeText.DrawTransparentText(
                     textToDisplay,
                     SkinManager.getLogFontByType(MaterialSkinManager.fontType.Subtitle1, RightToLeft),
                     Enabled ? SkinManager.TextHighEmphasisColor : SkinManager.TextDisabledOrHintColor,
                     textRect.Location,
                     textRect.Size,
-                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
+                    textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
             }
 
             if (Focused)
@@ -670,13 +671,14 @@
                 // Draw Selected Text
                 using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
                 {
+                    var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
                     NativeText.DrawTransparentText(
                         textSelected,
                         SkinManager.getLogFontByType(MaterialSkinManager.fontType.Subtitle1, RightToLeft),
                         SkinManager.ColorScheme.TextColor,
                         textSelectRect.Location,
                         textSelectRect.Size,
-                        NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
+                        textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
                 }
             }
 
@@ -687,6 +689,7 @@
             {
                 using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
                 {
+                    var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
                     NativeText.DrawTransparentText(
                     Hint,
                     SkinManager.getTextBoxFontBySize(hintTextSize, RightToLeft),
@@ -698,7 +701,7 @@
                     SkinManager.TextDisabledOrHintColor, // Disabled
                     hintRect.Location,
                     hintRect.Size,
-                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
+                    textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
                 }
             }
         }

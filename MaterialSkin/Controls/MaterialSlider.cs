@@ -442,25 +442,32 @@ namespace MaterialSkin.Controls
 
             using (NativeTextRenderer NativeText = new NativeTextRenderer(g))
             {
+                // Draw text
                 if (_showText == true)
-                    // Draw text
+                {
+                    var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Right : NativeTextRenderer.TextAlignFlags.Left;
                     NativeText.DrawTransparentText(
-                    Text,
-                    SkinManager.getLogFontByType(_fontType, RightToLeft),
-                    Enabled ? SkinManager.TextHighEmphasisColor : SkinManager.TextDisabledOrHintColor,
-                    _textRectangle.Location,
-                    _textRectangle.Size,
-                    NativeTextRenderer.TextAlignFlags.Left | NativeTextRenderer.TextAlignFlags.Middle);
- 
-                if (_showValue==true)
+                        Text,
+                        SkinManager.getLogFontByType(_fontType, RightToLeft),
+                        Enabled ? SkinManager.TextHighEmphasisColor : SkinManager.TextDisabledOrHintColor,
+                        _textRectangle.Location,
+                        _textRectangle.Size,
+                        textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
+                }
+                
+
                 // Draw value
-                NativeText.DrawTransparentText(
-                    Value.ToString()+ValueSuffix,
-                    SkinManager.getLogFontByType(_fontType, RightToLeft),
-                    Enabled ? SkinManager.TextHighEmphasisColor : SkinManager.TextDisabledOrHintColor,
-                    _valueRectangle.Location,
-                    _valueRectangle.Size,
-                    NativeTextRenderer.TextAlignFlags.Right | NativeTextRenderer.TextAlignFlags.Middle);
+                if (_showValue == true)
+                {
+                    var textAlignFlag = RightToLeft == RightToLeft.Yes ? NativeTextRenderer.TextAlignFlags.Left : NativeTextRenderer.TextAlignFlags.Right;
+                    NativeText.DrawTransparentText(
+                        Value.ToString() + ValueSuffix,
+                        SkinManager.getLogFontByType(_fontType, RightToLeft),
+                        Enabled ? SkinManager.TextHighEmphasisColor : SkinManager.TextDisabledOrHintColor,
+                        _valueRectangle.Location,
+                        _valueRectangle.Size,
+                        textAlignFlag | NativeTextRenderer.TextAlignFlags.Middle);
+                }
             }
 
         }
