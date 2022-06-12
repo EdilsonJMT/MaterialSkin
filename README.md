@@ -2,23 +2,21 @@
 
 Theming .NET WinForms, C# or VB.Net, to Google's Material Design Principles.
 
-> This project state is: **not very active**
+> This project is ACTIVE (With some long pauses in between, but I still read every issue and check every PR)
 >
-> This means I still read every issue and check every PR and occasionally release new versions when enough pull requests have pilled up, also [@orapps44](https://github.com/orapps44) has been doing excelent work and is keeping this project alive and updated, Thank you! ❤️
-
 ![home](https://raw.githubusercontent.com/baqeryan/MaterialSkin/master/MaterialSkinExample.RTL/Resources/MaterialSkinExample.RTL.gif)
 
 ## Nuget Package
 
-A nuget package version is available [here](https://www.nuget.org/packages/MaterialSkin.2/)
+A nuget package version is available [here](https://www.nuget.org/packages/MaterialSkin.2.RTL/)
 
-Or simply search for MaterialSkin.2 on the **Nuget Package Manager** inside Visual Studio
+Or simply search for MaterialSkin.2.RTL on the **Nuget Package Manager** inside Visual Studio
 
 ## WIKI Available!
 
 But there's not much in there for now, please contribute if you can. :smile:
 
-You can access it [here](https://github.com/leocb/MaterialSkin/wiki)
+You can access it [here](https://github.com/baqeryan/MaterialSkin/wiki)
 
 ## Current state of the MaterialSkin components
 
@@ -55,18 +53,6 @@ You can access it [here](https://github.com/leocb/MaterialSkin/wiki)
 
 All supported components have a dark theme
 
-## TODO List
-
-- [ ] Progress bar - Animation and variants, maybe round loading thingy
-- [ ] Backdrop (maybe)
-- [ ] Some Color code improvements and refactoring
-- [ ] DatePicker
-- [ ] Drawer - Header, Divider, subtitle & submenu
-- [ ] Textfield ContextualMenu translation
-- [ ] Controls code cleanup
-- [ ] Add Noto font support
-
----
 
 ## Contributing
 
@@ -136,7 +122,7 @@ Set your preferred colors & theme. Also add the form to the manager so it keeps 
 #### C# (Form1.cs)
 
 ```cs
-public Form1()
+public Form1(RightToLeft RightToLeft = RightToLeft.Yes) : base(RightToLeft)
 {
     InitializeComponent();
 
