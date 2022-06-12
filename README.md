@@ -160,37 +160,37 @@ If you love .NET and Material Design, you should definitely check out [Material 
 ## Images
 
 *A simple demo interface with MaterialSkin components.*
-![home](https://user-images.githubusercontent.com/77468294/134770847-0f20f37f-e3e7-4e15-b838-cf53b0b32c4e.png)
+![home](https://raw.githubusercontent.com/baqeryan/MaterialSkin/master/MaterialSkinExample.RTL/Resources/demo-1.png)
 
 *The MaterialSkin Drawer (menu).*
-![drawer](https://user-images.githubusercontent.com/77468294/119880600-b4570480-bf2c-11eb-9a83-e2d59b88bf22.png)
+![drawer](https://raw.githubusercontent.com/baqeryan/MaterialSkin/master/MaterialSkinExample.RTL/Resources/demo-2.png)
 
 *Every MaterialSkin button variant - this is 1 control, 3 properties*
-![buttons](https://user-images.githubusercontent.com/77468294/119880777-e1a3b280-bf2c-11eb-8042-45b767459b41.png)
+![buttons](https://raw.githubusercontent.com/baqeryan/MaterialSkin/master/MaterialSkinExample.RTL/Resources/demo-3.png)
 
 *The MaterialSkin checkboxes, radio and Switch.*
-![selection](https://user-images.githubusercontent.com/77468294/134740844-795cd759-e4dc-4592-b2c1-86896e61f66f.png)
+![selection](https://raw.githubusercontent.com/baqeryan/MaterialSkin/master/MaterialSkinExample.RTL/Resources/demo-4.png)
 
 *Material skin textfield*
-![text](https://user-images.githubusercontent.com/77468294/134825517-23f517e7-0793-4c4c-bcb2-6c2c2fb36b4a.png)
+![text](https://raw.githubusercontent.com/baqeryan/MaterialSkin/master/MaterialSkinExample.RTL/Resources/demo-5.png)
 
 *Table control*
-![table](https://user-images.githubusercontent.com/8310271/66237915-a1931a80-e6cc-11e9-8e68-bc919f533366.png)
+![table](https://raw.githubusercontent.com/baqeryan/MaterialSkin/master/MaterialSkinExample.RTL/Resources/demo-6.png)
 
 *Progress bar*
-![progress bar](https://user-images.githubusercontent.com/77468294/119880969-131c7e00-bf2d-11eb-9ec6-b00e928e59ed.png)
+![progress bar](https://raw.githubusercontent.com/baqeryan/MaterialSkin/master/MaterialSkinExample.RTL/Resources/demo-7.png)
 
 *Cards*
-![cards](https://user-images.githubusercontent.com/77468294/119881312-6f7f9d80-bf2d-11eb-93b8-e4dc58dc3a4e.png)
+![cards](https://raw.githubusercontent.com/baqeryan/MaterialSkin/master/MaterialSkinExample.RTL/Resources/demo-8.png)
 
 *List Box*
-![listbox](https://user-images.githubusercontent.com/77468294/119881063-2891a800-bf2d-11eb-93d8-d0395dc1f19e.png)
+![listbox](https://raw.githubusercontent.com/baqeryan/MaterialSkin/master/MaterialSkinExample.RTL/Resources/demo-9.png)
 
 *Expansion Panel*
-![expansion](https://user-images.githubusercontent.com/77468294/119881153-419a5900-bf2d-11eb-95a2-ab29089acdd3.png)
+![expansion](https://raw.githubusercontent.com/baqeryan/MaterialSkin/master/MaterialSkinExample.RTL/Resources/demo-10.png)
 
 *Label*
-![label](https://user-images.githubusercontent.com/77468294/132769098-440841c8-07d2-4b9b-bff7-e525402525dd.png)
+![label](https://raw.githubusercontent.com/baqeryan/MaterialSkin/master/MaterialSkinExample.RTL/Resources/demo-11.png)
 
 *MaterialSkin using a custom color scheme.*
 ![custom](https://user-images.githubusercontent.com/77468294/119881411-8e7e2f80-bf2d-11eb-9fa3-883eceabfadc.png)
