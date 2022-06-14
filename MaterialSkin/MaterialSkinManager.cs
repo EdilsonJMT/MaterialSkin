@@ -397,8 +397,7 @@
         public IntPtr getLogFontByType(fontType type, RightToLeft RightToLeft = RightToLeft.No)
         {
             var rtl = (RightToLeft == RightToLeft.Yes) ? "_RTL" : "";
-            var result = logicalFonts.FirstOrDefault(i => i.Key == $"{Enum.GetName(typeof(fontType), type)}{rtl}").Value;
-            return result==null?logicalFonts.First().Value:result;
+            return logicalFonts.Any(i => i.Key == $"{Enum.GetName(typeof(fontType), type)}{rtl}") ? logicalFonts.First(i => i.Key == $"{Enum.GetName(typeof(fontType), type)}{rtl}").Value : logicalFonts.First().Value;
         }
 
         // Font stuff
@@ -411,17 +410,23 @@
 
         private void addFont(byte[] fontdata)
         {
-            // Add font to system table in memory
-            int dataLength = fontdata.Length;
+            try
+            {
+                // Add font to system table in memory
+                int dataLength = fontdata.Length;
 
-            IntPtr ptrFont = Marshal.AllocCoTaskMem(dataLength);
-            Marshal.Copy(fontdata, 0, ptrFont, dataLength);
+                IntPtr ptrFont = Marshal.AllocCoTaskMem(dataLength);
+                Marshal.Copy(fontdata, 0, ptrFont, dataLength);
 
-            // GDI Font
-            NativeTextRenderer.AddFontMemResourceEx(fontdata, dataLength, IntPtr.Zero, out _);
+                // GDI Font
+                NativeTextRenderer.AddFontMemResourceEx(fontdata, dataLength, IntPtr.Zero, out _);
 
-            // GDI+ Font
-            privateFontCollection.AddMemoryFont(ptrFont, dataLength);
+                // GDI+ Font
+                privateFontCollection.AddMemoryFont(ptrFont, dataLength);
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void addFontRtl(byte[] fontdata)
