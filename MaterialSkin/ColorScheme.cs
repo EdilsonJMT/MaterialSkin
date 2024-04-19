@@ -285,7 +285,13 @@ namespace MaterialSkin
         BlueGrey600 = 0x546E7A,
         BlueGrey700 = 0x455A64,
         BlueGrey800 = 0x37474F,
-        BlueGrey900 = 0x263238
+        BlueGrey900 = 0x263238,
+        AzulClaro = 0x00A3E2,
+        AzulOscuro = 0x0090D4,
+        Gris = 0x464B54,
+        Amarillo = 0xFCEA00,
+        Rosa = 0xE62984,
+        Verde = 0xCAD200
     }
 
     public enum Accent
@@ -353,6 +359,12 @@ namespace MaterialSkin
         DeepOrange100 = 0xFF9E80,
         DeepOrange200 = 0xFF6E40,
         DeepOrange400 = 0xFF3D00,
-        DeepOrange700 = 0xDD2C00
+        DeepOrange700 = 0xDD2C00,
+        AzulClaro = 0x00A3E2,
+        AzulOscuro = 0x0090D4,
+        Gris = 0x464B54,
+        Amarillo = 0xFCEA00,
+        Rosa = 0xE62984,
+        Verde = 0xCAD200
     }
 }
